@@ -48,7 +48,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export -o build/",
+    "build": "next build && next export -o out/",
     "deploy": "aws s3 sync --delete build/ s3://hamish-portfolio-site",
     "start": "next start",
     "test": "echo 'write some tests'",
