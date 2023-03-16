@@ -19,7 +19,7 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
 
 const disciplines = ['Doctor', 'Academic', 'Proofreader',
-'Medical', 'SEO','Blogger', 'Content', 'Teleconsultation'];
+  'Medical', 'SEO', 'Blogger', 'Content', 'Teleconsultation'];
 
 export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
@@ -28,10 +28,21 @@ export const Home = () => {
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
+  const projectFour = useRef();
+  const projectFive = useRef();
+  const projectSix = useRef();
+
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [intro,
+      projectOne,
+      projectTwo,
+      projectThree,
+      projectFour,
+      projectFive,
+      projectSix,
+      details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -84,9 +95,9 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
-        buttonText="View project"
+        title="Research Paper Writing"
+        description="I provide comprehensive research paper writing services that include topic selection, literature review, data analysis, and report writing. I can help you produce high-quality research papers that are well-researched, well-organized, and well-written."
+        buttonText="View Paper"
         buttonLink="/projects/smart-sparrow"
         model={{
           type: 'laptop',
@@ -105,9 +116,9 @@ export const Home = () => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Video game progress tracking"
-        description="Design and development for a video game tracking app built in React Native"
-        buttonText="View website"
+        title="Content Creation"
+        description="I offer content creation services for businesses and individuals. Whether you need blog posts, social media content, or website copy, I can help you create engaging and informative content that resonates with your target audience."
+        buttonText="View Content"
         buttonLink="https://gamestack.hamishw.com"
         model={{
           type: 'phone',
@@ -129,9 +140,9 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
-        buttonText="View project"
+        title="Article Writing"
+        description="I can help you write articles on a variety of topics, including current events, politics, science, and technology. I can produce articles that are informative, engaging, and well-researched."
+        buttonText="View articles"
         buttonLink="/projects/slice"
         model={{
           type: 'laptop',
@@ -140,6 +151,77 @@ export const Home = () => {
             {
               srcSet: [sliceTexture, sliceTextureLarge],
               placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-4"
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
+        index={4}
+        alternate
+        title="Resume Writing"
+        description="I provide resume writing services that can help you stand out in a competitive job market. I can create a professional and personalized resume that highlights your skills, achievements, and experience."
+        buttonText="View Resume"
+        buttonLink="/projects/slice"
+        model={{
+          type: 'phone',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [sliceTexture, sliceTextureLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+            {
+              srcSet: [gamestackTexture, gamestackTextureLarge],
+              placeholder: gamestackTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-5"
+        sectionRef={projectFive}
+        visible={visibleSections.includes(projectFive.current)}
+        index={5}
+        title="Proofreading and Editing"
+        description=" I offer proofreading and editing services for all types of written content. I can review your work for grammar, spelling, and punctuation errors, as well as ensure that the content is clear, concise, and coherent."
+        buttonText="View articles"
+        buttonLink="/projects/slice"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [sliceTexture, sliceTextureLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        alternate
+        id="project-6"
+        sectionRef={projectSix}
+        visible={visibleSections.includes(projectSix.current)}
+        index={6}
+        title="Academic  Writing"
+        description="As an experienced academic writer, I can help you with all aspects of academic writing, from selecting a topic and conducting research to organizing your ideas and polishing your final draft. I have expertise in a variety of disciplines, including literature, science, history, sociology, psychology, and business, among others.
+        I work closely with my clients to ensure that their academic writing meets their specific requirements and exceeds their expectations. Whether you need help with a single assignment or ongoing support throughout your academic career, I'm here to help. Contact me today to learn more about how I can assist you in achieving your academic goals."
+        buttonText="View articles"
+        buttonLink="/projects/slice"
+        model={{
+          type: 'phone',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [sliceTexture, sliceTextureLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+            {
+              srcSet: [gamestackTexture, gamestackTextureLarge],
+              placeholder: gamestackTexturePlaceholder,
             },
           ],
         }}

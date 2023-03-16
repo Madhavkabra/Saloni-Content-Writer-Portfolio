@@ -21,7 +21,7 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Hamish, currently I live in Sydney working as a senior product designer at{' '}
+      I’m Saloni, currently I live in India working as a senior product designer at{' '}
       <Link href="https://www.qwilr.com">Qwilr</Link>. My projects include UX design, UI
       animations, and icon illustration. Being comfortable with code allows me to rapidly
       prototype and validate experiences. If you’re interested in the tools and software I
@@ -89,11 +89,11 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 <Image
                   placeholder={profileImgPlaceholder}
                   srcSet={profileKatakana}
-                  className={styles.svg}
+                  className={styles.profileText}
                   style={{
-                    top: '-120px',
-                    left: '105px',
-                    scale: '0.75',
+                    top: '-110px',
+                    left: '91px',
+                    scale: '0.85',
                     transform: 'rotate(90deg)',
                   }}
                   alt="Me standing in front of the Torii on Miyajima, an island off the coast of Hiroshima in Japan"
