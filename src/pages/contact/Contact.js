@@ -37,7 +37,6 @@ export const Contact = () => {
         body: JSON.stringify({
           email: email,
           fullname: email,
-          subject: "Contacted via Portfolio",
           message: message,
         }),
         headers: {
