@@ -21,16 +21,12 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Saloni, currently I live in India working as a senior product designer at{' '}
-      <Link href="https://www.qwilr.com">Qwilr</Link>. My projects include UX design, UI
-      animations, and icon illustration. Being comfortable with code allows me to rapidly
-      prototype and validate experiences. If you’re interested in the tools and software I
-      use check out my <Link href="/uses">uses page</Link>.
+      Hi, I&#39;m Dr. Saloni, a doctor and professional writer with over five years of experience in the healthcare industry. I&#39;m currently working with HealthOk, where I combine my passion for helping people live healthier lives with my writing skills to communicate important health information in a clear, concise way.
+      I&#39;ve had the opportunity to work with a diverse range of patients, from children to seniors, and I find nothing more rewarding than making a positive impact on someone&#39;s health and wellbeing.
+      In addition to my work at HealthOk, I am also a freelance writer who has worked with clients from all over the world. Whether it&#39;s academic writing, medical writing, product descriptions, or technical writing, I always strive to deliver content that is well-researched, informative, and engaging. My experience includes creating social media posts, developing content strategies, generating landing page copy, and more.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      In my spare time I like to practice Brazilian Jiu Jitsu, play video games, and{' '}
-      <Link href="/projects/volkihar-knight">make mods</Link>. I’m always down for hearing
-      about new projects, so feel free to drop me a line.
+      Whether I&#39;m in the clinic or at my desk, my goal is always the same: to help people lead happier, healthier lives. I am dedicated to helping people understand complex medical concepts and making health information more accessible to everyone. When I&#39;m not writing, I enjoy spending time with my family, traveling, and reading up on the latest medical advancements.
     </Text>
   </Fragment>
 );
