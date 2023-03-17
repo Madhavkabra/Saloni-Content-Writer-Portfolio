@@ -33,23 +33,24 @@ export const Contact = () => {
     try {
       setSending(true);
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/message`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const res = await fetch("/api/sendgrid", {
         body: JSON.stringify({
-          email: email.value,
-          message: message.value,
+          email: email,
+          fullname: email,
+          subject: "Contacted via Portfolio",
+          message: message,
         }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
       });
 
-      const responseMessage = await response.json();
+      const { error } = await res.json();
 
       const statusError = getStatusError({
-        status: response?.status,
-        errorMessage: responseMessage?.error,
+        status: res?.status,
+        errorMessage: error,
         fallback: 'There was a problem sending your message',
       });
 
@@ -59,7 +60,7 @@ export const Contact = () => {
       setSending(false);
     } catch (error) {
       setSending(false);
-      setStatusError(error.message);
+      setStatusError(error.message || error);
     }
   };
 
