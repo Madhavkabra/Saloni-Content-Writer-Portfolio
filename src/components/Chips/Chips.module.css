@@ -1,0 +1,14 @@
+.chips {
+  padding: 5px 10px;
+  border: 1px solid rgb(var(--rgbPrimary));
+  border-radius: 10px;
+}
+
+.chipsUnSelected {
+  color: var(--colorTextTitle);
+}
+
+.chipsSelected {
+  color: black;
+  background-color: rgb(var(--rgbPrimary));
+}

@@ -2,6 +2,7 @@
   --contentWidth: 740px;
   --gutterWidth: 100px;
   --mainColumn: 3;
+  --textColor: rgb(var(--rgbPrimary));
 
   @media (--mediaTablet) {
     --mainColumn: 1;
@@ -67,6 +68,20 @@
   @media (--mediaTablet) {
     gap: var(--spaceS);
   }
+}
+.chipsArticleContainer {
+  margin-top: 7px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chipsArticle {
+  padding: 3px 8px;
+  border: 1px solid var(--textColor);
+  border-radius: 10px;
+  color: var(--colorTextTitle);
+  font-size: 10px;
 }
 
 .dateText {

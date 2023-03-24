@@ -36,7 +36,7 @@ export const Divider = ({
 );
 
 Divider.defaultProps = {
-  lineWidth: '100%',
+  lineWidth: '33%',
   lineHeight: '2px',
   notchWidth: '90px',
   notchHeight: '10px',

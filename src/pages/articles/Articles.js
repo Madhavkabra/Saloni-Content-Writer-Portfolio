@@ -15,6 +15,8 @@ import { useState, useEffect } from 'react';
 import { formatDate } from 'utils/date';
 import { classes, cssProps } from 'utils/style';
 import styles from './Articles.module.css';
+// import Chips from 'components/Chips/Chips';
+import { Chips } from 'components/Chips';
 
 const ArticlesPost = ({
   slug,
@@ -23,6 +25,7 @@ const ArticlesPost = ({
   date,
   featured,
   banner,
+  category,
   timecode,
   index,
 }) => {
@@ -33,7 +36,7 @@ const ArticlesPost = ({
   useEffect(() => {
     setDateTime(formatDate(date));
   }, [date, dateTime]);
-  
+
   const handleMouseEnter = () => {
     setHovered(true);
   };
@@ -73,12 +76,30 @@ const ArticlesPost = ({
         >
           <div className={styles.postDetails}>
             <div aria-hidden className={styles.postDate}>
+              {/* <div className={styles.divider}> */}
               <Divider notchWidth="64px" notchHeight="8px" />
-              {dateTime}
+              {/* </div> */}
+              {/* {dateTime} */}
+              {/* <div className={styles.chipsArticleContainer}> */}
+              {category?.map((text, index) => (
+                <div className={styles.chipsArticle} key={index}>
+                  {text}
+                </div>
+              ))}
+              {/* </div> */}
             </div>
+
             <Heading as="h2" level={featured ? 2 : 4}>
               {title}
+              {/* <div className={styles.chipsArticleContainer} >
+                {category?.map((text, index) => (
+                  <div className={styles.chipsArticle} key={index}>
+                    {text}
+                  </div>
+                ))}
+              </div> */}
             </Heading>
+
             <Text size={featured ? 'l' : 's'} as="p">
               {abstract}
             </Text>
@@ -142,6 +163,25 @@ const SkeletonPost = ({ index }) => {
 };
 
 export const Articles = ({ posts, featured }) => {
+  const [selectedTags, setselectedTags] = useState([]);
+  const chipsData = [
+    'Academic Writing',
+    'Case Studies',
+    'Service Page',
+    'Product Description',
+    'Landing Page Copy',
+    'SEO Content Writing',
+    'Blog',
+    'Technical Writing',
+    'Resume Writing',
+    'Newsletter',
+    'Reset All',
+  ];
+  //selected...array of string..
+  // useEffect(() => {
+  //   console.log("USE-EFF", selectedTags);
+  // }, [selectedTags, setselectedTags])
+
   const { width } = useWindowSize();
   const singleColumnWidth = 1190;
   const isSingleColumn = width <= singleColumnWidth;
@@ -155,12 +195,55 @@ export const Articles = ({ posts, featured }) => {
     </header>
   );
 
+  // const onClick = ({ text }) => {
+
+  //   console.log("RESETT", text === 'Reset All');
+  //   if (text === 'Reset All') {
+  //     setselectedTags([])
+  //     setReset(true);
+  //   }
+
+  //   else if (selectedTags.includes(text)) {
+  //     // console.log("BEFORE", selectedTags);
+  //     selectedTags.splice(selectedTags.indexOf(text), 1)
+  //     setselectedTags(selectedTags)
+  //     // console.log("AFTER", selectedTags);
+
+  //   }
+
+  //   else
+  //     setselectedTags([...selectedTags, text])
+
+  // }
+  const onClick = ({ text }) => {
+    if (text === 'Reset All') {
+      setselectedTags([]);
+    } else if (selectedTags.includes(text)) {
+      selectedTags.splice(selectedTags.indexOf(text), 1);
+      setselectedTags([...selectedTags]);
+    } else setselectedTags([...selectedTags, text]);
+  };
+
   const postList = (
     <div className={styles.list}>
       {!isSingleColumn && postsHeader}
-      {posts.map(({ slug, ...post }, index) => (
-        <ArticlesPost key={slug} slug={slug} index={index} {...post} />
-      ))}
+
+      <div className={styles.chipsContainer}>
+        {chipsData.map((text, index) => (
+          <Chips
+            text={text}
+            onClick={onClick}
+            select={selectedTags.includes(text)}
+            key={index + selectedTags.length}
+          />
+        ))}
+      </div>
+
+      {posts.map(({ slug, ...post }, index) => {
+        if (selectedTags.every(elem => post.category.includes(elem)))
+          return <ArticlesPost key={slug} slug={slug} index={index} {...post} />;
+      })}
+
       {Array(2)
         .fill()
         .map((skeleton, index) => (
