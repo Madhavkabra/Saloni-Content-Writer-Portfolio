@@ -164,8 +164,6 @@ export const Home = () => {
             {
               srcSet: [sprTexture, sprTextureLarge],
               placeholder: sprTexturePlaceholder,
-              // srcSet: [gamestackTexture2, gamestackTexture2Large],
-              // placeholder: gamestackTexture2Placeholder,
             },
           ],
         }}

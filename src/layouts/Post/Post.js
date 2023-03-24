@@ -16,8 +16,16 @@ import { formatDate } from 'utils/date';
 import { cssProps, msToNum, numToMs } from 'utils/style';
 import styles from './Post.module.css';
 
-export const Post = ({ children, title, date, abstract, banner, timecode, ogImage, category, link }) => {
-  console.log("category", link);
+export const Post = ({
+  children,
+  title,
+  date,
+  abstract,
+  banner,
+  timecode,
+  ogImage,
+  categories,
+}) => {
   const scrollToHash = useScrollToHash();
   const imageRef = useRef();
   const [dateTime, setDateTime] = useState(null);
@@ -66,12 +74,8 @@ export const Post = ({ children, title, date, abstract, banner, timecode, ogImag
               {visible => (
                 <div className={styles.date}>
                   <Divider notchWidth="64px" notchHeight="8px" collapsed={!visible} />
-                  {/* <Text className={styles.dateText} data-visible={visible}>
-                    {dateTime}
-                  </Text> */}
-
-                  <div className={styles.chipsArticleContainer} >
-                    {category?.map((text, index) => (
+                  <div className={styles.chipsArticleContainer}>
+                    {categories?.map((text, index) => (
                       <div className={styles.chipsArticle} key={index}>
                         {text}
                       </div>

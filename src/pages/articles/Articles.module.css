@@ -12,7 +12,7 @@
   }
 }
 
-.chipsContainer {
+.categoriesContainer {
   margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -303,10 +303,8 @@
 }
 
 .postDate {
-  /* display: grid; */
   display: flex;
   flex-wrap: wrap;
-  /* grid-template-columns: 128px 1fr; */
   gap: var(--spaceM);
   align-items: center;
   color: rgb(var(--rgbPrimary));

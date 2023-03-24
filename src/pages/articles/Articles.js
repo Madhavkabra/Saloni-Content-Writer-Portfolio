@@ -15,7 +15,6 @@ import { useState, useEffect } from 'react';
 import { formatDate } from 'utils/date';
 import { classes, cssProps } from 'utils/style';
 import styles from './Articles.module.css';
-// import Chips from 'components/Chips/Chips';
 import { Chips } from 'components/Chips';
 
 const ArticlesPost = ({
@@ -25,7 +24,7 @@ const ArticlesPost = ({
   date,
   featured,
   banner,
-  category,
+  categories,
   timecode,
   index,
 }) => {
@@ -76,28 +75,16 @@ const ArticlesPost = ({
         >
           <div className={styles.postDetails}>
             <div aria-hidden className={styles.postDate}>
-              {/* <div className={styles.divider}> */}
-              <Divider notchWidth="64px" notchHeight="8px" />
-              {/* </div> */}
-              {/* {dateTime} */}
-              {/* <div className={styles.chipsArticleContainer}> */}
-              {category?.map((text, index) => (
+              <Divider lineWidth="33%" notchWidth="64px" notchHeight="8px" />
+              {categories?.map((text, index) => (
                 <div className={styles.chipsArticle} key={index}>
                   {text}
                 </div>
               ))}
-              {/* </div> */}
             </div>
 
             <Heading as="h2" level={featured ? 2 : 4}>
               {title}
-              {/* <div className={styles.chipsArticleContainer} >
-                {category?.map((text, index) => (
-                  <div className={styles.chipsArticle} key={index}>
-                    {text}
-                  </div>
-                ))}
-              </div> */}
             </Heading>
 
             <Text size={featured ? 'l' : 's'} as="p">
@@ -163,8 +150,8 @@ const SkeletonPost = ({ index }) => {
 };
 
 export const Articles = ({ posts, featured }) => {
-  const [selectedTags, setselectedTags] = useState([]);
-  const chipsData = [
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const categories = [
     'Academic Writing',
     'Case Studies',
     'Service Page',
@@ -177,10 +164,6 @@ export const Articles = ({ posts, featured }) => {
     'Newsletter',
     'Reset All',
   ];
-  //selected...array of string..
-  // useEffect(() => {
-  //   console.log("USE-EFF", selectedTags);
-  // }, [selectedTags, setselectedTags])
 
   const { width } = useWindowSize();
   const singleColumnWidth = 1190;
@@ -195,52 +178,32 @@ export const Articles = ({ posts, featured }) => {
     </header>
   );
 
-  // const onClick = ({ text }) => {
-
-  //   console.log("RESETT", text === 'Reset All');
-  //   if (text === 'Reset All') {
-  //     setselectedTags([])
-  //     setReset(true);
-  //   }
-
-  //   else if (selectedTags.includes(text)) {
-  //     // console.log("BEFORE", selectedTags);
-  //     selectedTags.splice(selectedTags.indexOf(text), 1)
-  //     setselectedTags(selectedTags)
-  //     // console.log("AFTER", selectedTags);
-
-  //   }
-
-  //   else
-  //     setselectedTags([...selectedTags, text])
-
-  // }
-  const onClick = ({ text }) => {
-    if (text === 'Reset All') {
-      setselectedTags([]);
-    } else if (selectedTags.includes(text)) {
-      selectedTags.splice(selectedTags.indexOf(text), 1);
-      setselectedTags([...selectedTags]);
-    } else setselectedTags([...selectedTags, text]);
+  const handleCategoryClick = ({ title }) => {
+    if (title === 'Reset All') {
+      setSelectedCategories([]);
+    } else if (selectedCategories.includes(title)) {
+      selectedCategories.splice(selectedCategories.indexOf(title), 1);
+      setSelectedCategories([...selectedCategories]);
+    } else setSelectedCategories([...selectedCategories, title]);
   };
 
   const postList = (
     <div className={styles.list}>
       {!isSingleColumn && postsHeader}
 
-      <div className={styles.chipsContainer}>
-        {chipsData.map((text, index) => (
+      <div className={styles.categoriesContainer}>
+        {categories.map((title, index) => (
           <Chips
-            text={text}
-            onClick={onClick}
-            select={selectedTags.includes(text)}
-            key={index + selectedTags.length}
+            title={title}
+            onClick={handleCategoryClick}
+            selected={selectedCategories.includes(title)}
+            key={index}
           />
         ))}
       </div>
 
       {posts.map(({ slug, ...post }, index) => {
-        if (selectedTags.every(elem => post.category.includes(elem)))
+        if (selectedCategories.every(elem => post.categories.includes(elem)))
           return <ArticlesPost key={slug} slug={slug} index={index} {...post} />;
       })}
 
