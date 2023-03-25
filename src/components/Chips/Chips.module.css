@@ -1,0 +1,21 @@
+.chips {
+  padding: 5px 10px;
+  border: 1px solid rgb(var(--rgbPrimary));
+  border-radius: 10px;
+  color: var(--colorTextTitle);
+  cursor: pointer;
+}
+
+.chips:hover {
+  color: rgb(var(--rgbPrimary));
+}
+
+.chipsSelected {
+  color: rgb(var(--rgbBackground));
+  background-color: rgb(var(--rgbPrimary));
+}
+
+.chipsSelected:hover {
+  color: rgb(var(--rgbBackground));
+
+}

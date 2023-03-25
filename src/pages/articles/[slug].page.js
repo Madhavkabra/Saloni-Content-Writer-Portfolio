@@ -12,13 +12,30 @@ import { POSTS_PATH, postFilePaths } from 'utils/mdx';
 import { formatTimecode } from 'utils/timecode';
 import rehypePrism from '@mapbox/rehype-prism';
 import { generateOgImage } from './og-image';
+import { PDFViewer } from 'components/PDFViewer';
+import { Image } from 'components/Image';
 
 export default function PostPage({ frontmatter, code, timecode, ogImage }) {
   const MDXComponent = useMemo(() => getMDXComponent(code), [code]);
+  const link = frontmatter.link;
+  const isPdfLink = link?.endsWith('.pdf');
+  const isImageLink = ['.jpg', '.jpeg', '.png'].some((ext) => link.endsWith(ext))
 
   return (
     <Post timecode={timecode} ogImage={ogImage} {...frontmatter}>
-      <MDXComponent components={postMarkdown} />
+      {isPdfLink && <PDFViewer pdfLink={link} />}
+      {isImageLink && <Image
+        placeholder={link}
+        srcSet={link}
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        alt={frontmatter.title}
+      />}
+      {
+        (!isPdfLink && !isImageLink) && <MDXComponent components={postMarkdown} />
+      }
     </Post>
   );
 }

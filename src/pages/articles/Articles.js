@@ -15,6 +15,7 @@ import { useState, useEffect } from 'react';
 import { formatDate } from 'utils/date';
 import { classes, cssProps } from 'utils/style';
 import styles from './Articles.module.css';
+import { Chips } from 'components/Chips';
 
 const ArticlesPost = ({
   slug,
@@ -23,6 +24,7 @@ const ArticlesPost = ({
   date,
   featured,
   banner,
+  categories,
   timecode,
   index,
 }) => {
@@ -33,7 +35,7 @@ const ArticlesPost = ({
   useEffect(() => {
     setDateTime(formatDate(date));
   }, [date, dateTime]);
-  
+
   const handleMouseEnter = () => {
     setHovered(true);
   };
@@ -73,12 +75,18 @@ const ArticlesPost = ({
         >
           <div className={styles.postDetails}>
             <div aria-hidden className={styles.postDate}>
-              <Divider notchWidth="64px" notchHeight="8px" />
-              {dateTime}
+              <Divider lineWidth="33%" notchWidth="64px" notchHeight="8px" />
+              {categories?.map((text, index) => (
+                <div className={styles.chipsArticle} key={index}>
+                  {text}
+                </div>
+              ))}
             </div>
+
             <Heading as="h2" level={featured ? 2 : 4}>
               {title}
             </Heading>
+
             <Text size={featured ? 'l' : 's'} as="p">
               {abstract}
             </Text>
@@ -142,6 +150,21 @@ const SkeletonPost = ({ index }) => {
 };
 
 export const Articles = ({ posts, featured }) => {
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const categories = [
+    'Academic Writing',
+    'Case Studies',
+    'Service Page',
+    'Product Description',
+    'Landing Page Copy',
+    'SEO Content Writing',
+    'Blog',
+    'Technical Writing',
+    'Resume Writing',
+    'Newsletter',
+    'Reset All',
+  ];
+
   const { width } = useWindowSize();
   const singleColumnWidth = 1190;
   const isSingleColumn = width <= singleColumnWidth;
@@ -155,12 +178,35 @@ export const Articles = ({ posts, featured }) => {
     </header>
   );
 
+  const handleCategoryClick = ({ title }) => {
+    if (title === 'Reset All') {
+      setSelectedCategories([]);
+    } else if (selectedCategories.includes(title)) {
+      selectedCategories.splice(selectedCategories.indexOf(title), 1);
+      setSelectedCategories([...selectedCategories]);
+    } else setSelectedCategories([...selectedCategories, title]);
+  };
+
   const postList = (
     <div className={styles.list}>
       {!isSingleColumn && postsHeader}
-      {posts.map(({ slug, ...post }, index) => (
-        <ArticlesPost key={slug} slug={slug} index={index} {...post} />
-      ))}
+
+      <div className={styles.categoriesContainer}>
+        {categories.map((title, index) => (
+          <Chips
+            title={title}
+            onClick={handleCategoryClick}
+            selected={selectedCategories.includes(title)}
+            key={index}
+          />
+        ))}
+      </div>
+
+      {posts.map(({ slug, ...post }, index) => {
+        if (selectedCategories.every(elem => post.categories.includes(elem)))
+          return <ArticlesPost key={slug} slug={slug} index={index} {...post} />;
+      })}
+
       {Array(2)
         .fill()
         .map((skeleton, index) => (

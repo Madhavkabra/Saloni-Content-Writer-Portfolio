@@ -12,6 +12,31 @@
   }
 }
 
+.categoriesContainer {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chipsArticleContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chipsArticle {
+  padding: 3px 8px;
+  border: 1px solid rgb(var(--rgbPrimary));
+  border-radius: 10px;
+  color: var(--colorTextBody);
+  font-size: 10px;
+}
+
+.divider {
+  align-self: start;
+}
+
 .grid {
   --verticalPadding: var(--space4XL);
 
@@ -278,8 +303,8 @@
 }
 
 .postDate {
-  display: grid;
-  grid-template-columns: 128px 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--spaceM);
   align-items: center;
   color: rgb(var(--rgbPrimary));
