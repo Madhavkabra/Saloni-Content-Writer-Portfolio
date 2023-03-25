@@ -19,7 +19,7 @@ export default function PostPage({ frontmatter, code, timecode, ogImage }) {
   const MDXComponent = useMemo(() => getMDXComponent(code), [code]);
   const link = frontmatter.link;
   const isPdfLink = link?.endsWith('.pdf');
-  const isImageLink = ['.jpg', '.jpeg', '.png'].some((ext) => link.endsWith(ext))
+  const isImageLink = ['.jpg', '.jpeg', '.png'].some((ext) => link.endsWith(ext));
 
   return (
     <Post timecode={timecode} ogImage={ogImage} {...frontmatter}>
