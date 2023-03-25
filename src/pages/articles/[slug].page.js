@@ -19,23 +19,23 @@ export default function PostPage({ frontmatter, code, timecode, ogImage }) {
   const MDXComponent = useMemo(() => getMDXComponent(code), [code]);
   const link = frontmatter.link;
   const isPdfLink = link?.endsWith('.pdf');
-  const isImageLink = ['.jpg', '.jpeg', '.png'].some((ext) => link.endsWith(ext));
+  const isImageLink = ['.jpg', '.jpeg', '.png'].some(ext => link?.endsWith(ext));
 
   return (
     <Post timecode={timecode} ogImage={ogImage} {...frontmatter}>
       {isPdfLink && <PDFViewer pdfLink={link} />}
-      {isImageLink && <Image
-        placeholder={link}
-        srcSet={link}
-        style={{
-          width: '100%',
-          height: '100%',
-        }}
-        alt={frontmatter.title}
-      />}
-      {
-        (!isPdfLink && !isImageLink) && <MDXComponent components={postMarkdown} />
-      }
+      {isImageLink && (
+        <Image
+          placeholder={link}
+          srcSet={link}
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+          alt={frontmatter.title}
+        />
+      )}
+      {!isPdfLink && !isImageLink && <MDXComponent components={postMarkdown} />}
     </Post>
   );
 }
