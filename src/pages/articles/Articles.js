@@ -11,6 +11,7 @@ import { Text } from 'components/Text';
 import { useReducedMotion } from 'framer-motion';
 import { useWindowSize } from 'hooks';
 import RouterLink from 'next/link';
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { formatDate } from 'utils/date';
 import { classes, cssProps } from 'utils/style';
@@ -150,7 +151,14 @@ const SkeletonPost = ({ index }) => {
 };
 
 export const Articles = ({ posts, featured }) => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const router = useRouter();
+  const { param } = router.query;
+  let urlPath = router.asPath;
+  urlPath = urlPath.split('=');
+  urlPath = urlPath[1]?.split('+');
+  urlPath = urlPath?.join(' ');
+
+  urlPath = urlPath ? urlPath : '';
   const categories = [
     'Academic Writing',
     'Case Study',
@@ -166,6 +174,7 @@ export const Articles = ({ posts, featured }) => {
     'Newsletter',
     'Reset All',
   ];
+  const [selectedCategories, setSelectedCategories] = useState([urlPath]);
 
   const { width } = useWindowSize();
   const singleColumnWidth = 1190;
@@ -199,11 +208,14 @@ export const Articles = ({ posts, featured }) => {
             onClick={handleCategoryClick}
             selected={selectedCategories.includes(title)}
             key={index}
+            selectedCategories={selectedCategories}
           />
         ))}
       </div>
       {posts.map(({ slug, ...post }, index) => {
-        if (selectedCategories.every(elem => post.categories.includes(elem)))
+        if (selectedCategories.some(elem => post.categories.includes(elem)))
+          return <ArticlesPost key={slug} slug={slug} index={index} {...post} />;
+        else if (selectedCategories.length == 0)
           return <ArticlesPost key={slug} slug={slug} index={index} {...post} />;
       })}
       {Array(2)

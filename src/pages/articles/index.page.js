@@ -3,8 +3,6 @@ import path from 'path';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
 import { POSTS_PATH, postFilePaths } from 'utils/mdx';
-import { formatTimecode } from 'utils/timecode';
-
 export { Articles as default } from './Articles';
 
 export function getStaticProps() {
@@ -13,11 +11,9 @@ export function getStaticProps() {
     const { data, content } = matter(source);
 
     const { time } = readingTime(content);
-    const timecode = formatTimecode(time);
 
     return {
       ...data,
-      // timecode,
       slug: filePath.replace(/\.mdx?$/, ''),
     };
   });

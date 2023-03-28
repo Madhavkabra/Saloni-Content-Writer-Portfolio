@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
+import { windowHandler } from 'utils/windowWidth';
+import styles from './PDFViewer.module.css';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 export const PDFViewer = ({ pdfLink }) => {
   const [numPages, setNumPages] = useState(null);
-  const [windowWidth, setWindowWidth] = useState(1.2);
+  const [windowWidth, setWindowWidth] = useState(1.12);
 
   useEffect(() => {
     const width = window.innerWidth;
-    if (width > 1440) setWindowWidth(1.12);
-    else if (width <= 1440 && width > 1024) setWindowWidth(1.15);
-    else if (width <= 1024 && width > 768) setWindowWidth(1.2);
-    else if (width <= 768 && width > 425) setWindowWidth(1.1);
-    else if (width <= 425 && width > 375) setWindowWidth(0.6);
-    else setWindowWidth(0.55);
+    const pdfWidth = windowHandler(width);
+    setWindowWidth(pdfWidth);
   }, []);
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
@@ -22,13 +20,15 @@ export const PDFViewer = ({ pdfLink }) => {
   return (
     <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
       {Array.from({ length: numPages }, (_, index) => (
-        <Page
-          key={`page_${index + 1}`}
-          pageNumber={index + 1}
-          renderAnnotationLayer={false}
-          renderTextLayer={false}
-          scale={windowWidth}
-        />
+        <div className={styles.pageContainer}>
+          <Page
+            key={`page_${index + 1}`}
+            pageNumber={index + 1}
+            renderAnnotationLayer={false}
+            renderTextLayer={false}
+            scale={windowWidth}
+          />
+        </div>
       ))}
     </Document>
   );
