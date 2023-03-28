@@ -1,24 +1,30 @@
 import gamestackTexture2Large from 'assets/gamestack-list.jpg';
 import gamestackTexture2Placeholder from 'assets/gamestack-list-placeholder.jpg';
 import gamestackTexture2 from 'assets/gamestack-list.jpg';
-
 import gamestackTextureLarge from 'assets/gamestack-login-large.jpg';
 import gamestackTexturePlaceholder from 'assets/gamestack-login-placeholder.jpg';
 import gamestackTexture from 'assets/gamestack-login.jpg';
-
-import sliceTextureLarge from 'assets/slice-app-large.jpg';
 import sliceTexturePlaceholder from 'assets/slice-app-placeholder.jpg';
-import sliceTexture from 'assets/slice-app.jpg';
-
-import resumesliceTextureLarge from 'assets/resume-slice-app-large.jpg';
-import resumesliceTexture from 'assets/resume-slice-app.jpg';
-
-import proofReadingLarge from 'assets/proofReading-large.jpg';
-import proofReading from 'assets/proofReading.jpg';
-
+import landingPage from 'assets/landingPage.jpg';
+import landingPageLarge from 'assets/landingPage-large.jpg';
+import technicalWriting from 'assets/technical-writing.jpg';
+import technicalWritingLarge from 'assets/technical-writing-large.jpg';
+import seoWriting from 'assets/seo-writing.jpg';
+import seoWritingLarge from 'assets/seo-writing-large.jpg';
+import blog from 'assets/blog.jpg';
+import blogLarge from 'assets/blog-large.jpg';
+import webPageContent from 'assets/webPageContent.jpg';
+import webPageContentLarge from 'assets/webPageContent-large.jpg';
+import newsletter from 'assets/newsletter.jpg';
+import newsletterLarge from 'assets/newsletter-large.jpg';
+import medicalContentWriting from 'assets/medicalContentWriting.jpg';
+import medicalContentWritingLarge from 'assets/medicalContentWriting-large.jpg';
+import productEquipement from 'assets/productEquipement.jpg';
+import productEquipementLarge from 'assets/productEquipement-large.jpg';
+import procedurePage from 'assets/procedurePage.jpg';
+import procedurePageLarge from 'assets/procedurePage-large.jpg';
 import academicWritingLarge from 'assets/academic-writing-large1.jpg';
-import academicWriting from 'assets/academic-writing1.jpg';
-
+import academicWriting from 'assets/academic-writing1.png';
 import sprTextureLarge from 'assets/spr-lesson-builder-dark-large.jpg';
 import sprTexturePlaceholder from 'assets/spr-lesson-builder-dark-placeholder.jpg';
 import sprTexture from 'assets/spr-lesson-builder-dark.jpg';
@@ -30,8 +36,16 @@ import { ProjectSummary } from 'layouts/Home/ProjectSummary';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
 
-const disciplines = ['Doctor', 'Academic', 'Proofreader',
-  'Medical', 'SEO', 'Blogger', 'Content', 'Teleconsultation'];
+const disciplines = [
+  'Doctor',
+  'Academic',
+  'Proofreader',
+  'Medical',
+  'SEO',
+  'Blogger',
+  'Content',
+  'Teleconsultation',
+];
 
 export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
@@ -43,18 +57,32 @@ export const Home = () => {
   const projectFour = useRef();
   const projectFive = useRef();
   const projectSix = useRef();
+  const projectSeven = useRef();
+  const projectEight = useRef();
+  const projectNine = useRef();
+  const projectTen = useRef();
+  const projectEleven = useRef();
+  const projectTwelve = useRef();
 
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro,
+    const sections = [
+      intro,
       projectOne,
       projectTwo,
       projectThree,
       projectFour,
       projectFive,
       projectSix,
-      details];
+      projectSeven,
+      projectEight,
+      projectNine,
+      projectTen,
+      projectEleven,
+      projectTwelve,
+      details,
+    ];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -104,33 +132,12 @@ export const Home = () => {
       />
       <ProjectSummary
         id="project-1"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="Healthcare Professional"
-        description="I can help you write articles on a variety of topics, including current events, politics, science, and technology. I can produce articles that are informative, engaging, and well-researched."
-        buttonText="View articles"
-        buttonLink="/projects/slice"
-        model={{
-          type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
-          textures: [
-            {
-              srcSet: [sliceTexture, sliceTextureLarge],
-              placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
         alternate
-        id="project-2"
-        sectionRef={projectSix}
-        visible={visibleSections.includes(projectSix.current)}
-        index={6}
+        sectionRef={projectOne}
+        visible={visibleSections.includes(projectOne.current)}
+        index={1}
         title="Academic Writing"
-        description="As an experienced academic writer, I can help you with all aspects of academic writing, from selecting a topic and conducting research to organizing your ideas and polishing your final draft. I have expertise in a variety of disciplines, including literature, science, history, sociology, psychology, and business, among others.
-        I work closely with my clients to ensure that their academic writing meets their specific requirements and exceeds their expectations. Whether you need help with a single assignment or ongoing support throughout your academic career, I'm here to help. Contact me today to learn more about how I can assist you in achieving your academic goals."
+        description="With extensive knowledge of research and academic writing styles, I offer high-quality and well-researched academic writing services, including literature reviews, research papers, reports, etc."
         buttonText="View articles"
         buttonLink="/projects/slice"
         model={{
@@ -142,19 +149,20 @@ export const Home = () => {
               placeholder: sliceTexturePlaceholder,
             },
             {
-              srcSet: [academicWriting, gamestackTextureLarge],
+              srcSet: [academicWriting, academicWriting],
               placeholder: gamestackTexturePlaceholder,
             },
           ],
         }}
       />
+
       <ProjectSummary
-        id="project-3"
-        sectionRef={projectOne}
-        visible={visibleSections.includes(projectOne.current)}
-        index={1}
-        title="Case Studies"
-        description="I provide comprehensive research paper writing services that include topic selection, literature review, data analysis, and report writing. I can help you produce high-quality research papers that are well-researched, well-organized, and well-written."
+        id="project-2"
+        sectionRef={projectTwo}
+        visible={visibleSections.includes(projectTwo.current)}
+        index={2}
+        title="Case Study"
+        description="I create well-researched case studies highlighting the practical applications of medical theory and research. My case studies are detailed and well-researched, providing valuable insights for academic purposes."
         buttonText="View Paper"
         buttonLink="/projects/smart-sparrow"
         model={{
@@ -170,13 +178,56 @@ export const Home = () => {
       />
 
       <ProjectSummary
-        id="project-4"
+        id="project-3"
         alternate
-        sectionRef={projectTwo}
-        visible={visibleSections.includes(projectTwo.current)}
-        index={2}
+        sectionRef={projectThree}
+        visible={visibleSections.includes(projectThree.current)}
+        index={3}
+        title="Medical Content Writing"
+        description="I provide professional medical content writing services that are accurate, informative, and engaging. From blog posts and articles to social media content and website copy, I help clients communicate complex medical information in an accessible and easy-to-understand way."
+        buttonText="View articles"
+        buttonLink="/projects/slice"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [medicalContentWriting, medicalContentWritingLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+
+      <ProjectSummary
+        id="project-4"
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
+        index={4}
+        title="Landing Page Copy"
+        description="As a medical writer, I create compelling landing page copy that highlights the benefits of medical products and services. I help businesses convert website visitors into leads and customers through persuasive and engaging copy."
+        buttonText="View articles"
+        buttonLink="/projects/slice"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [landingPage, landingPageLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+
+      <ProjectSummary
+        id="project-5"
+        alternate
+        sectionRef={projectFive}
+        visible={visibleSections.includes(projectFive.current)}
+        index={5}
         title="Service Page"
-        description="I offer content creation services for businesses and individuals. Whether you need blog posts, social media content, or website copy, I can help you create engaging and informative content that resonates with your target audience."
+        description="With my expertise in medical writing, I craft informative and persuasive service pages that highlight the unique benefits of medical services. I help clients differentiate themselves from competitors and drive more website traffic."
         buttonText="View Content"
         buttonLink="https://gamestack.hamishw.com"
         model={{
@@ -194,35 +245,13 @@ export const Home = () => {
           ],
         }}
       />
-
-      <ProjectSummary
-        id="project-5"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="Product Description"
-        description="I can help you write articles on a variety of topics, including current events, politics, science, and technology. I can produce articles that are informative, engaging, and well-researched."
-        buttonText="View articles"
-        buttonLink="/projects/slice"
-        model={{
-          type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
-          textures: [
-            {
-              srcSet: [sliceTexture, sliceTextureLarge],
-              placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-
       <ProjectSummary
         id="project-6"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="Landing Page Copy"
-        description="I can help you write articles on a variety of topics, including current events, politics, science, and technology. I can produce articles that are informative, engaging, and well-researched."
+        sectionRef={projectSix}
+        visible={visibleSections.includes(projectSix.current)}
+        index={6}
+        title="Product Description"
+        description=" I specialize in creating clear, concise, and persuasive product descriptions for medical products. Whether it's medical devices, supplements, or pharmaceuticals, I help clients convey the benefits and features of their products in an easy-to-understand way."
         buttonText="View articles"
         buttonLink="/projects/slice"
         model={{
@@ -230,20 +259,20 @@ export const Home = () => {
           alt: 'Annotating a biomedical image in the Slice app',
           textures: [
             {
-              srcSet: [sliceTexture, sliceTextureLarge],
+              srcSet: [productEquipement, productEquipementLarge],
               placeholder: sliceTexturePlaceholder,
             },
           ],
         }}
       />
-
       <ProjectSummary
         id="project-7"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="SEO Content Writing"
-        description="I can help you write articles on a variety of topics, including current events, politics, science, and technology. I can produce articles that are informative, engaging, and well-researched."
+        alternate
+        sectionRef={projectSeven}
+        visible={visibleSections.includes(projectSeven.current)}
+        index={7}
+        title="Procedure Page"
+        description="With my experience in medical writing, I create detailed and informative procedure pages that provide patients with step-by-step guidance on medical procedures. I help clients offer valuable resources to their patients and reduce the risk of confusion or complications."
         buttonText="View articles"
         buttonLink="/projects/slice"
         model={{
@@ -251,20 +280,19 @@ export const Home = () => {
           alt: 'Annotating a biomedical image in the Slice app',
           textures: [
             {
-              srcSet: [sliceTexture, sliceTextureLarge],
+              srcSet: [procedurePage, procedurePageLarge],
               placeholder: sliceTexturePlaceholder,
             },
           ],
         }}
       />
-
       <ProjectSummary
         id="project-8"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="Blog"
-        description="I can help you write articles on a variety of topics, including current events, politics, science, and technology. I can produce articles that are informative, engaging, and well-researched."
+        sectionRef={projectEight}
+        visible={visibleSections.includes(projectEight.current)}
+        index={8}
+        title="Technical Writing"
+        description="I offer technical writing services that are accurate, clear, and concise. From user manuals and operating procedures to regulatory documentation, I help clients communicate complex technical information to various audiences."
         buttonText="View articles"
         buttonLink="/projects/slice"
         model={{
@@ -272,19 +300,21 @@ export const Home = () => {
           alt: 'Annotating a biomedical image in the Slice app',
           textures: [
             {
-              srcSet: [sliceTexture, sliceTextureLarge],
+              srcSet: [technicalWriting, technicalWritingLarge],
               placeholder: sliceTexturePlaceholder,
             },
           ],
         }}
       />
+
       <ProjectSummary
         id="project-9"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="Technical Writing"
-        description="I can help you write articles on a variety of topics, including current events, politics, science, and technology. I can produce articles that are informative, engaging, and well-researched."
+        alternate
+        sectionRef={projectNine}
+        visible={visibleSections.includes(projectNine.current)}
+        index={9}
+        title="SEO Writing"
+        description="I specialize in creating SEO-friendly medical content that helps businesses rank higher in search engine results. With my knowledge of keyword research and on-page optimization, I help clients attract more website traffic and generate more leads."
         buttonText="View articles"
         buttonLink="/projects/slice"
         model={{
@@ -292,47 +322,40 @@ export const Home = () => {
           alt: 'Annotating a biomedical image in the Slice app',
           textures: [
             {
-              srcSet: [sliceTexture, sliceTextureLarge],
+              srcSet: [seoWriting, seoWritingLarge],
               placeholder: sliceTexturePlaceholder,
             },
           ],
         }}
       />
-
       <ProjectSummary
         id="project-10"
-        sectionRef={projectFour}
-        visible={visibleSections.includes(projectFour.current)}
-        index={4}
-        alternate
-        title="Resume Writing"
-        description="I provide resume writing services that can help you stand out in a competitive job market. I can create a professional and personalized resume that highlights your skills, achievements, and experience."
-        buttonText="View Resume"
+        sectionRef={projectTen}
+        visible={visibleSections.includes(projectTen.current)}
+        index={10}
+        title="Blog"
+        description="I provide engaging and informative blog content that covers a wide range of medical topics. From industry news and trends to patient education and lifestyle advice, I help clients establish themselves as thought leaders in the medical industry."
+        buttonText="View articles"
         buttonLink="/projects/slice"
         model={{
-          type: 'phone',
+          type: 'laptop',
           alt: 'Annotating a biomedical image in the Slice app',
           textures: [
             {
-              srcSet: [resumesliceTexture, resumesliceTexture],
+              srcSet: [blog, blogLarge],
               placeholder: sliceTexturePlaceholder,
-
-            },
-            {
-              srcSet: [resumesliceTextureLarge, resumesliceTextureLarge],
-              placeholder: gamestackTexturePlaceholder,
             },
           ],
         }}
       />
-
       <ProjectSummary
         id="project-11"
-        sectionRef={projectFive}
-        visible={visibleSections.includes(projectFive.current)}
-        index={5}
-        title="Newsletter"
-        description=" I offer proofreading and editing services for all types of written content. I can review your work for grammar, spelling, and punctuation errors, as well as ensure that the content is clear, concise, and coherent."
+        alternate
+        sectionRef={projectEleven}
+        visible={visibleSections.includes(projectEleven.current)}
+        index={11}
+        title="Web Page Content"
+        description="With my expertise in medical writing, I create informative and persuasive web page content that resonates with target audiences. I help clients improve their website's user experience and increase conversions through compelling and engaging copy."
         buttonText="View articles"
         buttonLink="/projects/slice"
         model={{
@@ -340,28 +363,26 @@ export const Home = () => {
           alt: 'Annotating a biomedical image in the Slice app',
           textures: [
             {
-              srcSet: [proofReading, proofReadingLarge],
+              srcSet: [webPageContent, webPageContentLarge],
               placeholder: sliceTexturePlaceholder,
             },
           ],
         }}
       />
-
       <ProjectSummary
         id="project-12"
-        sectionRef={projectFive}
-        visible={visibleSections.includes(projectFive.current)}
-        index={5}
-        title="Proofreading and Editing"
-        description=" I offer proofreading and editing services for all types of written content. I can review your work for grammar, spelling, and punctuation errors, as well as ensure that the content is clear, concise, and coherent."
-        buttonText="View articles"
+        sectionRef={projectTwelve}
+        visible={visibleSections.includes(projectTwelve.current)}
+        index={12}
+        title="Newsletter"
+        description="I offer professional medical newsletter writing services that help businesses stay connected with their audience. From industry updates and news to company updates and promotions, I help clients create informative, engaging, and effective newsletters."
         buttonLink="/projects/slice"
         model={{
           type: 'laptop',
           alt: 'Annotating a biomedical image in the Slice app',
           textures: [
             {
-              srcSet: [proofReading, proofReadingLarge],
+              srcSet: [newsletter, newsletterLarge],
               placeholder: sliceTexturePlaceholder,
             },
           ],

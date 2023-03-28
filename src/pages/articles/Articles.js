@@ -153,14 +153,16 @@ export const Articles = ({ posts, featured }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const categories = [
     'Academic Writing',
-    'Case Studies',
+    'Case Study',
+    'Medical Content Writing',
+    'Landing Page Copy',
     'Service Page',
     'Product Description',
-    'Landing Page Copy',
-    'SEO Content Writing',
-    'Blog',
+    'Procedure Page',
     'Technical Writing',
-    'Resume Writing',
+    'SEO Writing',
+    'Blog',
+    'Web Page Content',
     'Newsletter',
     'Reset All',
   ];
@@ -190,7 +192,6 @@ export const Articles = ({ posts, featured }) => {
   const postList = (
     <div className={styles.list}>
       {!isSingleColumn && postsHeader}
-
       <div className={styles.categoriesContainer}>
         {categories.map((title, index) => (
           <Chips
@@ -201,12 +202,10 @@ export const Articles = ({ posts, featured }) => {
           />
         ))}
       </div>
-
       {posts.map(({ slug, ...post }, index) => {
         if (selectedCategories.every(elem => post.categories.includes(elem)))
           return <ArticlesPost key={slug} slug={slug} index={index} {...post} />;
       })}
-
       {Array(2)
         .fill()
         .map((skeleton, index) => (

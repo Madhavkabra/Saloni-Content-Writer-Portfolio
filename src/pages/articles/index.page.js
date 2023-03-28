@@ -17,7 +17,7 @@ export function getStaticProps() {
 
     return {
       ...data,
-      timecode,
+      // timecode,
       slug: filePath.replace(/\.mdx?$/, ''),
     };
   });
