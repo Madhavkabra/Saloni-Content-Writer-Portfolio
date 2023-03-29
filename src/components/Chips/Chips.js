@@ -5,25 +5,25 @@ import styles from './Chips.module.css';
 
 export const Chips = ({ title, selected, selectedCategories, setSelectedCategories }) => {
   const router = useRouter();
-  const chipsCategories = [...selectedCategories];
 
   useEffect(() => {
     router.push(`/articles?filter`, { query: selectedCategories });
   }, [selectedCategories]);
 
-  const clickHandleCategory = ({ title, chipsCategories }) => {
+  const handleClickOnCategory = () => {
     if (title === 'Reset All') {
       setSelectedCategories([]);
-    } else if (chipsCategories?.includes(title)) {
-      chipsCategories.splice(chipsCategories.indexOf(title), 1);
-      setSelectedCategories([...chipsCategories]);
+    } else if (selectedCategories?.includes(title)) {
+      const categories = [...selectedCategories];
+      categories.splice(categories.indexOf(title), 1);
+      setSelectedCategories(categories);
     } else {
-      setSelectedCategories([...chipsCategories, title]);
+      setSelectedCategories([...selectedCategories, title]);
     }
   };
   return (
     <div
-      onClick={() => clickHandleCategory({ title, chipsCategories })}
+      onClick={handleClickOnCategory}
       className={
         selected ? classes(styles.chipsSelected, styles.chips) : classes(styles.chips)
       }

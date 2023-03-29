@@ -195,15 +195,6 @@ export const Articles = ({ posts, featured }) => {
     </header>
   );
 
-  const handleCategoryClick = ({ title }) => {
-    if (title === 'Reset All') {
-      setSelectedCategories([]);
-    } else if (selectedCategories.includes(title)) {
-      selectedCategories.splice(selectedCategories.indexOf(title), 1);
-      setSelectedCategories([...selectedCategories]);
-    } else setSelectedCategories([...selectedCategories, title]);
-  };
-
   const postList = (
     <div className={styles.list}>
       {!isSingleColumn && postsHeader}
@@ -221,7 +212,7 @@ export const Articles = ({ posts, featured }) => {
       {posts.map(({ slug, ...post }, index) => {
         if (
           selectedCategories.some(elem => post.categories.includes(elem)) ||
-          selectedCategories.length == 0
+          selectedCategories.length === 0
         )
           return <ArticlesPost key={slug} slug={slug} index={index} {...post} />;
       })}
