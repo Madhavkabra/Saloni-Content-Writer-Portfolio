@@ -10,7 +10,7 @@ import { Transition } from 'components/Transition';
 import { useWindowSize } from 'hooks';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
-import { cssProps, media } from 'utils/style';
+import { cssProps, media, classes } from 'utils/style';
 import styles from './ProjectSummary.module.css';
 
 const Model = dynamic(() => import('components/Model').then(mod => mod.Model));
@@ -92,7 +92,10 @@ export const ProjectSummary = ({
       {model.type === 'laptop' && (
         <>
           {renderKatakana('laptop', visible)}
-          <div className={styles.model} data-device="laptop">
+          <div
+            className={alternate ? classes(styles.model, styles.modelLeft) : styles.model}
+            data-device="laptop"
+          >
             <Model
               alt={model.alt}
               cameraPosition={{ x: 0, y: 0, z: 8 }}

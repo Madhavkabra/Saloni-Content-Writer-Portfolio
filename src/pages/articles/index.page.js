@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import readingTime from 'reading-time';
 import { POSTS_PATH, postFilePaths } from 'utils/mdx';
 export { Articles as default } from './Articles';
 
@@ -9,9 +8,6 @@ export function getStaticProps() {
   const allPosts = postFilePaths.map(filePath => {
     const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
     const { data, content } = matter(source);
-
-    const { time } = readingTime(content);
-
     return {
       ...data,
       slug: filePath.replace(/\.mdx?$/, ''),

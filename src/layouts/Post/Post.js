@@ -19,6 +19,7 @@ import styles from './Post.module.css';
 export const Post = ({
   children,
   title,
+  alternateTitle,
   date,
   abstract,
   banner,
@@ -29,6 +30,7 @@ export const Post = ({
   const scrollToHash = useScrollToHash();
   const imageRef = useRef();
   const [dateTime, setDateTime] = useState(null);
+  const heading = alternateTitle ? alternateTitle : title;
 
   useEffect(() => {
     setDateTime(formatDate(date));
@@ -46,7 +48,7 @@ export const Post = ({
 
   return (
     <article className={styles.post}>
-      <Meta title={title} prefix="" description={abstract} ogImage={ogImage} />
+      <Meta title={heading} prefix="" description={abstract} ogImage={ogImage} />
       <Section>
         {banner && (
           <div className={styles.banner} ref={imageRef}>
@@ -84,8 +86,8 @@ export const Post = ({
                 </div>
               )}
             </Transition>
-            <Heading level={2} as="h1" className={styles.title} aria-label={title}>
-              {title.split(' ').map((word, index) => (
+            <Heading level={2} as="h1" className={styles.title} aria-label={heading}>
+              {heading.split(' ').map((word, index) => (
                 <span className={styles.titleWordWrapper} key={`${word}-${index}`}>
                   <span
                     className={styles.titleWord}
@@ -93,7 +95,7 @@ export const Post = ({
                     index={index}
                   >
                     {word}
-                    {index !== title.split(' ').length - 1 ? ' ' : ''}
+                    {index !== heading.split(' ').length - 1 ? ' ' : ''}
                   </span>
                 </span>
               ))}
