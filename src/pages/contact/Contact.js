@@ -33,16 +33,16 @@ export const Contact = () => {
     try {
       setSending(true);
 
-      const res = await fetch("/api/sendgrid", {
+      const res = await fetch('/api/sendgrid', {
         body: JSON.stringify({
           email: email,
           fullname: email,
           message: message,
         }),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        method: "POST",
+        method: 'POST',
       });
 
       const { error } = await res.json();
@@ -176,6 +176,12 @@ export const Contact = () => {
           </div>
         )}
       </Transition>
+      <div>
+        <a className={styles.icons} href="">
+          <Icon className={styles.iconLink} icon="twitter" />
+          <Icon className={styles.iconLink} icon="github" />
+        </a>
+      </div>
       <Footer className={styles.footer} />
     </Section>
   );

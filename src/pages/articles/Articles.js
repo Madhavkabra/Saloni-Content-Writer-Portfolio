@@ -11,6 +11,7 @@ import { Text } from 'components/Text';
 import { useReducedMotion } from 'framer-motion';
 import { useWindowSize } from 'hooks';
 import RouterLink from 'next/link';
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { formatDate } from 'utils/date';
 import { classes, cssProps } from 'utils/style';
@@ -151,16 +152,32 @@ const SkeletonPost = ({ index }) => {
 
 export const Articles = ({ posts, featured }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const router = useRouter();
+  let urlPath = router.asPath;
+  const splittedUrlPath = urlPath?.split('=');
+
+  useEffect(() => {
+    if (splittedUrlPath.length > 1) {
+      const category = splittedUrlPath[1]?.replace('+', ' ');
+      setSelectedCategories([category]);
+    } else {
+      setSelectedCategories([]);
+    }
+  }, []);
+
   const categories = [
     'Academic Writing',
-    'Case Studies',
+    'Case Study',
+    'Medical Content Writing',
+    'Landing Page Copy',
     'Service Page',
     'Product Description',
-    'Landing Page Copy',
-    'SEO Content Writing',
-    'Blog',
+    'Procedure Page',
     'Technical Writing',
-    'Resume Writing',
+    'SEO Writing',
+    'Blog',
+    'Web Page Content',
     'Newsletter',
     'Reset All',
   ];
@@ -178,35 +195,27 @@ export const Articles = ({ posts, featured }) => {
     </header>
   );
 
-  const handleCategoryClick = ({ title }) => {
-    if (title === 'Reset All') {
-      setSelectedCategories([]);
-    } else if (selectedCategories.includes(title)) {
-      selectedCategories.splice(selectedCategories.indexOf(title), 1);
-      setSelectedCategories([...selectedCategories]);
-    } else setSelectedCategories([...selectedCategories, title]);
-  };
-
   const postList = (
     <div className={styles.list}>
       {!isSingleColumn && postsHeader}
-
       <div className={styles.categoriesContainer}>
         {categories.map((title, index) => (
           <Chips
             title={title}
-            onClick={handleCategoryClick}
             selected={selectedCategories.includes(title)}
             key={index}
+            selectedCategories={selectedCategories}
+            setSelectedCategories={setSelectedCategories}
           />
         ))}
       </div>
-
       {posts.map(({ slug, ...post }, index) => {
-        if (selectedCategories.every(elem => post.categories.includes(elem)))
+        if (
+          selectedCategories.some(elem => post.categories.includes(elem)) ||
+          selectedCategories.length === 0
+        )
           return <ArticlesPost key={slug} slug={slug} index={index} {...post} />;
       })}
-
       {Array(2)
         .fill()
         .map((skeleton, index) => (

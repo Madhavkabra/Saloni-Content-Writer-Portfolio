@@ -239,11 +239,9 @@
   display: flex;
   flex-direction: column;
   padding-bottom: var(--space2XL);
-  padding-top: calc(var(--gutterWidth) + var(--space2XL));
   overflow: hidden;
 
   @media (--mediaTablet) {
-    padding-top: calc(var(--gutterWidth) + var(--spaceXL));
   }
 }
 
