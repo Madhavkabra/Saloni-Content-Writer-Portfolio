@@ -151,14 +151,22 @@ const SkeletonPost = ({ index }) => {
 };
 
 export const Articles = ({ posts, featured }) => {
-  const router = useRouter();
-  const { param } = router.query;
-  let urlPath = router.asPath;
-  urlPath = urlPath.split('=');
-  urlPath = urlPath[1]?.split('+');
-  urlPath = urlPath?.join(' ');
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
-  urlPath = urlPath ? urlPath : '';
+  const router = useRouter();
+  let urlPath = router.asPath;
+  const a1 = urlPath?.split('=');
+
+  useEffect(() => {
+    if (a1.length > 1) {
+      const b1 = a1[1]?.split('+');
+      const c1 = b1?.join(' ');
+      setSelectedCategories([c1]);
+    } else {
+      setSelectedCategories([]);
+    }
+  }, []);
+
   const categories = [
     'Academic Writing',
     'Case Study',
@@ -174,7 +182,6 @@ export const Articles = ({ posts, featured }) => {
     'Newsletter',
     'Reset All',
   ];
-  const [selectedCategories, setSelectedCategories] = useState([urlPath]);
 
   const { width } = useWindowSize();
   const singleColumnWidth = 1190;
@@ -205,17 +212,18 @@ export const Articles = ({ posts, featured }) => {
         {categories.map((title, index) => (
           <Chips
             title={title}
-            onClick={handleCategoryClick}
             selected={selectedCategories.includes(title)}
             key={index}
             selectedCategories={selectedCategories}
+            setSelectedCategories={setSelectedCategories}
           />
         ))}
       </div>
       {posts.map(({ slug, ...post }, index) => {
-        if (selectedCategories.some(elem => post.categories.includes(elem)))
-          return <ArticlesPost key={slug} slug={slug} index={index} {...post} />;
-        else if (selectedCategories.length == 0)
+        if (
+          selectedCategories.some(elem => post.categories.includes(elem)) ||
+          selectedCategories.length == 0
+        )
           return <ArticlesPost key={slug} slug={slug} index={index} {...post} />;
       })}
       {Array(2)
