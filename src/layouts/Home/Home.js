@@ -42,19 +42,19 @@ import styles from './Home.module.css';
 
 const disciplines = [
   'Doctor',
-  'Academic',
-  'Proofreader',
-  'Medical',
-  'SEO',
+  'Academic Writer',
+  'Medical Content Writer',
+  'Technical Writer',
+  'SEO Content Writer',
+  'Website Content Writer',
   'Blogger',
-  'Content',
-  'Teleconsultation',
 ];
 
 export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
+  const projectZero = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
@@ -74,6 +74,7 @@ export const Home = () => {
   useEffect(() => {
     const sections = [
       intro,
+      projectZero,
       projectOne,
       projectTwo,
       projectThree,
@@ -135,6 +136,26 @@ export const Home = () => {
         sectionRef={intro}
         disciplines={disciplines}
         scrollIndicatorHidden={scrollIndicatorHidden}
+      />
+      <ProjectSummary
+        id="project-0"
+        sectionRef={projectZero}
+        visible={visibleSections.includes(projectZero.current)}
+        index={0}
+        title="Healthcare Professional"
+        description="As a healthcare professional, I play a crucial role in utilizing technology to improve patient care. Teleconsultation, care coordination, and electronic medical records (EMRs) are just a few examples of how technology is transforming the healthcare industry, and I am at the forefront of this change."
+        // buttonText="View articles"
+        // buttonLink="/articles/?0=Newsletter"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [proofReading, proofReadingLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
       />
       <ProjectSummary
         id="project-1"
@@ -417,8 +438,7 @@ export const Home = () => {
           ],
         }}
       />
-      {/*      
-Healthcare Professional- As a healthcare professional, I play a crucial role in utilizing technology to improve patient care. Teleconsultation, care coordination, and electronic medical records (EMRs) are just a few examples of how technology is transforming the healthcare industry, and I am at the forefront of this change.  */}
+
       <Profile
         sectionRef={details}
         visible={visibleSections.includes(details.current)}

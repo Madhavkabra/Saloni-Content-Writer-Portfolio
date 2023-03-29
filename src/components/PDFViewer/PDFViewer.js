@@ -4,7 +4,7 @@ import { windowHandler } from 'utils/windowWidth';
 import styles from './PDFViewer.module.css';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-export const PDFViewer = ({ pdfLink }) => {
+export const PDFViewer = ({ pdfLink, solution }) => {
   const [numPages, setNumPages] = useState(null);
   const [windowWidth, setWindowWidth] = useState(1.12);
 
@@ -18,18 +18,21 @@ export const PDFViewer = ({ pdfLink }) => {
     setNumPages(nextNumPages);
   }
   return (
-    <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
-      {Array.from({ length: numPages }, (_, index) => (
-        <div className={styles.pageContainer}>
-          <Page
-            key={`page_${index + 1}`}
-            pageNumber={index + 1}
-            renderAnnotationLayer={false}
-            renderTextLayer={false}
-            scale={windowWidth}
-          />
-        </div>
-      ))}
-    </Document>
+    <>
+      {solution && <div> Solution</div>}
+      <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
+        {Array.from({ length: numPages }, (_, index) => (
+          <div className={styles.pageContainer}>
+            <Page
+              key={`page_${index + 1}`}
+              pageNumber={index + 1}
+              renderAnnotationLayer={false}
+              renderTextLayer={false}
+              scale={windowWidth}
+            />
+          </div>
+        ))}
+      </Document>
+    </>
   );
 };

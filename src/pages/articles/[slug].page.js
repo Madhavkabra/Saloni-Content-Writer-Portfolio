@@ -17,25 +17,41 @@ import { Image } from 'components/Image';
 
 export default function PostPage({ frontmatter, code, timecode, ogImage }) {
   const MDXComponent = useMemo(() => getMDXComponent(code), [code]);
-  const link = frontmatter.link;
-  const isPdfLink = link?.endsWith('.pdf');
-  const isImageLink = ['.jpg', '.jpeg', '.png'].some(ext => link?.endsWith(ext));
+
+  function PdfLink(links) {
+    const link = links;
+    const isPdfLink = link?.endsWith('.pdf');
+    const isImageLink = ['.jpg', '.jpeg', '.png'].some(ext => link?.endsWith(ext));
+    return { link, isPdfLink, isImageLink };
+  }
+  const links = ['link', 'link1', 'link2'];
 
   return (
     <Post timecode={timecode} ogImage={ogImage} {...frontmatter}>
-      {isPdfLink && <PDFViewer pdfLink={link} />}
-      {isImageLink && (
-        <Image
-          placeholder={link}
-          srcSet={link}
-          style={{
-            width: '100%',
-            height: '100%',
-          }}
-          alt={frontmatter.title}
-        />
-      )}
-      {!isPdfLink && !isImageLink && <MDXComponent components={postMarkdown} />}
+      {links.map((data, index) => {
+        const linkUrl = PdfLink(frontmatter[data]);
+        return (
+          <>
+            {linkUrl.isPdfLink && (
+              <PDFViewer pdfLink={linkUrl.link} solution={index == 2} />
+            )}
+            {linkUrl.isImageLink && (
+              <Image
+                placeholder={linkUrl.link}
+                srcSet={linkUrl.link}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                }}
+                alt={frontmatter.title}
+              />
+            )}
+            {!linkUrl.isPdfLink && !linkUrl.isImageLink && (
+              <MDXComponent components={postMarkdown} />
+            )}
+          </>
+        );
+      })}
     </Post>
   );
 }

@@ -20,6 +20,7 @@ export const Post = ({
   children,
   title,
   alternateTitle,
+  subHeading1,
   date,
   abstract,
   banner,
@@ -112,6 +113,7 @@ export const Post = ({
               </RouterLink>
               <div className={styles.timecode}>{timecode}</div>
             </div>
+            <div>{subHeading1}</div>
           </div>
         </header>
       </Section>
