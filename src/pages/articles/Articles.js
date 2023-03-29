@@ -155,13 +155,12 @@ export const Articles = ({ posts, featured }) => {
 
   const router = useRouter();
   let urlPath = router.asPath;
-  const a1 = urlPath?.split('=');
+  const splittedUrlPath = urlPath?.split('=');
 
   useEffect(() => {
-    if (a1.length > 1) {
-      const b1 = a1[1]?.split('+');
-      const c1 = b1?.join(' ');
-      setSelectedCategories([c1]);
+    if (splittedUrlPath.length > 1) {
+      const category = splittedUrlPath[1]?.replace('+', ' ');
+      setSelectedCategories([category]);
     } else {
       setSelectedCategories([]);
     }
