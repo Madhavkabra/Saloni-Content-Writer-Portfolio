@@ -7,6 +7,7 @@
   "author": "Dr. Saloni Kabra <hello@hamishw.com>",
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
+    "@netlify/plugin-nextjs": "^4.33.0",
     "@storybook/addon-a11y": "^6.5.10",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-controls": "^6.5.10",
