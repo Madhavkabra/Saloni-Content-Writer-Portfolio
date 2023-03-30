@@ -1,7 +1,2 @@
-[build]
-  command = "npm run build"
-  publish = "out"
-
 [[plugins]]
-package = "@netlify/plugin-nextjs"
-
+package = "@netlify/plugin-functions-install-core"
