@@ -30,6 +30,7 @@
     "rehype-img-size": "^1.0.1",
     "rehype-preset-minify": "^6.0.0",
     "rehype-slug": "^5.0.1",
+    "serverless-http": "^3.2.0",
     "storybook": "^6.5.10",
     "storybook-addon-next": "^1.6.7",
     "stylelint": "^14.9.1",
