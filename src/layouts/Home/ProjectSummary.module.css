@@ -85,6 +85,10 @@
   width: 100%;
 }
 
+.modelLeft {
+  margin-right: 350px;
+}
+
 .model {
   --width: 180%;
   --aspectRatio: 12 / 10;

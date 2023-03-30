@@ -15,27 +15,54 @@ import { generateOgImage } from './og-image';
 import { PDFViewer } from 'components/PDFViewer';
 import { Image } from 'components/Image';
 
+const LINK_TYPES = ['link', 'linkQuestion', 'linkSolution'];
+
+const PdfComponent = ({ linkUrl, linkType, MDXComponent, title }) => (
+  <>
+    {linkUrl.isPdfLink && (
+      <PDFViewer pdfLink={linkUrl.link} solution={linkType === 'linkSolution'} />
+    )}
+    {linkUrl.isImageLink && (
+      <Image
+        placeholder={linkUrl.link}
+        srcSet={linkUrl.link}
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        alt={title}
+      />
+    )}
+    {!linkUrl.isPdfLink && !linkUrl.isImageLink && (
+      <MDXComponent components={postMarkdown} />
+    )}
+  </>
+);
+
 export default function PostPage({ frontmatter, code, timecode, ogImage }) {
   const MDXComponent = useMemo(() => getMDXComponent(code), [code]);
-  const link = frontmatter.link;
-  const isPdfLink = link?.endsWith('.pdf');
-  const isImageLink = ['.jpg', '.jpeg', '.png'].some(ext => link?.endsWith(ext));
+
+  function pdfLink(link) {
+    const isPdfLink = link?.endsWith('.pdf');
+    const isImageLink = ['.jpg', '.jpeg', '.png'].some(ext => link?.endsWith(ext));
+
+    return { link, isPdfLink, isImageLink };
+  }
 
   return (
     <Post timecode={timecode} ogImage={ogImage} {...frontmatter}>
-      {isPdfLink && <PDFViewer pdfLink={link} />}
-      {isImageLink && (
-        <Image
-          placeholder={link}
-          srcSet={link}
-          style={{
-            width: '100%',
-            height: '100%',
-          }}
-          alt={frontmatter.title}
-        />
-      )}
-      {!isPdfLink && !isImageLink && <MDXComponent components={postMarkdown} />}
+      {LINK_TYPES.map((linkType, index) => {
+        const linkUrl = pdfLink(frontmatter[linkType]);
+        return (
+          <PdfComponent
+            key={index}
+            linkUrl={linkUrl}
+            linkType={linkType}
+            MDXComponent={MDXComponent}
+            title={frontmatter.title}
+          />
+        );
+      })}
     </Post>
   );
 }

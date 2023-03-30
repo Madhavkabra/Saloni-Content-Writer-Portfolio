@@ -177,9 +177,13 @@ export const Contact = () => {
         )}
       </Transition>
       <div>
-        <a className={styles.icons} href="">
-          <Icon className={styles.iconLink} icon="twitter" />
-          <Icon className={styles.iconLink} icon="github" />
+        <a
+          className={styles.icons}
+          href="https://www.linkedin.com/in/dr-saloni-kabra-b79311170"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon className={styles.iconLink} icon="linkedin" />
         </a>
       </div>
       <Footer className={styles.footer} />
