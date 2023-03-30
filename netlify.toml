@@ -3,8 +3,5 @@
   publish = "out"
 
 [[plugins]]
-package = "@netlify/plugin-functions-install-core"
-
-[[plugins]]
 package = "@netlify/plugin-nextjs"
 
