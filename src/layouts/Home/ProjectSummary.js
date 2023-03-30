@@ -79,11 +79,13 @@ export const ProjectSummary = ({
       <Text className={styles.description} data-visible={visible} as="p">
         {description}
       </Text>
-      <div className={styles.button} data-visible={visible}>
-        <Button iconHoverShift href={buttonLink} iconEnd="arrowRight">
-          {buttonText}
-        </Button>
-      </div>
+      {buttonText && (
+        <div className={styles.button} data-visible={visible}>
+          <Button iconHoverShift href={buttonLink} iconEnd="arrowRight">
+            {buttonText}
+          </Button>
+        </div>
+      )}
     </div>
   );
 
