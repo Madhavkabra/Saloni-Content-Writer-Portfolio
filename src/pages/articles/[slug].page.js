@@ -15,12 +15,12 @@ import { generateOgImage } from './og-image';
 import { PDFViewer } from 'components/PDFViewer';
 import { Image } from 'components/Image';
 
-const Links = ['link', 'linkQuestion', 'linkSolution'];
+const LINK_TYPES = ['link', 'linkQuestion', 'linkSolution'];
 
-const PdfComponent = ({ linkUrl, data, MDXComponent, title }) => (
+const PdfComponent = ({ linkUrl, linkType, MDXComponent, title }) => (
   <>
     {linkUrl.isPdfLink && (
-      <PDFViewer pdfLink={linkUrl.link} solution={data === 'linkSolution'} />
+      <PDFViewer pdfLink={linkUrl.link} solution={linkType === 'linkSolution'} />
     )}
     {linkUrl.isImageLink && (
       <Image
@@ -51,13 +51,13 @@ export default function PostPage({ frontmatter, code, timecode, ogImage }) {
 
   return (
     <Post timecode={timecode} ogImage={ogImage} {...frontmatter}>
-      {Links.map((data, index) => {
-        const linkUrl = pdfLink(frontmatter[data]);
+      {LINK_TYPES.map((linkType, index) => {
+        const linkUrl = pdfLink(frontmatter[linkType]);
         return (
           <PdfComponent
             key={index}
             linkUrl={linkUrl}
-            data={data}
+            linkType={linkType}
             MDXComponent={MDXComponent}
             title={frontmatter.title}
           />
