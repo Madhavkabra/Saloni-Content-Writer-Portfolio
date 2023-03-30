@@ -33,6 +33,13 @@ export const Contact = () => {
     try {
       setSending(true);
 
+      const resTest = await fetch('/api/test', {
+
+      });
+
+      console.log("==========res===========", await resTest.json());
+
+
       const res = await fetch('/api/sendgrid', {
         body: JSON.stringify({
           email: email,
