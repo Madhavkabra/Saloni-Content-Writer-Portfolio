@@ -45,6 +45,7 @@ export const Contact = () => {
         method: 'POST',
       });
 
+      console.log("error in try======", res);
       const { error } = await res.json();
 
       const statusError = getStatusError({
@@ -58,6 +59,7 @@ export const Contact = () => {
       setComplete(true);
       setSending(false);
     } catch (error) {
+      console.log("error in cathc======", error);
       setSending(false);
       setStatusError(error.message || error);
     }
