@@ -15,41 +15,52 @@ import { generateOgImage } from './og-image';
 import { PDFViewer } from 'components/PDFViewer';
 import { Image } from 'components/Image';
 
+const Links = ['link', 'linkQuestion', 'linkSolution'];
+
+const PdfComponent = ({ linkUrl, data, MDXComponent, title }) => (
+  <>
+    {linkUrl.isPdfLink && (
+      <PDFViewer pdfLink={linkUrl.link} solution={data === 'linkSolution'} />
+    )}
+    {linkUrl.isImageLink && (
+      <Image
+        placeholder={linkUrl.link}
+        srcSet={linkUrl.link}
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        alt={title}
+      />
+    )}
+    {!linkUrl.isPdfLink && !linkUrl.isImageLink && (
+      <MDXComponent components={postMarkdown} />
+    )}
+  </>
+);
+
 export default function PostPage({ frontmatter, code, timecode, ogImage }) {
   const MDXComponent = useMemo(() => getMDXComponent(code), [code]);
 
-  function PdfLink(links) {
-    const link = links;
+  function pdfLink(link) {
     const isPdfLink = link?.endsWith('.pdf');
     const isImageLink = ['.jpg', '.jpeg', '.png'].some(ext => link?.endsWith(ext));
+
     return { link, isPdfLink, isImageLink };
   }
-  const links = ['link', 'link1', 'link2'];
 
   return (
     <Post timecode={timecode} ogImage={ogImage} {...frontmatter}>
-      {links.map((data, index) => {
-        const linkUrl = PdfLink(frontmatter[data]);
+      {Links.map((data, index) => {
+        const linkUrl = pdfLink(frontmatter[data]);
         return (
-          <>
-            {linkUrl.isPdfLink && (
-              <PDFViewer pdfLink={linkUrl.link} solution={index == 2} />
-            )}
-            {linkUrl.isImageLink && (
-              <Image
-                placeholder={linkUrl.link}
-                srcSet={linkUrl.link}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                }}
-                alt={frontmatter.title}
-              />
-            )}
-            {!linkUrl.isPdfLink && !linkUrl.isImageLink && (
-              <MDXComponent components={postMarkdown} />
-            )}
-          </>
+          <PdfComponent
+            key={index}
+            linkUrl={linkUrl}
+            data={data}
+            MDXComponent={MDXComponent}
+            title={frontmatter.title}
+          />
         );
       })}
     </Post>

@@ -69,7 +69,7 @@ export const Home = () => {
   const projectTwelve = useRef();
   const projectThirteen = useRef();
 
-  const details = useRef();
+  const about = useRef();
 
   useEffect(() => {
     const sections = [
@@ -88,7 +88,7 @@ export const Home = () => {
       projectEleven,
       projectTwelve,
       projectThirteen,
-      details,
+      about,
     ];
 
     const sectionObserver = new IntersectionObserver(
@@ -144,8 +144,6 @@ export const Home = () => {
         index={0}
         title="Healthcare Professional"
         description="As a healthcare professional, I play a crucial role in utilizing technology to improve patient care. Teleconsultation, care coordination, and electronic medical records (EMRs) are just a few examples of how technology is transforming the healthcare industry, and I am at the forefront of this change."
-        // buttonText="View articles"
-        // buttonLink="/articles/?0=Newsletter"
         model={{
           type: 'laptop',
           alt: 'Annotating a biomedical image in the Slice app',
@@ -425,8 +423,6 @@ export const Home = () => {
         index={13}
         title="Editing and Proofreading"
         description="Editing and proofreading are essential steps in ensuring that your medical writing is accurate, clear, and polished. As an experienced editor and proofreader, I can help refine your work, checking for errors in grammar, spelling, and syntax, and ensuring that your writing meets the highest standards of clarity and precision."
-        // buttonText="View articles"
-        // buttonLink="/articles/?0=Newsletter"
         model={{
           type: 'laptop',
           alt: 'Annotating a biomedical image in the Slice app',
@@ -440,8 +436,8 @@ export const Home = () => {
       />
 
       <Profile
-        sectionRef={details}
-        visible={visibleSections.includes(details.current)}
+        sectionRef={about}
+        visible={visibleSections.includes(about.current)}
         id="about"
       />
       <Footer />

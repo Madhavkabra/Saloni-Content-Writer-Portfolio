@@ -19,7 +19,8 @@ export const PDFViewer = ({ pdfLink, solution }) => {
   }
   return (
     <>
-      {solution && <div> Solution</div>}
+      {solution && <div>Solution</div>}
+      
       <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
         {Array.from({ length: numPages }, (_, index) => (
           <div className={styles.pageContainer}>
