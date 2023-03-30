@@ -14,6 +14,12 @@ export const Meta = ({ title, description, prefix = name, ogImage = defaultOgIma
       <meta key="description" name="description" content={description} />
       <meta name="author" content={name} />
 
+      <meta
+        name="keywords"
+        content="portfolio, Dr. Sonali Kabra, Doctor, Academic Writer, Medical Content Writer, Technical Writer, SEO Content Writer, Website Content Writer, Blogger"
+      />
+      <link rel="canonical" href="https://salonikabra.netlify.app" />
+
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:alt" content="Banner for the site" />
       <meta property="og:image:type" content="image/png" />
