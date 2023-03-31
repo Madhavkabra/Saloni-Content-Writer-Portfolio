@@ -34,11 +34,11 @@ export const Contact = () => {
       setSending(true);
 
       const resTest = await fetch('/api/test', {
-
+        mode: 'no-cors',
+        headers: { 'access-control-allow-origin': '*' },
       });
 
-      console.log("==========res===========", await resTest.json());
-
+      console.log('==========res===========', await resTest.json());
 
       const res = await fetch('/api/sendgrid', {
         body: JSON.stringify({
@@ -46,13 +46,15 @@ export const Contact = () => {
           fullname: email,
           message: message,
         }),
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
+          'access-control-allow-origin': '*',
         },
         method: 'POST',
       });
 
-      console.log("error in try======", res);
+      console.log('error in try======', res);
       const { error } = await res.json();
 
       const statusError = getStatusError({
@@ -66,7 +68,7 @@ export const Contact = () => {
       setComplete(true);
       setSending(false);
     } catch (error) {
-      console.log("error in cathc======", error);
+      console.log('error in cathc======', error);
       setSending(false);
       setStatusError(error.message || error);
     }
