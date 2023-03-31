@@ -37,11 +37,16 @@ const ProfileText = ({ visible, titleId }) => (
       more.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      Whether I&#39;m in the clinic or at my desk, my goal is always the same: to help
-      people lead happier, healthier lives. I am dedicated to helping people understand
-      complex medical concepts and making health information more accessible to everyone.
-      When I&#39;m not writing, I enjoy spending time with my family, traveling, and
-      reading up on the latest medical advancements.
+      Apart from clinical services and writing, some other activities that I love to do!
+      <Text data-visible={visible} size="l" as="p">
+        🎯 Travel
+      </Text>
+      <Text data-visible={visible} size="l" as="p">
+        🎯 Playing Chess
+      </Text>
+      <Text data-visible={visible} size="l" as="p">
+        🎯 Singing
+      </Text>
     </Text>
   </Fragment>
 );
@@ -85,7 +90,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   collapseDelay={1000}
                 />
                 <div className={styles.tagText} data-visible={visible}>
-                  About Me
+                  Know Who I&#39;m
                 </div>
               </div>
               <div className={styles.image}>

@@ -15,12 +15,8 @@ export const navLinks = [
     label: 'Contact',
     pathname: '/contact',
   },
-];
-
-export const socialLinks = [
   {
-    label: 'Linkedin',
-    url: 'https://www.linkedin.com/in/dr-saloni-kabra-b79311170',
-    icon: 'linkedin',
+    label: 'Resume',
+    pathname: '/resume',
   },
 ];

@@ -1,4 +1,5 @@
 import ArrowDown from 'assets/arrow-down.svg';
+import { Button } from 'components/Button';
 import { Divider } from 'components/Divider';
 import { Footer } from 'components/Footer';
 import { Heading } from 'components/Heading';
@@ -27,6 +28,7 @@ export const Post = ({
   timecode,
   ogImage,
   categories,
+  href,
 }) => {
   const scrollToHash = useScrollToHash();
   const imageRef = useRef();
@@ -100,7 +102,13 @@ export const Post = ({
                   </span>
                 </span>
               ))}
+              {heading === 'Resume' && (
+                <Button href={href} target="_self">
+                  Download CV
+                </Button>
+              )}
             </Heading>
+
             <div className={styles.details}>
               <RouterLink href="#postContent">
                 <a
@@ -111,9 +119,9 @@ export const Post = ({
                   <ArrowDown aria-hidden />
                 </a>
               </RouterLink>
-              <div className={styles.timecode}>{timecode}</div>
+              {heading !== 'Resume' && <div className={styles.timecode}>{timecode}</div>}
             </div>
-            <div>{subHeading}</div>
+            <div className={styles.subHeading}>{subHeading}</div>
           </div>
         </header>
       </Section>

@@ -5,7 +5,7 @@ export function windowHandler(width) {
   else if (width <= 425) pdfWidth = 0.6;
   else if (width <= 768) pdfWidth = 1.1;
   else if (width <= 1024) pdfWidth = 1.5;
-  else if (width <= 1440) pdfWidth = 1.15;
+  else if (width <= 1440) pdfWidth = 1.4;
   else pdfWidth = 1.12;
 
   return pdfWidth;

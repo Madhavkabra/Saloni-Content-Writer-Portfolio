@@ -1,4 +1,3 @@
-import { Icon } from 'components/Icon';
 import { Monogram } from 'components/Monogram';
 import { useTheme } from 'components/ThemeProvider';
 import { tokens } from 'components/ThemeProvider/theme';
@@ -11,7 +10,8 @@ import { cssProps, media, msToNum, numToMs } from 'utils/style';
 import { NavToggle } from './NavToggle';
 import styles from './Navbar.module.css';
 import { ThemeToggle } from './ThemeToggle';
-import { navLinks, socialLinks } from './navData';
+import { navLinks } from './navData';
+import { SocialMediaIcons } from 'components/SocialMedia';
 
 export const Navbar = () => {
   const [current, setCurrent] = useState();
@@ -167,7 +167,9 @@ export const Navbar = () => {
             </RouterLink>
           ))}
         </div>
-        <NavbarIcons desktop />
+        <div className={styles.navIcons}>
+          <SocialMediaIcons desktop />
+        </div>
       </nav>
       <Transition unmount in={menuOpen} timeout={msToNum(tokens.base.durationL)}>
         {visible => (
@@ -189,7 +191,9 @@ export const Navbar = () => {
                 </a>
               </RouterLink>
             ))}
-            <NavbarIcons />
+            <div className={styles.navIcons}>
+              <SocialMediaIcons />
+            </div>
             <ThemeToggle isMobile />
           </nav>
         )}
@@ -198,21 +202,3 @@ export const Navbar = () => {
     </header>
   );
 };
-
-const NavbarIcons = ({ desktop }) => (
-  <div className={styles.navIcons}>
-    {socialLinks.map(({ label, url, icon }) => (
-      <a
-        key={label}
-        data-navbar-item={desktop || undefined}
-        className={styles.navIconLink}
-        aria-label={label}
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon className={styles.navIcon} icon={icon} />
-      </a>
-    ))}
-  </div>
-);

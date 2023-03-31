@@ -1,4 +1,3 @@
-import Barcode from 'assets/barcode.svg';
 import { Button } from 'components/Button';
 import { DecoderText } from 'components/DecoderText';
 import { Divider } from 'components/Divider';
@@ -15,8 +14,8 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { formatDate } from 'utils/date';
 import { classes, cssProps } from 'utils/style';
-import styles from './Articles.module.css';
 import { Chips } from 'components/Chips';
+import styles from './Articles.module.css';
 
 const ArticlesPost = ({
   slug,
@@ -93,7 +92,7 @@ const ArticlesPost = ({
             </Text>
             <div className={styles.postFooter}>
               <Button secondary iconHoverShift icon="chevronRight" as="div">
-                Read article
+                Read
               </Button>
               <Text className={styles.timecode} size="s">
                 {timecode}
@@ -159,7 +158,7 @@ export const Articles = ({ posts, featured }) => {
 
   useEffect(() => {
     if (splittedUrlPath.length > 1) {
-      const category = splittedUrlPath[1]?.replace('+', ' ');
+      const category = splittedUrlPath[1]?.replaceAll('+', ' ');
       setSelectedCategories([category]);
     } else {
       setSelectedCategories([]);
@@ -191,7 +190,6 @@ export const Articles = ({ posts, featured }) => {
       <Heading className={styles.heading} level={5} as="h1">
         <DecoderText text="Work Samples" />
       </Heading>
-      <Barcode />
     </header>
   );
 

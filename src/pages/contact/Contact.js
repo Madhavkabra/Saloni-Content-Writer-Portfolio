@@ -14,6 +14,7 @@ import { useFormInput } from 'hooks';
 import { useRef, useState } from 'react';
 import { cssProps, msToNum, numToMs } from 'utils/style';
 import styles from './Contact.module.css';
+import { SocialMediaIcons } from 'components/SocialMedia';
 
 export const Contact = () => {
   const errorRef = useRef();
@@ -176,15 +177,8 @@ export const Contact = () => {
           </div>
         )}
       </Transition>
-      <div>
-        <a
-          className={styles.icons}
-          href="https://www.linkedin.com/in/dr-saloni-kabra-b79311170"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon className={styles.iconLink} icon="linkedin" />
-        </a>
+      <div className={styles.icons}>
+        <SocialMediaIcons />
       </div>
       <Footer className={styles.footer} />
     </Section>

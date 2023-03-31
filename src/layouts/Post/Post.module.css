@@ -111,6 +111,12 @@
   }
 }
 
+.title {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 .titleWordWrapper {
   overflow: hidden;
   position: relative;
@@ -263,4 +269,9 @@
   & > * {
     grid-column: var(--mainColumn);
   }
+}
+
+.subHeading {
+  font-size: 20px;
+  line-height: 32px;
 }
