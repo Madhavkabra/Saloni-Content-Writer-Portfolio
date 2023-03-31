@@ -1,3 +1,4 @@
+import qs from 'qs';
 import sendgrid from '@sendgrid/mail';
 import { withCors } from './withCors';
 
@@ -7,7 +8,7 @@ async function sendEmail(req, res) {
   await withCors(req, res);
 
   console.log(process.env.SENDGRID_API_KEY, '-----------process.env.SENDGRID_API_KEY');
-  const body = req.body;
+  const body = qs.parse(req.body);
   try {
     await sendgrid.send({
       to: 'chandreshpatidar5@gmail.com', // Your email where you'll receive emails
@@ -20,6 +21,7 @@ async function sendEmail(req, res) {
     return res.status(error.statusCode || 500).json({
       error: error.message,
       body: req.body,
+      qsBody: body,
       fullname: body.fullname,
       email: body.email,
       message: body.message,
