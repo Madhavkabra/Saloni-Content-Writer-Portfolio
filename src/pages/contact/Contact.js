@@ -1,3 +1,4 @@
+import qs from 'qs';
 import { Button } from 'components/Button';
 import { DecoderText } from 'components/DecoderText';
 import { Divider } from 'components/Divider';
@@ -41,7 +42,7 @@ export const Contact = () => {
       console.log('==========test res===========', await resTest.json());
 
       const res = await fetch('/api/sendgrid', {
-        body: JSON.stringify({
+        body: qs.stringify({
           email: email,
           fullname: email,
           message: message,
