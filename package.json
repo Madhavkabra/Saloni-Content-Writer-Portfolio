@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
+    "cors": "^2.8.5",
     "fathom-client": "^3.5.0",
     "framer-motion": "^7.1.0",
     "mdx-bundler": "^9.0.1",
@@ -50,7 +51,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export -o out/",
+    "build": "next build",
     "deploy": "aws s3 sync --delete build/ s3://hamish-portfolio-site",
     "start": "next start",
     "test": "echo 'write some tests'",
