@@ -102,14 +102,13 @@ export const Post = ({
                   </span>
                 </span>
               ))}
-            </Heading>
-            {heading === 'Resume' && (
-              <div>
+              {heading === 'Resume' && (
                 <Button href={href} target="_self">
                   Download CV
                 </Button>
-              </div>
-            )}
+              )}
+            </Heading>
+
             <div className={styles.details}>
               <RouterLink href="#postContent">
                 <a
@@ -120,7 +119,7 @@ export const Post = ({
                   <ArrowDown aria-hidden />
                 </a>
               </RouterLink>
-              <div className={styles.timecode}>{timecode}</div>
+              {heading !== 'Resume' && <div className={styles.timecode}>{timecode}</div>}
             </div>
             <div className={styles.subHeading}>{subHeading}</div>
           </div>
