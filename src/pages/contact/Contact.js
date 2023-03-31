@@ -38,7 +38,7 @@ export const Contact = () => {
         headers: { 'access-control-allow-origin': '*' },
       });
 
-      console.log('==========res===========', await resTest.json());
+      console.log('==========test res===========', await resTest.json());
 
       const res = await fetch('/api/sendgrid', {
         body: JSON.stringify({
@@ -54,7 +54,7 @@ export const Contact = () => {
         method: 'POST',
       });
 
-      console.log('error in try======', res);
+      console.log('error in try======', await res.json());
       const { error } = await res.json();
 
       const statusError = getStatusError({
