@@ -21,21 +21,3 @@ export const navLinks = [
     pathname: '/resume',
   },
 ];
-
-// export const socialLinks = [
-//   {
-//     label: 'Linkedin',
-//     url: 'https://www.linkedin.com/in/dr-saloni-kabra-b79311170',
-//     icon: 'linkedin',
-//   },
-//   {
-//     label: 'Medium',
-//     url: 'medium.com/@saloni_kabra',
-//     icon: 'medium',
-//   },
-//   {
-//     label: 'Email',
-//     url: 'salonikabra1100@gmail.com',
-//     icon: 'email',
-//   },
-// ];
