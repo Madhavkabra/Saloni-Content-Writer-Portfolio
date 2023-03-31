@@ -13,14 +13,13 @@ async function sendEmail(req, res) {
     await sendgrid.send({
       to: 'chandreshpatidar5@gmail.com', // Your email where you'll receive emails
       from: 'chandreshpatidar5@gmail.com', // your website email address here
-      subject: `Portfolio, Message from ${req.body.fullname.value}`,
-      html: `Sender email:${req.body.email.value}<br/> <h3>${req.body.message.value} </h3>`,
+      subject: `Portfolio, Message from ${body.fullname.value}`,
+      html: `Sender email:${body.email.value}<br/> <h3>${body.message.value} </h3>`,
     });
   } catch (error) {
     console.log(error);
     return res.status(error.statusCode || 500).json({
       error: error.message,
-      body: req.body,
       qsBody: body,
       fullname: body.fullname,
       email: body.email,
