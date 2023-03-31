@@ -7,9 +7,9 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 async function sendEmail(req, res) {
   await withCors(req, res);
 
-  console.log(process.env.SENDGRID_API_KEY, '-----------process.env.SENDGRID_API_KEY');
-  const body = qs.parse(req.body);
   try {
+    const body = qs.parse(req.body);
+
     await sendgrid.send({
       to: 'chandreshpatidar5@gmail.com', // Your email where you'll receive emails
       from: 'chandreshpatidar5@gmail.com', // your website email address here
@@ -17,13 +17,8 @@ async function sendEmail(req, res) {
       html: `Sender email:${body.email.value}<br/> <h3>${body.message.value} </h3>`,
     });
   } catch (error) {
-    console.log(error);
     return res.status(error.statusCode || 500).json({
       error: error.message,
-      qsBody: body,
-      fullname: body.fullname,
-      email: body.email,
-      message: body.message,
     });
   }
 
