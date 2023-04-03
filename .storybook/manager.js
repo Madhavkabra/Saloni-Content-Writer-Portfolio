@@ -4,8 +4,8 @@ import { addons } from '@storybook/addons';
 addons.setConfig({
   theme: {
     ...themes.dark,
-    brandImage: 'https://hamishw.com/icon.svg',
+    brandImage: 'https://salonikabra.netlify.app/icon.svg',
     brandTitle: 'Dr. Saloni Kabra Components',
-    brandUrl: 'https://hamishw.com',
+    brandUrl: 'https://salonikabra.netlify.app',
   },
 });
