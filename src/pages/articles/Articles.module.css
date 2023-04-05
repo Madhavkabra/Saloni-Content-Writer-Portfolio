@@ -280,10 +280,6 @@
     padding: var(--featuredPostPadding);
     clip-path: var(--featuredPostClip);
 
-    @media (--singleColumnWidth) {
-      padding-top: 50%;
-    }
-
     &::after {
       content: '';
       position: absolute;
@@ -300,6 +296,24 @@
       }
     }
   }
+}
+
+.reviewContainer {
+  display: block;
+}
+
+.reviewText {
+  margin-top: 10px;
+}
+
+.reviewDiv {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.reviewDivider {
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .postDate {

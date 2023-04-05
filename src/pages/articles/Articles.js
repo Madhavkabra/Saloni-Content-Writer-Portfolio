@@ -26,6 +26,7 @@ const ArticlesPost = ({
   banner,
   categories,
   timecode,
+  review,
   index,
 }) => {
   const [hovered, setHovered] = useState(false);
@@ -67,40 +68,70 @@ const ArticlesPost = ({
           />
         </div>
       )}
-      <RouterLink href={`/articles/${slug}`} scroll={false}>
-        <a
-          className={styles.postLink}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className={styles.postDetails}>
-            <div aria-hidden className={styles.postDate}>
-              <Divider lineWidth="33%" notchWidth="64px" notchHeight="8px" />
-              {categories?.map((text, index) => (
-                <div className={styles.chipsArticle} key={index}>
-                  {text}
-                </div>
-              ))}
-            </div>
+      {!featured && (
+        <RouterLink href={`/articles/${slug}`} scroll={false}>
+          <a
+            className={styles.postLink}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.postDetails}>
+              <div aria-hidden className={styles.postDate}>
+                <Divider lineWidth="33%" notchWidth="64px" notchHeight="8px" />
+                {categories?.map((text, index) => (
+                  <div className={styles.chipsArticle} key={index}>
+                    {text}
+                  </div>
+                ))}
+              </div>
 
-            <Heading as="h2" level={featured ? 2 : 4}>
-              {title}
+              <Heading as="h2" level={featured ? 2 : 4}>
+                {title}
+              </Heading>
+
+              <Text size={featured ? 'l' : 's'} as="p">
+                {abstract}
+              </Text>
+              <div className={styles.postFooter}>
+                <Button secondary iconHoverShift icon="chevronRight" as="div">
+                  Read
+                </Button>
+                <Text className={styles.timecode} size="s">
+                  {timecode}
+                </Text>
+              </div>
+            </div>
+          </a>
+        </RouterLink>
+      )}
+      {featured && (
+        <>
+          <div
+            className={classes(styles.postLink, styles.reviewContainer)}
+            // onMouseEnter={handleMouseEnter}
+            // onMouseLeave={handleMouseLeave}
+          >
+            <Heading className={styles.heading} level={5} as="h1">
+              Reviews
             </Heading>
 
-            <Text size={featured ? 'l' : 's'} as="p">
-              {abstract}
-            </Text>
-            <div className={styles.postFooter}>
-              <Button secondary iconHoverShift icon="chevronRight" as="div">
-                Read
-              </Button>
-              <Text className={styles.timecode} size="s">
-                {timecode}
-              </Text>
-            </div>
+            {review.map((data, index) => (
+              <div className={styles.reviewDiv} key={index}>
+                <Text as="div">{review[index][0]}</Text>
+                <Text as="div">{review[index][1]}</Text>
+                <Text as="div" className={styles.reviewText}>
+                  {review[index][2]}
+                </Text>
+                <Divider
+                  notchWidth="64px"
+                  notchHeight="5px"
+                  className={styles.reviewDivider}
+                />
+              </div>
+            ))}
           </div>
-        </a>
-      </RouterLink>
+        </>
+      )}
       {featured && (
         <Text aria-hidden className={styles.postTag} size="s">
           477
