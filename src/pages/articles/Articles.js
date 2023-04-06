@@ -15,6 +15,8 @@ import { useState, useEffect } from 'react';
 import { formatDate } from 'utils/date';
 import { classes, cssProps } from 'utils/style';
 import { Chips } from 'components/Chips';
+import { RxAvatar } from 'react-icons/rx';
+import { AiFillStar } from 'react-icons/ai';
 import styles from './Articles.module.css';
 
 const ArticlesPost = ({
@@ -106,19 +108,31 @@ const ArticlesPost = ({
       )}
       {featured && (
         <>
-          <div
-            className={classes(styles.postLink, styles.reviewContainer)}
-            // onMouseEnter={handleMouseEnter}
-            // onMouseLeave={handleMouseLeave}
-          >
+          <div className={classes(styles.postLink, styles.reviewContainer)}>
             <Heading className={styles.heading} level={5} as="h1">
               Reviews
             </Heading>
 
             {review.map((data, index) => (
               <div className={styles.reviewDiv} key={index}>
-                <Text as="div">{review[index][0]}</Text>
-                <Text as="div">{review[index][1]}</Text>
+                <div className={styles.reviewAvatarTextDiv}>
+                  <RxAvatar size="3em" />
+                  <div>
+                    <Text as="div" size="s">
+                      {review[index][0]}
+                    </Text>
+                    <div className={styles.reviewRating}>
+                      <Text as="span" size="s">
+                        {review[index][1]}
+                      </Text>
+                      {[...Array(Number(review[index][1][0])).keys()].map(
+                        (data, index) => (
+                          <AiFillStar color="yellow" key={index} />
+                        )
+                      )}
+                    </div>
+                  </div>
+                </div>
                 <Text as="div" className={styles.reviewText}>
                   {review[index][2]}
                 </Text>

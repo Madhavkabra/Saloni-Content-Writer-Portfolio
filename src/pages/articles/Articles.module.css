@@ -300,6 +300,7 @@
 
 .reviewContainer {
   display: block;
+  overflow: auto;
 }
 
 .reviewText {
@@ -314,6 +315,17 @@
 .reviewDivider {
   margin-top: 15px;
   margin-bottom: 20px;
+}
+
+.reviewAvatarTextDiv {
+  display: flex;
+  gap: 10px;
+}
+
+.reviewRating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .postDate {
