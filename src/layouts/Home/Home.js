@@ -253,7 +253,7 @@ export const Home = () => {
         index={6}
         title="Service Page"
         description="With my expertise in medical writing, I craft informative and persuasive service pages that highlight the unique benefits of medical services. I help clients differentiate themselves from competitors and drive more website traffic."
-        buttonText="View Pages"
+        buttonText="View Content"
         buttonLink="/articles/?0=Service+Page"
         model={{
           type: 'phone',
@@ -298,7 +298,7 @@ export const Home = () => {
         index={8}
         title="Procedure Page"
         description="With my experience in medical writing, I create detailed and informative procedure pages that provide patients with step-by-step guidance on medical procedures. I help clients offer valuable resources to their patients and reduce the risk of confusion or complications."
-        buttonText="View Pages"
+        buttonText="View Content"
         buttonLink="/articles/?0=Procedure+Page"
         model={{
           type: 'laptop',
