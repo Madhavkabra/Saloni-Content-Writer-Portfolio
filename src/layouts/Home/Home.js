@@ -10,6 +10,10 @@ import sliceTexture from 'assets/slice-app.jpg';
 import sprTextureLarge from 'assets/spr-lesson-builder-dark-large.jpg';
 import sprTexturePlaceholder from 'assets/spr-lesson-builder-dark-placeholder.jpg';
 import sprTexture from 'assets/spr-lesson-builder-dark.jpg';
+import medicalContentWriting from 'assets/medicalContentWriting.jpg';
+import medicalContentWritingLarge from 'assets/medicalContentWriting-large.jpg';
+import landingPage from 'assets/landingPage.jpg';
+import landingPageLarge from 'assets/landingPage-large.jpg';
 import { Footer } from 'components/Footer';
 import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
@@ -27,10 +31,22 @@ export const Home = () => {
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
+  const projectFour = useRef();
+  const projectFive = useRef();
+  const projectSix = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [
+      intro,
+      projectOne,
+      projectTwo,
+      projectThree,
+      projectFour,
+      projectFive,
+      projectSix,
+      details
+    ];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -139,6 +155,72 @@ export const Home = () => {
             {
               srcSet: [sliceTexture, sliceTextureLarge],
               placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-4"
+        alternate
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
+        index={4}
+        title="Medical Content Writing"
+        description="I provide professional medical content writing services that are accurate, informative, and engaging. From blog posts and articles to social media content and website copy, I help clients communicate complex medical information in an accessible and easy-to-understand way."
+        buttonText="View Content"
+        buttonLink="/articles/?0=Medical+Content+Writing"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [medicalContentWriting, medicalContentWritingLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-5"
+        sectionRef={projectFive}
+        visible={visibleSections.includes(projectFive.current)}
+        index={5}
+        title="Landing Page Copy"
+        description="As a medical writer, I create compelling landing page copy that highlights the benefits of medical products and services. I help businesses convert website visitors into leads and customers through persuasive and engaging copy."
+        buttonText="View Content"
+        buttonLink="/articles/?0=Landing+Page+Copy"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [landingPage, landingPageLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-6"
+        alternate
+        sectionRef={projectSix}
+        visible={visibleSections.includes(projectSix.current)}
+        index={6}
+        title="Service Page"
+        description="With my expertise in medical writing, I craft informative and persuasive service pages that highlight the unique benefits of medical services. I help clients differentiate themselves from competitors and drive more website traffic."
+        buttonText="View Content"
+        buttonLink="/articles/?0=Service+Page"
+        model={{
+          type: 'phone',
+          alt: 'App login screen',
+          textures: [
+            {
+              srcSet: [gamestackTexture, gamestackTextureLarge],
+              placeholder: gamestackTexturePlaceholder,
+            },
+            {
+              srcSet: [gamestackTexture2, gamestackTexture2Large],
+              placeholder: gamestackTexture2Placeholder,
             },
           ],
         }}
