@@ -24,6 +24,8 @@ import healthCareProfessional from 'assets/healthCareProfessional.jpg';
 import healthCareProfessionalLarge from 'assets/healthCareProfessional-large.jpg';
 import academicWritingLarge from 'assets/academic-writing-large.jpg';
 import academicWriting from 'assets/academic-writing.png';
+import seoWriting from 'assets/seo-writing.jpg';
+import seoWritingLarge from 'assets/seo-writing-large.jpg';
 import { Footer } from 'components/Footer';
 import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
@@ -115,28 +117,10 @@ export const Home = () => {
       />
       <ProjectSummary
         id="project-1"
+        alternate
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Healthcare Professional"
-        description="As a healthcare professional, I play a crucial role in utilizing technology to improve patient care. Teleconsultation, care coordination, and electronic medical records (EMRs) are just a few examples of how technology is transforming the healthcare industry, and I am at the forefront of this change."
-        model={{
-          type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
-          textures: [
-            {
-              srcSet: [healthCareProfessional, healthCareProfessionalLarge],
-              placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-2"
-        alternate
-        sectionRef={projectTwo}
-        visible={visibleSections.includes(projectTwo.current)}
-        index={2}
         title="Academic Writing"
         description="With extensive knowledge of research and academic writing styles, I offer high-quality and well-researched academic writing services, including literature reviews, research papers, reports, etc."
         buttonText="View Assignments"
@@ -157,31 +141,10 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-3"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="Case Study"
-        description="I create well-researched case studies highlighting the practical applications of medical theory and research. My case studies are detailed and well-researched, providing valuable insights for academic purposes."
-        buttonText="View Case Studies"
-        buttonLink="/articles/?0=Case+Study"
-        model={{
-          type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
-          textures: [
-            {
-              srcSet: [sprTexture, sprTextureLarge],
-              placeholder: sprTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-4"
-        alternate
-        sectionRef={projectFour}
-        visible={visibleSections.includes(projectFour.current)}
-        index={4}
+        id="project-2"
+        sectionRef={projectTwo}
+        visible={visibleSections.includes(projectTwo.current)}
+        index={2}
         title="Medical Content Writing"
         description="I provide professional medical content writing services that are accurate, informative, and engaging. From blog posts and articles to social media content and website copy, I help clients communicate complex medical information in an accessible and easy-to-understand way."
         buttonText="View Content"
@@ -198,10 +161,10 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-5"
-        sectionRef={projectFive}
-        visible={visibleSections.includes(projectFive.current)}
-        index={5}
+        id="project-3"
+        sectionRef={projectThree}
+        visible={visibleSections.includes(projectThree.current)}
+        index={3}
         title="Landing Page Copy"
         description="As a medical writer, I create compelling landing page copy that highlights the benefits of medical products and services. I help businesses convert website visitors into leads and customers through persuasive and engaging copy."
         buttonText="View Content"
@@ -218,11 +181,11 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-6"
+        id="project-4"
         alternate
-        sectionRef={projectSix}
-        visible={visibleSections.includes(projectSix.current)}
-        index={6}
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
+        index={4}
         title="Service Page"
         description="With my expertise in medical writing, I craft informative and persuasive service pages that highlight the unique benefits of medical services. I help clients differentiate themselves from competitors and drive more website traffic."
         buttonText="View Content"
@@ -242,18 +205,93 @@ export const Home = () => {
           ],
         }}
       />
-      Project 7 Project 8 Project 9
-      <Text size="l" as="p">
-        🎯 Travel
-      </Text>
-      <Text size="l" as="p">
-        🎯 Playing Chess
-      </Text>
-      <Text size="l" as="p">
-        🎯 Singing
-      </Text>
-      <div className={styles.button}>
-        <Button iconHoverShift>AS</Button>
+      <ProjectSummary
+        id="project-5"
+        sectionRef={projectFive}
+        visible={visibleSections.includes(projectFive.current)}
+        index={5}
+        title="Product Description"
+        description=" I specialize in creating clear, concise, and persuasive product descriptions for medical products. Whether it's medical devices, supplements, or pharmaceuticals, I help clients convey the benefits and features of their products in an easy-to-understand way."
+        buttonText="View Content"
+        buttonLink="/articles/?0=Product+Description"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [productEquipement, productEquipementLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-6"
+        alternate
+        sectionRef={projectSix}
+        visible={visibleSections.includes(projectSix.current)}
+        index={6}
+        title="SEO Writing"
+        description="I specialize in creating SEO-friendly medical content that helps businesses rank higher in search engine results. With my knowledge of keyword research and on-page optimization, I help clients attract more website traffic and generate more leads."
+        buttonText="View Content"
+        buttonLink="/articles/?0=SEO+Writing"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [seoWriting, seoWritingLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+
+      <div className={styles.buttonContainer}>
+        <div>
+          <Button iconHoverShift>Healthcare professional</Button>
+        </div>
+        <div>
+          <Button iconHoverShift href="/articles/?0=Case+Study" iconEnd="arrowRight">
+            Case Study
+          </Button>
+        </div>
+        <div>
+          <Button iconHoverShift href="/articles/?0=Procedure+Page" iconEnd="arrowRight">
+            Procedure Page
+          </Button>
+        </div>
+        <div>
+          <Button
+            iconHoverShift
+            href="/articles/?0=Technical+Writing"
+            iconEnd="arrowRight"
+          >
+            Technical Writing
+          </Button>
+        </div>
+        <div>
+          <Button iconHoverShift href="/articles/?0=Blog" iconEnd="arrowRight">
+            Blog
+          </Button>
+        </div>
+        <div>
+          <Button
+            iconHoverShift
+            href="/articles/?0=Web+Page+Content"
+            iconEnd="arrowRight"
+          >
+            Web Page Content
+          </Button>
+        </div>
+        <div>
+          <Button iconHoverShift href="/articles/?0=Newsletter" iconEnd="arrowRight">
+            Newsletter
+          </Button>
+        </div>
+        <div>
+          <Button iconHoverShift>Editing and Proofreading</Button>
+        </div>
       </div>
       {/* <ProjectSummary
         id="project-7"
