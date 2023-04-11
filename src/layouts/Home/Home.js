@@ -14,6 +14,13 @@ import medicalContentWriting from 'assets/medicalContentWriting.jpg';
 import medicalContentWritingLarge from 'assets/medicalContentWriting-large.jpg';
 import landingPage from 'assets/landingPage.jpg';
 import landingPageLarge from 'assets/landingPage-large.jpg';
+import productEquipement from 'assets/productEquipement.jpg';
+import productEquipementLarge from 'assets/productEquipement-large.jpg';
+import procedurePage from 'assets/procedurePage.jpg';
+import procedurePageLarge from 'assets/procedurePage-large.jpg';
+import technicalWriting from 'assets/technical-writing.jpg';
+import technicalWritingLarge from 'assets/technical-writing-large.jpg';
+
 import { Footer } from 'components/Footer';
 import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
@@ -34,6 +41,9 @@ export const Home = () => {
   const projectFour = useRef();
   const projectFive = useRef();
   const projectSix = useRef();
+  const projectSeven = useRef();
+  const projectEight = useRef();
+  const projectNine = useRef();
   const details = useRef();
 
   useEffect(() => {
@@ -45,7 +55,10 @@ export const Home = () => {
       projectFour,
       projectFive,
       projectSix,
-      details
+      projectSeven,
+      projectEight,
+      projectNine,
+      details,
     ];
 
     const sectionObserver = new IntersectionObserver(
@@ -221,6 +234,67 @@ export const Home = () => {
             {
               srcSet: [gamestackTexture2, gamestackTexture2Large],
               placeholder: gamestackTexture2Placeholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-7"
+        sectionRef={projectSeven}
+        visible={visibleSections.includes(projectSeven.current)}
+        index={7}
+        title="Product Description"
+        description=" I specialize in creating clear, concise, and persuasive product descriptions for medical products. Whether it's medical devices, supplements, or pharmaceuticals, I help clients convey the benefits and features of their products in an easy-to-understand way."
+        buttonText="View Content"
+        buttonLink="/articles/?0=Product+Description"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [productEquipement, productEquipementLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-8"
+        alternate
+        sectionRef={projectEight}
+        visible={visibleSections.includes(projectEight.current)}
+        index={8}
+        title="Procedure Page"
+        description="With my experience in medical writing, I create detailed and informative procedure pages that provide patients with step-by-step guidance on medical procedures. I help clients offer valuable resources to their patients and reduce the risk of confusion or complications."
+        buttonText="View Content"
+        buttonLink="/articles/?0=Procedure+Page"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [procedurePage, procedurePageLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-9"
+        sectionRef={projectNine}
+        visible={visibleSections.includes(projectNine.current)}
+        index={9}
+        title="Technical Writing"
+        description="I offer technical writing services that are accurate, clear, and concise. From user manuals and operating procedures to regulatory documentation, I help clients communicate complex technical information to various audiences."
+        buttonText="View Content"
+        buttonLink="/articles/?0=Technical+Writing"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [technicalWriting, technicalWritingLarge],
+              placeholder: sliceTexturePlaceholder,
             },
           ],
         }}
