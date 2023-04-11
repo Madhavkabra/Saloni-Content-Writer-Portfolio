@@ -20,11 +20,17 @@ import procedurePage from 'assets/procedurePage.jpg';
 import procedurePageLarge from 'assets/procedurePage-large.jpg';
 import technicalWriting from 'assets/technical-writing.jpg';
 import technicalWritingLarge from 'assets/technical-writing-large.jpg';
-
+import healthCareProfessional from 'assets/healthCareProfessional.jpg';
+import healthCareProfessionalLarge from 'assets/healthCareProfessional-large.jpg';
+import academicWritingLarge from 'assets/academic-writing-large.jpg';
+import academicWriting from 'assets/academic-writing.png';
 import { Footer } from 'components/Footer';
 import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
 import { Profile } from 'layouts/Home/Profile';
+import { Text } from 'components/Text';
+import { Button } from 'components/Button';
+
 import { ProjectSummary } from 'layouts/Home/ProjectSummary';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
@@ -112,17 +118,15 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
-        buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
+        title="Healthcare Professional"
+        description="As a healthcare professional, I play a crucial role in utilizing technology to improve patient care. Teleconsultation, care coordination, and electronic medical records (EMRs) are just a few examples of how technology is transforming the healthcare industry, and I am at the forefront of this change."
         model={{
           type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
+          alt: 'Annotating a biomedical image in the Slice app',
           textures: [
             {
-              srcSet: [sprTexture, sprTextureLarge],
-              placeholder: sprTexturePlaceholder,
+              srcSet: [healthCareProfessional, healthCareProfessionalLarge],
+              placeholder: sliceTexturePlaceholder,
             },
           ],
         }}
@@ -133,21 +137,21 @@ export const Home = () => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Video game progress tracking"
-        description="Design and development for a video game tracking app built in React Native"
-        buttonText="View website"
-        buttonLink="https://gamestack.hamishw.com"
+        title="Academic Writing"
+        description="With extensive knowledge of research and academic writing styles, I offer high-quality and well-researched academic writing services, including literature reviews, research papers, reports, etc."
+        buttonText="View Assignments"
+        buttonLink="articles/?0=Academic+Writing"
         model={{
           type: 'phone',
-          alt: 'App login screen',
+          alt: 'Annotating a biomedical image in the Slice app',
           textures: [
             {
-              srcSet: [gamestackTexture, gamestackTextureLarge],
-              placeholder: gamestackTexturePlaceholder,
+              srcSet: [academicWriting, academicWritingLarge],
+              placeholder: sliceTexturePlaceholder,
             },
             {
-              srcSet: [gamestackTexture2, gamestackTexture2Large],
-              placeholder: gamestackTexture2Placeholder,
+              srcSet: [academicWriting, academicWriting],
+              placeholder: gamestackTexturePlaceholder,
             },
           ],
         }}
@@ -157,30 +161,10 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
-        buttonText="View project"
-        buttonLink="/projects/slice"
-        model={{
-          type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
-          textures: [
-            {
-              srcSet: [sliceTexture, sliceTextureLarge],
-              placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-4"
-        sectionRef={projectFour}
-        visible={visibleSections.includes(projectFour.current)}
-        index={4}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
-        buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
+        title="Case Study"
+        description="I create well-researched case studies highlighting the practical applications of medical theory and research. My case studies are detailed and well-researched, providing valuable insights for academic purposes."
+        buttonText="View Case Studies"
+        buttonLink="/articles/?0=Case+Study"
         model={{
           type: 'laptop',
           alt: 'Smart Sparrow lesson builder',
@@ -193,15 +177,56 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-5"
+        id="project-4"
         alternate
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
+        index={4}
+        title="Medical Content Writing"
+        description="I provide professional medical content writing services that are accurate, informative, and engaging. From blog posts and articles to social media content and website copy, I help clients communicate complex medical information in an accessible and easy-to-understand way."
+        buttonText="View Content"
+        buttonLink="/articles/?0=Medical+Content+Writing"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [medicalContentWriting, medicalContentWritingLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-5"
         sectionRef={projectFive}
         visible={visibleSections.includes(projectFive.current)}
         index={5}
-        title="Video game progress tracking"
-        description="Design and development for a video game tracking app built in React Native"
-        buttonText="View website"
-        buttonLink="https://gamestack.hamishw.com"
+        title="Landing Page Copy"
+        description="As a medical writer, I create compelling landing page copy that highlights the benefits of medical products and services. I help businesses convert website visitors into leads and customers through persuasive and engaging copy."
+        buttonText="View Content"
+        buttonLink="/articles/?0=Landing+Page+Copy"
+        model={{
+          type: 'laptop',
+          alt: 'Annotating a biomedical image in the Slice app',
+          textures: [
+            {
+              srcSet: [landingPage, landingPageLarge],
+              placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-6"
+        alternate
+        sectionRef={projectSix}
+        visible={visibleSections.includes(projectSix.current)}
+        index={6}
+        title="Service Page"
+        description="With my expertise in medical writing, I craft informative and persuasive service pages that highlight the unique benefits of medical services. I help clients differentiate themselves from competitors and drive more website traffic."
+        buttonText="View Content"
+        buttonLink="/articles/?0=Service+Page"
         model={{
           type: 'phone',
           alt: 'App login screen',
@@ -217,26 +242,19 @@ export const Home = () => {
           ],
         }}
       />
-      <ProjectSummary
-        id="project-6"
-        sectionRef={projectSix}
-        visible={visibleSections.includes(projectSix.current)}
-        index={6}
-        title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
-        buttonText="View project"
-        buttonLink="/projects/slice"
-        model={{
-          type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
-          textures: [
-            {
-              srcSet: [sliceTexture, sliceTextureLarge],
-              placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      />
+      Project 7 Project 8 Project 9
+      <Text size="l" as="p">
+        🎯 Travel
+      </Text>
+      <Text size="l" as="p">
+        🎯 Playing Chess
+      </Text>
+      <Text size="l" as="p">
+        🎯 Singing
+      </Text>
+      <div className={styles.button}>
+        <Button iconHoverShift>AS</Button>
+      </div>
       {/* <ProjectSummary
         id="project-7"
         sectionRef={projectSeven}
