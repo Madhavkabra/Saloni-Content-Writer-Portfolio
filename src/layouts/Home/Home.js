@@ -42,7 +42,7 @@ export const Home = () => {
   const projectFive = useRef();
   const projectSix = useRef();
   const projectSeven = useRef();
-  // const projectEight = useRef();
+  const projectEight = useRef();
   // const projectNine = useRef();
   const details = useRef();
 
@@ -56,7 +56,7 @@ export const Home = () => {
       projectFive,
       projectSix,
       projectSeven,
-      // projectEight,
+      projectEight,
       // projectNine,
       details,
     ];
@@ -258,7 +258,7 @@ export const Home = () => {
           ],
         }}
       />
-      {/* <ProjectSummary
+      <ProjectSummary
         id="project-8"
         alternate
         sectionRef={projectEight}
@@ -279,7 +279,7 @@ export const Home = () => {
           ],
         }}
       />
-      <ProjectSummary
+      {/* <ProjectSummary
         id="project-9"
         sectionRef={projectNine}
         visible={visibleSections.includes(projectNine.current)}
