@@ -55,9 +55,9 @@ export const Home = () => {
       projectFour,
       projectFive,
       projectSix,
-      projectSeven,
-      projectEight,
-      projectNine,
+      // projectSeven,
+      // projectEight,
+      // projectNine,
       details,
     ];
 
@@ -237,7 +237,7 @@ export const Home = () => {
           ],
         }}
       />
-      <ProjectSummary
+      {/* <ProjectSummary
         id="project-7"
         sectionRef={projectSeven}
         visible={visibleSections.includes(projectSeven.current)}
@@ -301,7 +301,7 @@ export const Home = () => {
             },
           ],
         }}
-      />
+      /> */}
       <Profile
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
