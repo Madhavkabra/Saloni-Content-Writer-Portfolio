@@ -87,6 +87,14 @@
 
 .modelLeft {
   margin-right: 350px;
+  
+  @media (--mediaTablet) {
+    margin-right: 0px;
+  }
+
+  @media (--mediaMobile) {
+    margin-right: 0px;
+  }
 }
 
 .model {
