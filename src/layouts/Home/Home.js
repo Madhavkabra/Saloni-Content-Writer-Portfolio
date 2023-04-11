@@ -32,12 +32,19 @@ import { Intro } from 'layouts/Home/Intro';
 import { Profile } from 'layouts/Home/Profile';
 import { Text } from 'components/Text';
 import { Button } from 'components/Button';
-
 import { ProjectSummary } from 'layouts/Home/ProjectSummary';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
 
-const disciplines = ['Developer', 'Prototyper', 'Animator', 'Illustrator', 'Modder'];
+const disciplines = [
+  'Doctor',
+  'Academic Writer',
+  'Medical Content Writer',
+  'Technical Writer',
+  'SEO Content Writer',
+  'Website Content Writer',
+  'Blogger',
+];
 
 export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
@@ -49,10 +56,7 @@ export const Home = () => {
   const projectFour = useRef();
   const projectFive = useRef();
   const projectSix = useRef();
-  const projectSeven = useRef();
-  const projectEight = useRef();
-  const projectNine = useRef();
-  const details = useRef();
+  const about = useRef();
 
   useEffect(() => {
     const sections = [
@@ -63,10 +67,7 @@ export const Home = () => {
       projectFour,
       projectFive,
       projectSix,
-      // projectSeven,
-      // projectEight,
-      // projectNine,
-      details,
+      about,
     ];
 
     const sectionObserver = new IntersectionObserver(
@@ -105,8 +106,8 @@ export const Home = () => {
   return (
     <div className={styles.home}>
       <Meta
-        title="Designer + Developer"
-        description="Design portfolio of Hamish Williams — a product designer working on web & mobile
+        title="Writer + Healthcare Provider"
+        description="Design portfolio of Dr. Saloni Kabra — a product designer working on web & mobile
           apps with a focus on motion, experience design, and accessibility."
       />
       <Intro
@@ -359,9 +360,9 @@ export const Home = () => {
         }}
       /> */}
       <Profile
-        sectionRef={details}
-        visible={visibleSections.includes(details.current)}
-        id="details"
+        sectionRef={about}
+        visible={visibleSections.includes(about.current)}
+        id="about"
       />
       <Footer />
     </div>
