@@ -42,8 +42,8 @@ export const Home = () => {
   const projectFive = useRef();
   const projectSix = useRef();
   const projectSeven = useRef();
-  // const projectEight = useRef();
-  const projectNine = useRef();
+  const projectEight = useRef();
+  // const projectNine = useRef();
   const details = useRef();
 
   useEffect(() => {
@@ -56,8 +56,8 @@ export const Home = () => {
       projectFive,
       projectSix,
       projectSeven,
-      // projectEight,
-      projectNine,
+      projectEight,
+      // projectNine,
       details,
     ];
 
@@ -279,7 +279,7 @@ export const Home = () => {
           ],
         }}
       /> */}
-      <ProjectSummary
+      {/* <ProjectSummary
         id="project-9"
         sectionRef={projectNine}
         visible={visibleSections.includes(projectNine.current)}
@@ -295,6 +295,26 @@ export const Home = () => {
             {
               srcSet: [technicalWriting, technicalWritingLarge],
               placeholder: sliceTexturePlaceholder,
+            },
+          ],
+        }}
+      /> */}
+      <ProjectSummary
+        id="project-8"
+        sectionRef={projectEight}
+        visible={visibleSections.includes(projectEight.current)}
+        index={8}
+        title="Designing the future of education"
+        description="Designing a platform to help educators build better online courseware"
+        buttonText="View project"
+        buttonLink="/projects/smart-sparrow"
+        model={{
+          type: 'laptop',
+          alt: 'Smart Sparrow lesson builder',
+          textures: [
+            {
+              srcSet: [sprTexture, sprTextureLarge],
+              placeholder: sprTexturePlaceholder,
             },
           ],
         }}
