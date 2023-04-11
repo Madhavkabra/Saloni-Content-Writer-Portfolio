@@ -41,8 +41,8 @@ export const Home = () => {
   const projectFour = useRef();
   const projectFive = useRef();
   const projectSix = useRef();
-  const projectSeven = useRef();
-  const projectEight = useRef();
+  // const projectSeven = useRef();
+  // const projectEight = useRef();
   // const projectNine = useRef();
   const details = useRef();
 
@@ -55,8 +55,8 @@ export const Home = () => {
       projectFour,
       projectFive,
       projectSix,
-      projectSeven,
-      projectEight,
+      // projectSeven,
+      // projectEight,
       // projectNine,
       details,
     ];
@@ -174,55 +174,34 @@ export const Home = () => {
       />
       <ProjectSummary
         id="project-4"
-        alternate
         sectionRef={projectFour}
         visible={visibleSections.includes(projectFour.current)}
         index={4}
-        title="Medical Content Writing"
-        description="I provide professional medical content writing services that are accurate, informative, and engaging. From blog posts and articles to social media content and website copy, I help clients communicate complex medical information in an accessible and easy-to-understand way."
-        buttonText="View Content"
-        buttonLink="/articles/?0=Medical+Content+Writing"
+        title="Designing the future of education"
+        description="Designing a platform to help educators build better online courseware"
+        buttonText="View project"
+        buttonLink="/projects/smart-sparrow"
         model={{
           type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
+          alt: 'Smart Sparrow lesson builder',
           textures: [
             {
-              srcSet: [medicalContentWriting, medicalContentWritingLarge],
-              placeholder: sliceTexturePlaceholder,
+              srcSet: [sprTexture, sprTextureLarge],
+              placeholder: sprTexturePlaceholder,
             },
           ],
         }}
       />
       <ProjectSummary
         id="project-5"
+        alternate
         sectionRef={projectFive}
         visible={visibleSections.includes(projectFive.current)}
         index={5}
-        title="Landing Page Copy"
-        description="As a medical writer, I create compelling landing page copy that highlights the benefits of medical products and services. I help businesses convert website visitors into leads and customers through persuasive and engaging copy."
-        buttonText="View Content"
-        buttonLink="/articles/?0=Landing+Page+Copy"
-        model={{
-          type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
-          textures: [
-            {
-              srcSet: [landingPage, landingPageLarge],
-              placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      {/* <ProjectSummary
-        id="project-6"
-        alternate
-        sectionRef={projectSix}
-        visible={visibleSections.includes(projectSix.current)}
-        index={6}
-        title="Service Page"
-        description="With my expertise in medical writing, I craft informative and persuasive service pages that highlight the unique benefits of medical services. I help clients differentiate themselves from competitors and drive more website traffic."
-        buttonText="View Content"
-        buttonLink="/articles/?0=Service+Page"
+        title="Video game progress tracking"
+        description="Design and development for a video game tracking app built in React Native"
+        buttonText="View website"
+        buttonLink="https://gamestack.hamishw.com"
         model={{
           type: 'phone',
           alt: 'App login screen',
@@ -237,104 +216,23 @@ export const Home = () => {
             },
           ],
         }}
-      /> */}
+      />
       <ProjectSummary
         id="project-6"
         sectionRef={projectSix}
         visible={visibleSections.includes(projectSix.current)}
         index={6}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
+        title="Biomedical image collaboration"
+        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
         buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
-        model={{
-          type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
-          textures: [
-            {
-              srcSet: [sprTexture, sprTextureLarge],
-              placeholder: sprTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-7"
-        sectionRef={projectSeven}
-        visible={visibleSections.includes(projectSeven.current)}
-        index={7}
-        title="Product Description"
-        description=" I specialize in creating clear, concise, and persuasive product descriptions for medical products. Whether it's medical devices, supplements, or pharmaceuticals, I help clients convey the benefits and features of their products in an easy-to-understand way."
-        buttonText="View Content"
-        buttonLink="/articles/?0=Product+Description"
+        buttonLink="/projects/slice"
         model={{
           type: 'laptop',
           alt: 'Annotating a biomedical image in the Slice app',
           textures: [
             {
-              srcSet: [productEquipement, productEquipementLarge],
+              srcSet: [sliceTexture, sliceTextureLarge],
               placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      {/* <ProjectSummary
-        id="project-8"
-        alternate
-        sectionRef={projectEight}
-        visible={visibleSections.includes(projectEight.current)}
-        index={8}
-        title="Procedure Page"
-        description="With my experience in medical writing, I create detailed and informative procedure pages that provide patients with step-by-step guidance on medical procedures. I help clients offer valuable resources to their patients and reduce the risk of confusion or complications."
-        buttonText="View Content"
-        buttonLink="/articles/?0=Procedure+Page"
-        model={{
-          type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
-          textures: [
-            {
-              srcSet: [procedurePage, procedurePageLarge],
-              placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      /> */}
-      {/* <ProjectSummary
-        id="project-9"
-        sectionRef={projectNine}
-        visible={visibleSections.includes(projectNine.current)}
-        index={9}
-        title="Technical Writing"
-        description="I offer technical writing services that are accurate, clear, and concise. From user manuals and operating procedures to regulatory documentation, I help clients communicate complex technical information to various audiences."
-        buttonText="View Content"
-        buttonLink="/articles/?0=Technical+Writing"
-        model={{
-          type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
-          textures: [
-            {
-              srcSet: [technicalWriting, technicalWritingLarge],
-              placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      /> */}
-      <ProjectSummary
-        id="project-8"
-        sectionRef={projectEight}
-        visible={visibleSections.includes(projectEight.current)}
-        index={8}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
-        buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
-        model={{
-          type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
-          textures: [
-            {
-              srcSet: [sprTexture, sprTextureLarge],
-              placeholder: sprTexturePlaceholder,
             },
           ],
         }}
