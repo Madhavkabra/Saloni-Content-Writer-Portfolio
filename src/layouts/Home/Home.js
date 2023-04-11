@@ -41,9 +41,9 @@ export const Home = () => {
   const projectFour = useRef();
   const projectFive = useRef();
   const projectSix = useRef();
-  const projectSeven = useRef();
-  const projectEight = useRef();
-  const projectNine = useRef();
+  // const projectSeven = useRef();
+  // const projectEight = useRef();
+  // const projectNine = useRef();
   const details = useRef();
 
   useEffect(() => {
@@ -55,9 +55,9 @@ export const Home = () => {
       projectFour,
       projectFive,
       projectSix,
-      projectSeven,
-      projectEight,
-      projectNine,
+      // projectSeven,
+      // projectEight,
+      // projectNine,
       details,
     ];
 
@@ -238,7 +238,7 @@ export const Home = () => {
           ],
         }}
       />
-      <ProjectSummary
+      {/* <ProjectSummary
         id="project-7"
         sectionRef={projectSeven}
         visible={visibleSections.includes(projectSeven.current)}
@@ -298,7 +298,7 @@ export const Home = () => {
             },
           ],
         }}
-      />
+      /> */}
       <Profile
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
