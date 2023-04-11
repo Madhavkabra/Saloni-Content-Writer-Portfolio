@@ -213,7 +213,7 @@ export const Home = () => {
           ],
         }}
       />
-      <ProjectSummary
+      {/* <ProjectSummary
         id="project-6"
         alternate
         sectionRef={projectSix}
@@ -234,6 +234,26 @@ export const Home = () => {
             {
               srcSet: [gamestackTexture2, gamestackTexture2Large],
               placeholder: gamestackTexture2Placeholder,
+            },
+          ],
+        }}
+      /> */}
+      <ProjectSummary
+        id="project-6"
+        sectionRef={projectSix}
+        visible={visibleSections.includes(projectSix.current)}
+        index={6}
+        title="Designing the future of education"
+        description="Designing a platform to help educators build better online courseware"
+        buttonText="View project"
+        buttonLink="/projects/smart-sparrow"
+        model={{
+          type: 'laptop',
+          alt: 'Smart Sparrow lesson builder',
+          textures: [
+            {
+              srcSet: [sprTexture, sprTextureLarge],
+              placeholder: sprTexturePlaceholder,
             },
           ],
         }}
