@@ -16,7 +16,7 @@ export const Meta = ({ title, description, prefix = name, ogImage = defaultOgIma
 
       <meta
         name="keywords"
-        content="portfolio, Dr. Sonali Kabra, Doctor, Academic Writer, Medical Content Writer, Technical Writer, SEO Content Writer, Website Content Writer, Blogger"
+        content="portfolio, Dr. Saloni Kabra, Doctor, Academic Writer, Medical Content Writer, Technical Writer, SEO Content Writer, Website Content Writer, Blogger"
       />
       <link rel="canonical" href="https://salonikabra.netlify.app" />
 

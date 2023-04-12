@@ -4,13 +4,13 @@ import { windowHandler } from 'utils/windowWidth';
 import styles from './PDFViewer.module.css';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-export const PDFViewer = ({ pdfLink, solution }) => {
+export const PDFViewer = ({ resume, pdfLink, solution }) => {
   const [numPages, setNumPages] = useState(null);
   const [windowWidth, setWindowWidth] = useState(1.12);
 
   useEffect(() => {
     const width = window.innerWidth;
-    const pdfWidth = windowHandler(width);
+    const pdfWidth = resume && width>1440 ? 1.5 : windowHandler(width);
     setWindowWidth(pdfWidth);
   }, []);
 
@@ -20,7 +20,7 @@ export const PDFViewer = ({ pdfLink, solution }) => {
   return (
     <>
       {solution && <div>Solution</div>}
-      
+
       <Document file={pdfLink} onLoadSuccess={onDocumentLoadSuccess}>
         {Array.from({ length: numPages }, (_, index) => (
           <div className={styles.pageContainer}>

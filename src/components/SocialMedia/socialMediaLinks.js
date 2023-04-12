@@ -9,9 +9,4 @@ export const socialLinks = [
     url: 'https://medium.com/@saloni_kabra',
     icon: 'medium',
   },
-  {
-    label: 'Email',
-    url: 'mailto:salonikabra1100@gmail.com',
-    icon: 'email',
-  },
 ];
