@@ -259,11 +259,11 @@ export const Home = () => {
           <Text className={styles.anchorTag}>Healthcare professional</Text>
         </div>
         <div>
-          <a className={styles.linkTag} href="/articles/?0=Case+Study">
+          <RouterLink className={styles.linkTag} href="/articles/?0=Case+Study">
             <Text className={styles.linkTag}>
               Case Study
               </Text>
-          </a>
+          </RouterLink>
         </div>
       
         <div>
