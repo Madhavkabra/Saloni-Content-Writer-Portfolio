@@ -31,6 +31,7 @@ import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
 import { Profile } from 'layouts/Home/Profile';
 import { Text } from 'components/Text';
+import { Heading } from 'components/Heading';
 import { Button } from 'components/Button';
 import { ProjectSummary } from 'layouts/Home/ProjectSummary';
 import { useEffect, useRef, useState } from 'react';
@@ -248,117 +249,47 @@ export const Home = () => {
         }}
       />
 
+      <Heading className={styles.title} level={3}>
+        Other Service's
+      </Heading>
       <div className={styles.buttonContainer}>
         <div>
-          <Button iconHoverShift>Healthcare professional</Button>
+          <a className={styles.anchorTag}>Healthcare professional</a>
         </div>
         <div>
-          <Button iconHoverShift href="/articles/?0=Case+Study" iconEnd="arrowRight">
+          <a className={styles.linkTag} href="/articles/?0=Case+Study">
             Case Study
-          </Button>
+          </a>
         </div>
         <div>
-          <Button iconHoverShift href="/articles/?0=Procedure+Page" iconEnd="arrowRight">
+          <a className={styles.linkTag} href="/articles/?0=Procedure+Page">
             Procedure Page
-          </Button>
+          </a>
         </div>
         <div>
-          <Button
-            iconHoverShift
-            href="/articles/?0=Technical+Writing"
-            iconEnd="arrowRight"
-          >
+          <a className={styles.linkTag} href="/articles/?0=Technical+Writing">
             Technical Writing
-          </Button>
+          </a>
         </div>
         <div>
-          <Button iconHoverShift href="/articles/?0=Blog" iconEnd="arrowRight">
+          <a className={styles.linkTag} href="/articles/?0=Blog">
             Blog
-          </Button>
+          </a>
         </div>
         <div>
-          <Button
-            iconHoverShift
-            href="/articles/?0=Web+Page+Content"
-            iconEnd="arrowRight"
-          >
+          <a className={styles.linkTag} href="/articles/?0=Web+Page+Content">
             Web Page Content
-          </Button>
+          </a>
         </div>
         <div>
-          <Button iconHoverShift href="/articles/?0=Newsletter" iconEnd="arrowRight">
+          <a className={styles.linkTag} href="/articles/?0=Newsletter">
             Newsletter
-          </Button>
+          </a>
         </div>
         <div>
-          <Button iconHoverShift>Editing and Proofreading</Button>
+          <a className={styles.anchorTag}>Editing and Proofreading</a>
         </div>
       </div>
-      {/* <ProjectSummary
-        id="project-7"
-        sectionRef={projectSeven}
-        visible={visibleSections.includes(projectSeven.current)}
-        index={7}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
-        buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
-        model={{
-          type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
-          textures: [
-            {
-              srcSet: [sprTexture, sprTextureLarge],
-              placeholder: sprTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-8"
-        alternate
-        sectionRef={projectEight}
-        visible={visibleSections.includes(projectEight.current)}
-        index={8}
-        title="Video game progress tracking"
-        description="Design and development for a video game tracking app built in React Native"
-        buttonText="View website"
-        buttonLink="https://gamestack.hamishw.com"
-        model={{
-          type: 'phone',
-          alt: 'App login screen',
-          textures: [
-            {
-              srcSet: [gamestackTexture, gamestackTextureLarge],
-              placeholder: gamestackTexturePlaceholder,
-            },
-            {
-              srcSet: [gamestackTexture2, gamestackTexture2Large],
-              placeholder: gamestackTexture2Placeholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-9"
-        sectionRef={projectNine}
-        visible={visibleSections.includes(projectNine.current)}
-        index={9}
-        title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
-        buttonText="View project"
-        buttonLink="/projects/slice"
-        model={{
-          type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
-          textures: [
-            {
-              srcSet: [sliceTexture, sliceTextureLarge],
-              placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      /> */}
       <Profile
         sectionRef={about}
         visible={visibleSections.includes(about.current)}

@@ -10,7 +10,7 @@ export const PDFViewer = ({ resume, pdfLink, solution }) => {
 
   useEffect(() => {
     const width = window.innerWidth;
-    const pdfWidth = resume ? 1.5 : windowHandler(width);
+    const pdfWidth = resume && width>1440 ? 1.5 : windowHandler(width);
     setWindowWidth(pdfWidth);
   }, []);
 

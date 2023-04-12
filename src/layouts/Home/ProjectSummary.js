@@ -32,7 +32,7 @@ export const ProjectSummary = ({
   const theme = useTheme();
   const { width } = useWindowSize();
   const titleId = `${id}-title`;
-  const isMobile = width <= media.tablet;
+  let isMobile = width <= media.tablet;
   const svgOpacity = theme.themeId === 'light' ? 0.7 : 1;
   const indexText = index < 10 ? `0${index}` : index;
   const phoneSizes = `(max-width: ${media.tablet}px) 30vw, 20vw`;
@@ -170,13 +170,13 @@ export const ProjectSummary = ({
             <>
               {!alternate && !isMobile && (
                 <>
-                  {renderDetails(visible)}
+                  {!isMobile && renderDetails(visible)}
                   {renderPreview(visible)}
                 </>
               )}
               {(alternate || isMobile) && (
                 <>
-                  {renderPreview(visible)}
+                  {!isMobile && renderPreview(visible)}
                   {renderDetails(visible)}
                 </>
               )}
