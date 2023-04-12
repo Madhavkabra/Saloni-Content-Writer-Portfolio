@@ -28,7 +28,7 @@ import healthCareProfessionalLarge from 'assets/healthCareProfessional-large.jpg
 import proofReading from 'assets/proofReading.jpg';
 import proofReadingLarge from 'assets/proofReading-large.jpg';
 import academicWritingLarge from 'assets/academic-writing-large.jpg';
-import academicWriting from 'assets/academic-writing.png';
+import academicWriting from 'assets/academic-writing.jpg';
 import sprTextureLarge from 'assets/spr-lesson-builder-dark-large.jpg';
 import sprTexturePlaceholder from 'assets/spr-lesson-builder-dark-placeholder.jpg';
 import sprTexture from 'assets/spr-lesson-builder-dark.jpg';
