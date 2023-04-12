@@ -36,6 +36,7 @@ import { Button } from 'components/Button';
 import { ProjectSummary } from 'layouts/Home/ProjectSummary';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Home.module.css';
+import RouterLink from 'next/link';
 
 const disciplines = [
   'Doctor',
@@ -252,42 +253,46 @@ export const Home = () => {
       <Heading className={styles.title} level={3}>
         Other Service&#39;s
       </Heading>
+  
       <div className={styles.buttonContainer}>
         <div>
-          <a className={styles.anchorTag}>Healthcare professional</a>
+          <Text className={styles.anchorTag}>Healthcare professional</Text>
         </div>
         <div>
           <a className={styles.linkTag} href="/articles/?0=Case+Study">
-            Case Study
+            <Text className={styles.linkTag}>
+              Case Study
+              </Text>
           </a>
         </div>
+      
         <div>
-          <a className={styles.linkTag} href="/articles/?0=Procedure+Page">
-            Procedure Page
-          </a>
+          <RouterLink href="/articles/?0=Procedure+Page">
+            <Text className={styles.linkTag}>Procedure Page</Text>
+          </RouterLink>
         </div>
         <div>
-          <a className={styles.linkTag} href="/articles/?0=Technical+Writing">
-            Technical Writing
-          </a>
+          <RouterLink href="/articles/?0=Technical+Writing">
+            <Text className={styles.linkTag}> Technical Writing</Text>
+          </RouterLink>
         </div>
         <div>
-          <a className={styles.linkTag} href="/articles/?0=Blog">
-            Blog
-          </a>
+          <RouterLink href="/articles/?0=Blog">
+            <Text className={styles.linkTag}> Blog</Text>
+          </RouterLink>
         </div>
         <div>
-          <a className={styles.linkTag} href="/articles/?0=Web+Page+Content">
-            Web Page Content
-          </a>
+          <RouterLink href="/articles/?0=Web+Page+Content">
+            <Text className={styles.linkTag}> Web Page Content</Text>
+          </RouterLink>
         </div>
         <div>
-          <a className={styles.linkTag} href="/articles/?0=Newsletter">
-            Newsletter
-          </a>
+          <RouterLink href="/articles/?0=Newsletter">
+            <Text className={styles.linkTag}> Newsletter</Text>
+          </RouterLink>
         </div>
         <div>
-          <a className={styles.anchorTag}>Editing and Proofreading</a>
+          <Text className={styles.anchorTag}>Editing and Proofreading</Text>
         </div>
       </div>
       <Profile
