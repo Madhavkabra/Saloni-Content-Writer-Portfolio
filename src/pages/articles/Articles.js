@@ -15,8 +15,8 @@ import { useState, useEffect } from 'react';
 import { formatDate } from 'utils/date';
 import { classes, cssProps } from 'utils/style';
 import { Chips } from 'components/Chips';
-import { RxAvatar } from 'react-icons/rx';
-import { AiFillStar } from 'react-icons/ai';
+import Avatar from '../../components/Icon/svg/avatar.svg';
+import FilledStar from '../../components/Icon/svg/filledStar.svg';
 import styles from './Articles.module.css';
 
 const ArticlesPost = ({
@@ -107,7 +107,6 @@ const ArticlesPost = ({
         </RouterLink>
       )}
       {featured && (
-        <>
           <div className={classes(styles.postLink, styles.reviewContainer)}>
             <Heading className={styles.heading} level={5} as="h1">
               Reviews
@@ -116,7 +115,7 @@ const ArticlesPost = ({
             {review.map((data, index) => (
               <div className={styles.reviewDiv} key={index}>
                 <div className={styles.reviewAvatarTextDiv}>
-                  <RxAvatar size="3em" />
+                  <Avatar height="3em" width="3em" />
                   <div>
                     <Text as="div" size="s">
                       {review[index][0]}
@@ -127,7 +126,7 @@ const ArticlesPost = ({
                       </Text>
                       {[...Array(Number(review[index][1][0])).keys()].map(
                         (data, index) => (
-                          <AiFillStar color="yellow" key={index} />
+                          <FilledStar color="yellow" key={index} />
                         )
                       )}
                     </div>
@@ -144,7 +143,6 @@ const ArticlesPost = ({
               </div>
             ))}
           </div>
-        </>
       )}
       {featured && (
         <Text aria-hidden className={styles.postTag} size="s">
