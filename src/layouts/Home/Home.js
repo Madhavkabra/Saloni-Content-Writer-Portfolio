@@ -250,7 +250,7 @@ export const Home = () => {
       />
 
       <Heading className={styles.title} level={3}>
-        Other Service's
+        Other Service&#39;s
       </Heading>
       <div className={styles.buttonContainer}>
         <div>
