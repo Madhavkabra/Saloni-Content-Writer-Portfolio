@@ -23,7 +23,7 @@ import technicalWritingLarge from 'assets/technical-writing-large.jpg';
 import healthCareProfessional from 'assets/healthCareProfessional.jpg';
 import healthCareProfessionalLarge from 'assets/healthCareProfessional-large.jpg';
 import academicWritingLarge from 'assets/academic-writing-large.jpg';
-import academicWriting from 'assets/academic-writing.png';
+import academicWriting from 'assets/academic-writing.jpg';
 import seoWriting from 'assets/seo-writing.jpg';
 import seoWritingLarge from 'assets/seo-writing-large.jpg';
 import { Footer } from 'components/Footer';
