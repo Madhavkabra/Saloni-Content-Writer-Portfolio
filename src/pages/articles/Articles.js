@@ -107,42 +107,43 @@ const ArticlesPost = ({
         </RouterLink>
       )}
       {featured && (
-          <div className={classes(styles.postLink, styles.reviewContainer)}>
-            <Heading className={styles.heading} level={5} as="h1">
-              Reviews
-            </Heading>
+        <div className={classes(styles.postLink, styles.reviewContainer)}>
+          <Heading className={styles.heading} level={5} as="h1">
+            Reviews
+          </Heading>
 
-            {review.map((data, index) => (
-              <div className={styles.reviewDiv} key={index}>
-                <div className={styles.reviewAvatarTextDiv}>
-                  <Avatar height="3em" width="3em" />
-                  <div>
-                    <Text as="div" size="s">
-                      {review[index][0]}
+          {review.map((data, index) => (
+            <div className={styles.reviewDiv} key={index}>
+              <Text as="div" size="s" className={styles.reviewSubHeading}>
+                {review[index][3]}
+              </Text>
+              <div className={styles.reviewAvatarTextDiv}>
+                <Avatar height="3em" width="3em" />
+                <div>
+                  <Text as="div" size="s">
+                    {review[index][0]}
+                  </Text>
+                  <div className={styles.reviewRating}>
+                    <Text as="span" size="s">
+                      {review[index][1]}
                     </Text>
-                    <div className={styles.reviewRating}>
-                      <Text as="span" size="s">
-                        {review[index][1]}
-                      </Text>
-                      {[...Array(Number(review[index][1][0])).keys()].map(
-                        (data, index) => (
-                          <FilledStar color="yellow" key={index} />
-                        )
-                      )}
-                    </div>
+                    {[...Array(Number(review[index][1][0])).keys()].map((data, index) => (
+                      <FilledStar color="yellow" key={index} />
+                    ))}
                   </div>
                 </div>
-                <Text as="div" className={styles.reviewText}>
-                  {review[index][2]}
-                </Text>
-                <Divider
-                  notchWidth="64px"
-                  notchHeight="5px"
-                  className={styles.reviewDivider}
-                />
               </div>
-            ))}
-          </div>
+              <Text as="div" className={styles.reviewText}>
+                {review[index][2]}
+              </Text>
+              <Divider
+                notchWidth="64px"
+                notchHeight="5px"
+                className={styles.reviewDivider}
+              />
+            </div>
+          ))}
+        </div>
       )}
       {featured && (
         <Text aria-hidden className={styles.postTag} size="s">

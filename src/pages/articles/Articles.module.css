@@ -303,6 +303,11 @@
   overflow: auto;
 }
 
+.reviewSubHeading {
+  font-weight: 600 !important;
+  padding-bottom: 5px;
+}
+
 .reviewText {
   margin-top: 10px;
 }
