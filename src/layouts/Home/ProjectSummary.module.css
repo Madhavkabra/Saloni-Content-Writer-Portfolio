@@ -15,11 +15,11 @@
 
   @media (--mediaTablet) {
     height: auto;
-    margin: var(--space3XL) 0;
+    margin: 0;
   }
 
   @media (--mediaMobile) {
-    padding-bottom: var(--space4XL);
+    padding-bottom: var(--space3XL);
     margin-bottom: 0;
   }
 

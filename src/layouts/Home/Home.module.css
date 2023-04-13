@@ -13,6 +13,7 @@
   @media (--mediaMobile) {
     flex-direction: column;
     align-content: center;
+    margin: 0px;
   }
 }
 
@@ -24,13 +25,19 @@
 
 .anchorTag {
   font-size: 20px;
-  padding-bottom:2px;
+  padding-bottom: 2px;
+  height: 19px;
+  
+  @media (--mediaMobile) {
+    padding-bottom: 0px;
+  }
+
 }
 
 .linkTag {
+  margin-top: 5px;
 
-  color: rgb(var(--rgbAccent));
-  text-decoration: underline;
-  cursor: pointer;
- 
+  @media (--mediaMobile) {
+    margin: 0px;
+  }
 }

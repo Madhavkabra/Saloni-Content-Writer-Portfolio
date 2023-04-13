@@ -114,9 +114,8 @@
 .title {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 10px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .titleWordWrapper {

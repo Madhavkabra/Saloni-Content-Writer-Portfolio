@@ -35,8 +35,8 @@ import { Heading } from 'components/Heading';
 import { Button } from 'components/Button';
 import { ProjectSummary } from 'layouts/Home/ProjectSummary';
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'components/Link';
 import styles from './Home.module.css';
-import RouterLink from 'next/link';
 
 const disciplines = [
   'Doctor',
@@ -46,6 +46,15 @@ const disciplines = [
   'SEO Content Writer',
   'Website Content Writer',
   'Blogger',
+];
+
+const otherServices = [
+  { service: 'Case Study', link: '/articles/?0=Case+Study' },
+  { service: 'Procedure Page', link: '/articles/?0=Procedure+Page' },
+  { service: 'Technical Writing', link: '/articles/?0=Technical+Writing' },
+  { service: 'Blog', link: '/articles/?0=Blog' },
+  { service: 'Web Page Content', link: '/articles/?0=Web+Page+Content' },
+  { service: 'Newsletter', link: '/articles/?0=Newsletter' },
 ];
 
 export const Home = () => {
@@ -253,48 +262,16 @@ export const Home = () => {
       <Heading className={styles.title} level={3}>
         Other Service&#39;s
       </Heading>
-  
       <div className={styles.buttonContainer}>
-        <div>
-          <Text className={styles.anchorTag}>Healthcare professional</Text>
-        </div>
-        <div>
-          <RouterLink className={styles.linkTag} href="/articles/?0=Case+Study">
-            <Text className={styles.linkTag}>
-              Case Study
-              </Text>
-          </RouterLink>
-        </div>
-      
-        <div>
-          <RouterLink href="/articles/?0=Procedure+Page">
-            <Text className={styles.linkTag}>Procedure Page</Text>
-          </RouterLink>
-        </div>
-        <div>
-          <RouterLink href="/articles/?0=Technical+Writing">
-            <Text className={styles.linkTag}> Technical Writing</Text>
-          </RouterLink>
-        </div>
-        <div>
-          <RouterLink href="/articles/?0=Blog">
-            <Text className={styles.linkTag}> Blog</Text>
-          </RouterLink>
-        </div>
-        <div>
-          <RouterLink href="/articles/?0=Web+Page+Content">
-            <Text className={styles.linkTag}> Web Page Content</Text>
-          </RouterLink>
-        </div>
-        <div>
-          <RouterLink href="/articles/?0=Newsletter">
-            <Text className={styles.linkTag}> Newsletter</Text>
-          </RouterLink>
-        </div>
-        <div>
-          <Text className={styles.anchorTag}>Editing and Proofreading</Text>
-        </div>
+        <Text className={styles.anchorTag}>Healthcare professional</Text>
+        {otherServices.map((data, index) => (
+          <div className={styles.linkTag} key={index}>
+            <Link href={data.link}>{data.service}</Link>
+          </div>
+        ))}
+        <Text className={styles.anchorTag}>Editing and Proofreading</Text>
       </div>
+
       <Profile
         sectionRef={about}
         visible={visibleSections.includes(about.current)}

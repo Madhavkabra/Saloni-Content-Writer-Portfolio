@@ -141,6 +141,10 @@
   isolation: isolate;
   font-size: 70px;
 
+  @media (--mediaTablet) {
+   font-size: 65px;
+  }
+
   &::after {
     content: '';
     background: rgb(var(--rgbAccent));
