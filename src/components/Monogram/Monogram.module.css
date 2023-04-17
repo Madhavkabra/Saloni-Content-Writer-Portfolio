@@ -1,6 +1,7 @@
 .monogram {
   fill: var(--colorTextTitle);
   transition: fill var(--durationL) ease;
+  background-color: rgb(var(--rgbBackground));
 }
 
 .highlight {

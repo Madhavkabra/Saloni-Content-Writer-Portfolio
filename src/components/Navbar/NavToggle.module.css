@@ -2,6 +2,7 @@ button.toggle {
   --offset: var(--spaceXS);
   --inset: calc(var(--spaceOuter) - var(--offset));
 
+  background-color: rgb(var(--rgbBackground));
   position: fixed;
   top: var(--inset);
   right: var(--inset);

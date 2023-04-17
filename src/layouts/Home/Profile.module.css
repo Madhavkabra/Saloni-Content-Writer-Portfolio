@@ -72,6 +72,8 @@
   opacity: 0;
   transition: opacity var(--durationXL) ease var(--durationL);
   text-align: justify !important;
+  font-size: 18px;
+  line-height: 28.8px;
 
   &[data-visible='true'] {
     opacity: 1;
