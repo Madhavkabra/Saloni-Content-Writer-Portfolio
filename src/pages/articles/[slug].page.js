@@ -12,8 +12,12 @@ import { POSTS_PATH, postFilePaths } from 'utils/mdx';
 import { formatTimecode } from 'utils/timecode';
 import rehypePrism from '@mapbox/rehype-prism';
 import { generateOgImage } from './og-image';
-import { PDFViewer } from 'components/PDFViewer';
+import dynamic from 'next/dynamic';
 import { Image } from 'components/Image';
+
+const PDFViewer = dynamic(() => import('components/PDFViewer').then(mod => mod.PDFViewer), {
+  ssr: false,
+});
 
 const LINK_TYPES = ['link', 'linkQuestion', 'linkSolution'];
 

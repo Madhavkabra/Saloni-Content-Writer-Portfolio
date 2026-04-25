@@ -56,18 +56,6 @@ export const Navbar = () => {
     };
 
     const handleInversion = () => {
-      const invertedElements = document.querySelectorAll(
-        `[data-theme='${inverseTheme}'][data-invert]`
-      );
-
-      if (!invertedElements) return;
-
-      inverseMeasurements = Array.from(invertedElements).map(item => ({
-        element: item,
-        top: item.offsetTop,
-        bottom: item.offsetTop + item.offsetHeight,
-      }));
-
       const { scrollY } = window;
 
       resetNavTheme();
@@ -92,15 +80,21 @@ export const Navbar = () => {
 
     // Currently only the light theme has dark full-width elements
     if (themeId === 'light') {
+      // Measure once at setup — navbar is fixed so positions stay stable.
+      // Measurements are refreshed when windowSize or asPath changes (effect deps).
       navItemMeasurements = Array.from(navItems).map(item => {
         const rect = item.getBoundingClientRect();
-
-        return {
-          element: item,
-          top: rect.top,
-          bottom: rect.bottom,
-        };
+        return { element: item, top: rect.top, bottom: rect.bottom };
       });
+
+      const invertedElements = document.querySelectorAll(
+        `[data-theme='${inverseTheme}'][data-invert]`
+      );
+      inverseMeasurements = Array.from(invertedElements).map(item => ({
+        element: item,
+        top: item.offsetTop,
+        bottom: item.offsetTop + item.offsetHeight,
+      }));
 
       document.addEventListener('scroll', handleInversion);
       handleInversion();

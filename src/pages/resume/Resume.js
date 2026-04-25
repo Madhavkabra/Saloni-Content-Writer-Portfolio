@@ -1,6 +1,10 @@
-import { PDFViewer } from 'components/PDFViewer';
+import dynamic from 'next/dynamic';
 import { Post } from 'layouts/Post';
 import styles from './Resume.module.css';
+
+const PDFViewer = dynamic(() => import('components/PDFViewer').then(mod => mod.PDFViewer), {
+  ssr: false,
+});
 
 export const Resume = () => {
   return (

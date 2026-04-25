@@ -4,10 +4,12 @@ const siteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL;
 const name = 'Dr. Saloni Kabra';
 const twitterHandle = '@hamishMW';
 const defaultOgImage = `${siteUrl}/social-image.png`;
+const defaultDescription =
+  'Dr. Saloni Kabra — Licensed BHMS and medical content writer with 6+ years creating SEO-optimized healthcare content for leading US and EU brands.';
 
 export const Meta = ({
   title,
-  description,
+  description = defaultDescription,
   prefix = name,
   ogTitle,
   ogDescription,

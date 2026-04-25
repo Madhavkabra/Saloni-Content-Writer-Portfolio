@@ -1,14 +1,15 @@
 import { Meta } from 'components/Meta';
 import { Intro } from 'layouts/Home/Intro';
-import { Profile } from 'layouts/Home/Profile';
 import { Text } from 'components/Text';
 import { Heading } from 'components/Heading';
 import { Button } from 'components/Button';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'components/Link';
 import { Icon } from 'components/Icon';
-import qs from 'qs';
+import dynamic from 'next/dynamic';
 import { useScrollTimeline } from 'hooks';
+
+const Profile = dynamic(() => import('layouts/Home/Profile').then(mod => mod.Profile));
 import { Image } from 'components/Image';
 import landingPageThumb from 'assets/landingPage.jpg';
 import landingPageThumbLarge from 'assets/landingPage-large.jpg';
@@ -715,10 +716,11 @@ export const Home = () => {
         `Budget Range: ${formValues.budget || 'Not provided'}`,
       ].join('\n');
 
+      const { stringify } = await import('qs');
       const res = await fetch('/api/sendgrid/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
-        body: qs.stringify({
+        body: stringify({
           fullname: formValues.name,
           email: formValues.email,
           message: enrichedMessage,

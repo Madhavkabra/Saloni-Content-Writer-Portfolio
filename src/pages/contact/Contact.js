@@ -1,4 +1,3 @@
-import qs from 'qs';
 import { Button } from 'components/Button';
 import { DecoderText } from 'components/DecoderText';
 import { Divider } from 'components/Divider';
@@ -36,11 +35,11 @@ export const Contact = () => {
       setSending(true);
 
       const res = await fetch('/api/sendgrid/', {
-        body: qs.stringify({
+        body: new URLSearchParams({
           email: email.value,
           fullname: 'Contact Page Inquiry',
           message: message.value,
-        }),
+        }).toString(),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },

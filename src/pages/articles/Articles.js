@@ -272,7 +272,7 @@ export const Articles = ({ posts, featured }) => {
     <article className={styles.articles}>
       <Meta
         title="Articles"
-        description="A collection of technical design and development articles. May contain incoherent ramblings."
+        description="Browse Dr. Saloni Kabra's medical writing portfolio — SEO-optimized blogs, landing pages, service pages, and product descriptions across 15+ healthcare specialties."
       />
       <Section className={styles.content}>
         {!isSingleColumn && (
