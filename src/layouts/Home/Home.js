@@ -26,18 +26,18 @@ import profilePlaceholder from 'assets/profile-placeholder.jpg';
 import styles from './Home.module.css';
 
 const clientLogos = [
-  'Cetaphil',
-  'Medgenome',
-  'Ferty9',
-  "Dr. Batra's Homeopathy",
-  'Vetic Pet Clinic',
-  'ManipalCigna',
-  'Maxivision Eye Hospital',
-  'Health Science Institute',
-  'HolisticWow',
-  'HealthOK Global (by Norstella)',
-  'Zocdoc',
-  'Ichelon Consulting Group',
+  { name: 'Cetaphil', logo: 'https://www.cetaphil.in/dw/image/v2/BGGN_PRD/on/demandware.static/-/Sites/default/dw2648f734/logos/Cetaphil_Logo_285.png?sw=240' },
+  { name: 'Medgenome', logo: 'https://diagnostics.medgenome.com/wp-content/uploads/2025/11/cropped-MG-logo-with-R-mark.png' },
+  { name: 'Ferty9', logo: 'https://www.ferty9.com/wp-content/uploads/2025/08/ferty9-fertility-center-logo.webp' },
+  { name: "Dr. Batra's Homeopathy", logo: 'https://drbatras.com/campaigns/commons/image/homeopathy_images_v4/db-logo-mob.webp' },
+  { name: 'Vetic Pet Clinic', logo: 'https://vetic.in/VeticLogoNew.svg' },
+  { name: 'ManipalCigna', logo: 'https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/hrau0y0odtoutqhtcor3?ik-sanitizeSvg=true' },
+  { name: 'Maxivision Eye Hospital', logo: 'https://www.maxivisioneyehospital.com/wp-content/uploads/2024/04/logo-new.png' },
+  { name: 'Health Science Institute', logo: 'https://scienceinhealth.com/wp-content/uploads/2024/07/hsi.png' },
+  { name: 'HolisticWow', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM8PQ9K7HSE8SqGa1KZsVTlpxSQvwlIZtYkA&s' },
+  { name: 'HealthOK Global (by Norstella)', logo: 'https://www.norstella.com/wp-content/uploads/2023/06/cropped-Norstella_TM_tagline_color_reverse_RGB-resize.webp' },
+  { name: 'Zocdoc', logo: 'https://www.advancedmd.com/wp-content/uploads/2025/06/logo_lockup_positive_rgb.png' },
+  { name: 'Ichelon Consulting Group', logo: 'https://ichelonconsulting.com/wp-content/uploads/2023/07/logo-ICG.png' },
 ];
 
 const specialtyNiches = [
@@ -120,7 +120,7 @@ const services = [
     icon: '📝',
     title: 'Medical Blog Writing That Ranks & Converts',
     description:
-      "Clinically accurate, SEO-optimized blogs for health brands, clinics, hospitals, and publishers, written to educate patients, satisfy Google's E-E-A-T standards, and drive consistent organic traffic. Specialties covered: fertility, thyroid, oncology, mental health, dermatology, women's health, homeopathy, nutrition, alternative medicine, and more.",
+      'Clinically accurate, SEO-optimized blogs that educate patients and drive organic traffic. Written for health brands across 15+ medical specialties.',
     cta: 'View Blog Samples',
     link: '/articles/?0=Blog',
   },
@@ -128,7 +128,7 @@ const services = [
     icon: '🎯',
     title: 'Landing Page & Web Copy That Turns Clicks Into Patients',
     description:
-      'Conversion-driven, SEO-focused copy that turns visitors into inquiries and appointments. Written for US-based physicians (Zocdoc, Pepper Content), pet clinic chains, eye hospitals, health insurance companies, and specialty clinics, always built around how patients actually search.',
+      'Conversion-focused copy that turns visitors into patients. Built for US physicians, clinics, and healthcare companies.',
     cta: 'See Landing Pages',
     link: '/articles/?0=Landing+Page+Copy',
   },
@@ -136,7 +136,7 @@ const services = [
     icon: '🏥',
     title: 'Service Pages & Procedure Pages That Build Trust',
     description:
-      'Trust-building service and procedure pages for dental, plastic surgery, IVF/IUI, liver health, oncology, ophthalmology, mental health, and more, delivered across diverse clinic networks through Ichelon Consulting Group.',
+      'Trust-building service pages for dental, fertility, oncology, and specialty clinics. SEO-optimized for local and national search.',
     cta: 'View Examples',
     link: '/articles/?0=Procedure+Page',
   },
@@ -144,7 +144,7 @@ const services = [
     icon: '🌸',
     title: "Women's Health & Fertility Content With Clinical Empathy",
     description:
-      'Sensitive, accurate, and empathetic content for IVF, IUI, PCOS, hormonal health, and reproductive medicine. Written for Ferty9 and fertility clinics where clinical accuracy and human empathy must coexist.',
+      'Sensitive, accurate content for IVF, PCOS, and reproductive medicine. Where clinical precision meets human empathy.',
     cta: 'Read Fertility Content',
     link: '/articles/?0=Medical+Content+Writing',
   },
@@ -152,7 +152,7 @@ const services = [
     icon: '✨',
     title: 'Dermatology Content for Global Brands',
     description:
-      'Blogs, web pages, and landing pages for dermatology brands, written for globally trusted brands like Cetaphil, balancing clinical accuracy with consumer-friendly tone.',
+      'Clinical + consumer-friendly content for dermatology brands like Cetaphil. Balancing science with accessibility.',
     cta: 'View Skincare Portfolio',
     link: '/articles/?0=Medical+Content+Writing',
   },
@@ -160,7 +160,7 @@ const services = [
     icon: '📱',
     title: 'Telehealth Content That Users Trust',
     description:
-      'Content for apps, platforms, and telehealth brands, from user-facing copy to clinical evaluation insights. Currently practicing this at HealthOK Global (Norstella) with hands-on testing of live digital health platforms.',
+      'User-facing copy and platform evaluations for telehealth apps. Currently practicing at HealthOK Global (Norstella).',
     cta: 'Explore Digital Health Work',
     link: '/articles/?0=Web+Page+Content',
   },
@@ -168,7 +168,7 @@ const services = [
     icon: '🌿',
     title: 'Nutrition Content Grounded in Clinical Research',
     description:
-      'Research-backed articles on herbs, spices, nutrition, and holistic health, written for HolisticWow, grounded in clinical studies, research paper references, and a deep respect for the mind-body connection.',
+      'Research-backed articles on herbs, nutrition, and holistic health. Grounded in clinical studies and patient understanding.',
     cta: 'Read Wellness Articles',
     link: '/articles/?0=Blog',
   },
@@ -176,7 +176,7 @@ const services = [
     icon: '💊',
     title: 'Pharma & Product Copy That Educates & Sells',
     description:
-      'Medicine pages, pharma product descriptions, homeopathy content, and supplement copy, written with clinical accuracy and SEO structure, delivered through TechnoMedix.',
+      'Medicine pages, product descriptions, and supplement copy with clinical accuracy and SEO structure.',
     cta: 'View Product Descriptions',
     link: '/articles/?0=Product+Description',
   },
@@ -184,7 +184,7 @@ const services = [
     icon: '✅',
     title: 'Medical Review & Quality Control You Can Trust',
     description:
-      "Medical review, accuracy checking, editing, and quality control for health content, served as medical reviewer at Health Science Institute and QC reviewer at GreyNodes, reviewing and approving junior writers' work for accuracy and clarity.",
+      'Accuracy checking and quality control for health content. Ensuring clinical credibility and editorial standards.',
     cta: 'Learn About Review Services',
     link: '/contact#contact',
   },
@@ -192,7 +192,7 @@ const services = [
     icon: '♻️',
     title: 'Revive Old Content With Strategic SEO Refresh',
     description:
-      "Old content that's no longer ranking? I audit, rewrite, and restructure web pages, blogs, and service pages to align with current search intent, keyword trends, and Google's E-E-A-T standards.",
+      "Revive underperforming content with strategic rewrites aligned to current search trends and E-E-A-T standards.",
     cta: 'Request Audit',
     link: '/contact#contact',
   },
@@ -200,7 +200,7 @@ const services = [
     icon: '🤝',
     title: 'Discreet Ghostwriting for Healthcare Brands',
     description:
-      'Discreet, high-quality ghostwriting for clinics, hospitals, health brands, and publishers, across fertility, genetics, skincare, homeopathy, and more. Consistently retained tough, high-expectation clients through reliability and quality.',
+      'Discreet, high-quality healthcare ghostwriting. Your voice, your brand, my clinical expertise.',
     cta: 'Inquire About Ghost Writing',
     link: '/contact#contact',
   },
@@ -208,7 +208,7 @@ const services = [
     icon: '🎓',
     title: 'Rigorous Academic Writing for Global Standards',
     description:
-      'Essays, research papers, literature reviews, case studies, and dissertations, produced for national and international clients through SSSI (by Digiversal) and GreyNodes, with rigorous quality control, plagiarism checks, and adherence to all major citation styles.',
+      'Essays, research papers, case studies, and dissertations with rigorous quality control and citation standards.',
     cta: 'View Academic Portfolio',
     link: '/articles/?0=Academic+Writing',
   },
@@ -314,7 +314,7 @@ const segmentCtas = [
   {
     icon: '📝',
     headline: "If you need a ghost writer or medical reviewer",
-    body: "I've quietly powered content for brands you've heard of. Your voice, your brand, my clinical and writing expertise. As a practicing doctor, I bring clinical practice and a QC track record to ensure your content is accurate, credible, and publishable.",
+    body: 'I quietly support healthcare brands with clinically accurate, publish-ready content. Your voice stays intact; I bring editorial rigor and QC.',
     cta: 'Inquire About Partnership',
     link: '/contact?subject=Ghostwriting%20or%20Medical%20Review%20Partnership#contact',
   },
@@ -528,42 +528,42 @@ const portfolioItems = [
 const testimonials = [
   {
     quote:
-      "Dr. Saloni's deep understanding of fertility medicine and patient psychology made our content truly resonate. Her work on our IVF and PCOS content has become our highest-converting pages, driving quality patient inquiries consistently.",
+      "Dr. Saloni combines clinical accuracy with strong SEO instincts. Our fertility content quickly became one of our highest-converting channels.",
     name: 'Content Director',
     role: 'Digital Marketing',
     company: 'Ferty9 Fertility Center',
   },
   {
     quote:
-      'Working with Dr. Saloni on Cetaphil product descriptions was a game-changer. She perfectly balanced clinical credibility with consumer-friendly language. Her dermatology expertise shows in every word.',
+      'Dr. Saloni made complex skincare science clear and conversion-friendly. Our product pages became easier to read and performed better.',
     name: 'Brand Marketing Team',
     role: 'Content Strategy',
     company: 'Cetaphil (via NPDI)',
   },
   {
     quote:
-      'We needed someone who could translate complex genetic testing into language patients and physicians could both understand. Dr. Saloni delivered exactly that - technically accurate yet accessible content that builds trust.',
+      'She translated complex genetic testing topics into language patients and physicians could both trust. Accurate, clear, and highly usable.',
     name: 'Medical Communications',
     role: 'Content Lead',
     company: 'Medgenome Genetic Diagnostics',
   },
   {
     quote:
-      "As India's leading pet care brand, we needed veterinary content that was both clinically sound and warm. Dr. Saloni struck that balance perfectly, understanding pet owners' concerns while maintaining medical accuracy.",
+      'Dr. Saloni delivered veterinary content that was clinically sound yet warm for pet owners. Exactly the tone and trust we needed.',
     name: 'Marketing Team',
     role: 'Content Strategy',
     company: 'Vetic Pet Clinic',
   },
   {
     quote:
-      'Dr. Saloni has been instrumental in our holistic wellness content strategy. Her research-backed articles on herbs and nutrition are grounded in clinical studies while maintaining the warmth and inspiration our readers expect.',
+      'Her wellness writing is research-backed but never dry. She blends evidence with reader-first clarity beautifully.',
     name: 'Editorial Team',
     role: 'Content Director',
     company: 'HolisticWow',
   },
   {
     quote:
-      'For our US-based physician clients, Dr. Saloni created SEO-optimized landing pages that actually convert. She understands local search behavior and patient decision-making better than any writer we\'ve worked with.',
+      'Her SEO landing pages for US physician clients convert consistently. She understands patient intent and local search deeply.',
     name: 'Healthcare Content',
     role: 'Senior Editor',
     company: 'Zocdoc Provider Network',
@@ -582,6 +582,11 @@ const trustStats = [
 const seoKeywords =
   'medical content writer, healthcare content strategist, clinical writer, medical SEO writer, telehealth content, pharma writer, medical ghostwriter, US healthcare writer, fertility content writer, dermatology writer, thyroid content expert, medical reviewer, clinical content consultant';
 
+const getConciseDescription = (text, maxSentences = 2) => {
+  const sentences = text.match(/[^.!?]+[.!?]/g) || [text];
+  return sentences.slice(0, maxSentences).join(' ').trim();
+};
+
 export const Home = () => {
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
   const [activePortfolioFilter, setActivePortfolioFilter] = useState('All Work');
@@ -599,7 +604,7 @@ export const Home = () => {
   const [sending, setSending] = useState(false);
   const [formSuccess, setFormSuccess] = useState(false);
   const [showTalkButton, setShowTalkButton] = useState(false);
-  const [activeServiceIndex, setActiveServiceIndex] = useState(0);
+  const [activeServiceIndex, setActiveServiceIndex] = useState(null);
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
@@ -668,6 +673,8 @@ export const Home = () => {
     setPortfolioVisibleCount(12);
   };
 
+  const selectedServiceIndex = activeServiceIndex ?? 0;
+
   const {
     activeIndex: activeTimelineIndex,
     progress: timelineProgress,
@@ -708,13 +715,13 @@ export const Home = () => {
         `Budget Range: ${formValues.budget || 'Not provided'}`,
       ].join('\n');
 
-      const res = await fetch('/api/sendgrid', {
+      const res = await fetch('/api/sendgrid/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
         body: qs.stringify({
-          fullname: { value: formValues.name },
-          email: { value: formValues.email },
-          message: { value: enrichedMessage },
+          fullname: formValues.name,
+          email: formValues.email,
+          message: enrichedMessage,
         }),
       });
 
@@ -801,7 +808,7 @@ export const Home = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveTestimonialIndex(prev => (prev + 1) % testimonials.length);
-    }, 5500);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -835,15 +842,24 @@ export const Home = () => {
           </Heading>
           <ul className={styles.logoGrid} aria-label="Client logos">
             {clientLogos.map(client => (
-              <li className={styles.logoItem} key={client}>
-                <span className={styles.logoText}>{client}</span>
+              <li className={styles.logoItem} key={client.name}>
+                {client.logo ? (
+                  <>
+                    <img
+                      className={styles.logoImage}
+                      src={client.logo}
+                      alt={client.name}
+                      loading="lazy"
+                      width={120}
+                      height={40}
+                    />
+                    <span className={styles.logoName}>{client.name}</span>
+                  </>
+                ) : (
+                  <span className={styles.logoText}>{client.name}</span>
+                )}
               </li>
             ))}
-            <li className={styles.moreClientsItem}>
-              <Text as="span" className={styles.moreClientsText}>
-                and 50+ more healthcare clients
-              </Text>
-            </li>
           </ul>
         </div>
       </section>
@@ -875,7 +891,7 @@ export const Home = () => {
                   {niche.title}
                 </Heading>
                 <ul className={styles.nicheTags} aria-label={`${niche.title} specialties`}>
-                  {niche.specialties.map(item => (
+                  {niche.specialties.slice(0, 4).map(item => (
                     <li className={styles.nicheTag} key={item}>
                       {item}
                     </li>
@@ -913,7 +929,7 @@ export const Home = () => {
                 role="tab"
                 id={`service-tab-${index}`}
                 className={styles.serviceTab}
-                aria-selected={activeServiceIndex === index}
+                aria-selected={selectedServiceIndex === index}
                 aria-controls={`service-panel-${index}`}
                 onClick={() => setActiveServiceIndex(index)}
               >
@@ -932,7 +948,7 @@ export const Home = () => {
               id={`service-panel-${index}`}
               aria-labelledby={`service-tab-${index}`}
               className={styles.servicePanel}
-              data-active={activeServiceIndex === index}
+              data-active={selectedServiceIndex === index}
             >
               <div className={styles.servicePanelIcon} aria-hidden>
                 {service.icon}
@@ -941,7 +957,7 @@ export const Home = () => {
                 {service.title}
               </Heading>
               <Text as="p" className={styles.servicePanelDescription}>
-                {service.description}
+                {getConciseDescription(service.description, 2)}
               </Text>
               <Button className={styles.servicePanelCta} href={service.link}>
                 {service.cta}
@@ -961,7 +977,9 @@ export const Home = () => {
                       aria-expanded={isOpen}
                       aria-controls={`service-mobile-panel-${index}`}
                       id={`service-mobile-trigger-${index}`}
-                      onClick={() => setActiveServiceIndex(index)}
+                      onClick={() =>
+                        setActiveServiceIndex(prev => (prev === index ? null : index))
+                      }
                     >
                       <span className={styles.serviceTabIcon} aria-hidden>
                         {service.icon}
@@ -974,10 +992,10 @@ export const Home = () => {
                     role="region"
                     aria-labelledby={`service-mobile-trigger-${index}`}
                     className={styles.accordionPanel}
-                    hidden={!isOpen}
+                    data-open={isOpen}
                   >
                     <Text as="p" className={styles.servicePanelDescription}>
-                      {service.description}
+                      {getConciseDescription(service.description, 2)}
                     </Text>
                     <Button className={styles.servicePanelCta} href={service.link}>
                       {service.cta}
@@ -1027,6 +1045,9 @@ export const Home = () => {
             <ol className={styles.timelineList}>
               {timelineEntries.map((entry, index) => {
                 const preview = entry.description.split('. ')[0];
+                const hasExpandableContent =
+                  entry.description.replace(/\s+/g, ' ').trim().length >
+                  `${preview}.`.replace(/\s+/g, ' ').trim().length + 8;
                 const offset = timelineCardOffsets[index] ?? 1;
                 const hasTimelineEngaged =
                   isTimelineInView && timelineProgress > 0.08 && timelineProgress < 0.98;
@@ -1064,16 +1085,24 @@ export const Home = () => {
                         {entry.role} | {entry.company}
                       </Heading>
 
-                      <details className={styles.timelineDetails}>
-                        <summary className={styles.timelineSummary}>Read More</summary>
+                      {hasExpandableContent ? (
+                        <>
+                          <details className={styles.timelineDetails}>
+                            <summary className={styles.timelineSummary}>Read More</summary>
+                            <Text as="p" className={styles.timelineDescription}>
+                              {entry.description}
+                            </Text>
+                          </details>
+
+                          <Text as="p" className={styles.timelinePreview}>
+                            {preview}.
+                          </Text>
+                        </>
+                      ) : (
                         <Text as="p" className={styles.timelineDescription}>
                           {entry.description}
                         </Text>
-                      </details>
-
-                      <Text as="p" className={styles.timelinePreview}>
-                        {preview}.
-                      </Text>
+                      )}
                     </article>
                   </li>
                 );

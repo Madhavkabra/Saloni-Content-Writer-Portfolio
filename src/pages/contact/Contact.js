@@ -35,16 +35,14 @@ export const Contact = () => {
     try {
       setSending(true);
 
-      const res = await fetch('/api/sendgrid', {
+      const res = await fetch('/api/sendgrid/', {
         body: qs.stringify({
-          email: email,
-          fullname: email,
-          message: message,
+          email: email.value,
+          fullname: 'Contact Page Inquiry',
+          message: message.value,
         }),
-        mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/json',
-          'access-control-allow-origin': '*',
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
         method: 'POST',
       });

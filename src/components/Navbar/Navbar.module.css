@@ -21,6 +21,16 @@
   @media (--mediaMobile), (--mediaMobileLS) {
     bottom: auto;
   }
+
+  @media (max-width: 768px) and (min-width: 375px) {
+    left: 10px;
+    top: 10px;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    left: 35px;
+    top: 35px;
+  }
 }
 
 .logo {

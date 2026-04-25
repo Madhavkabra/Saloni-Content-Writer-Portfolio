@@ -79,6 +79,39 @@
   font-weight: var(--fontWeightBold);
 }
 
+.pullQuote {
+  margin: 0 0 var(--spaceL);
+  padding: 0.8rem 1rem;
+  border-left: 3px solid rgb(var(--rgbPrimary));
+  background: rgb(var(--rgbPrimary) / 0.06);
+  border-radius: 8px;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgb(var(--rgbText) / 0.84);
+  opacity: 0;
+  transition: opacity var(--durationXL) ease var(--durationL);
+
+  &[data-visible='true'] {
+    opacity: 1;
+  }
+}
+
+.achievementList {
+  margin: 0 0 var(--spaceL);
+  padding-left: 1.1rem;
+  opacity: 0;
+  transition: opacity var(--durationXL) ease var(--durationL);
+}
+
+.achievementList li {
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.achievementList[data-visible='true'] {
+  opacity: 1;
+}
+
 .interests {
   margin: var(--spaceS) 0 var(--spaceL);
   font-weight: var(--fontWeightMedium);

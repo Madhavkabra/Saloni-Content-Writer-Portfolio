@@ -282,6 +282,29 @@
 }
 
 @media (--mediaMobile) {
+  .heroContent {
+    width: 100%;
+    justify-items: stretch;
+  }
+
+  .headline {
+    font-size: 2rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .badge {
+    width: 100%;
+    text-align: center;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
   .scrollIndicator {
     display: none;
   }

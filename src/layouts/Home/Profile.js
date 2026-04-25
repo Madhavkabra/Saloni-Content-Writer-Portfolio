@@ -26,38 +26,24 @@ const ProfileText = ({ visible, titleId }) => (
       and drives real business results.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I&#39;ve worked across telehealth, pharma, genetic testing, fertility, skincare,
-      nutrition &amp; holistic wellness, thyroid care, functional medicine, pet care,
-      insurance, ophthalmology, oncology, dental, plastic surgery, mental health,
-      homeopathy, alternative medicine, and many more, for clients across India, the US,
-      UK, Dubai, and globally.
+      I&#39;ve worked across telehealth, pharma, fertility, genetics, skincare, nutrition,
+      thyroid care, pet care, insurance, and multi-specialty clinical networks across India,
+      the US, UK, Dubai, and global remote markets.
     </Text>
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      What sets me apart? I don&#39;t just write; I bring a{' '}
-      <span className={styles.highlight}>clinician&#39;s eye</span> to every piece. I know
-      what patients search for, what worries them, what language resonates, what providers
-      need to communicate, and how Google decides what ranks. That combination has helped{' '}
-      <span className={styles.highlight}>
-        brands like Cetaphil, Medgenome, HolisticWow, Health Science Institute, Ferty9,
-        Dr. Batra&#39;s Homeopathy, Vetic Pet Clinic, ManipalCigna, Maxivision Eye Hospital
-      </span>{' '}
-      and many more grow their digital presence with content that&#39;s medically sound and
-      search-optimized.
-    </Text>
+    <blockquote className={styles.pullQuote} data-visible={visible}>
+      &#34;I bring a clinician&#39;s eye to every piece, so healthcare content is both medically
+      sound and commercially effective.&#34;
+    </blockquote>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       Currently, I serve as Senior Clinical Consultant &amp; Writer at HealthOK Global (by
-      Norstella), where I test and evaluate medical apps and digital health platforms from
-      a clinician&#39;s perspective, and translate those insights into content that improves
-      user trust and product visibility.
+      Norstella), where I evaluate digital health platforms and translate those insights into
+      content that improves user trust, discoverability, and patient engagement.
     </Text>
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I&#39;ve retained tough clients, delivered under tight deadlines, and written content
-      that quietly powers some of healthcare&#39;s most recognizable brands, often behind the
-      scenes as a trusted ghostwriter.
-    </Text>
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I&#39;m available for freelance and contract projects on direct engagement.
-    </Text>
+    <ul className={styles.achievementList} data-visible={visible}>
+      <li>Trusted by brands including Cetaphil, Medgenome, Ferty9, and Vetic Pet Clinic</li>
+      <li>Retained high-expectation clients through quality, speed, and clinical rigor</li>
+      <li>Available for freelance and contract projects through direct engagement</li>
+    </ul>
     <Text className={styles.interests} data-visible={visible} size="l" as="p">
       🎯 Travel · Chess · Singing
     </Text>
