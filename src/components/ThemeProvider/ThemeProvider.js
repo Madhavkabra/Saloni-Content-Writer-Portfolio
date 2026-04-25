@@ -26,12 +26,16 @@ export const ThemeProvider = ({
   const isRootProvider = !parentTheme.themeId;
   const hasMounted = useHasMounted();
 
-  // Save root theme id to localstorage and apply class to body
+  // Save root theme id to localstorage and apply class to body.
+  // Add theme-toggling class only when the user actively switches themes so
+  // the background transition does not run on the very first paint.
   useEffect(() => {
-    if (isRootProvider && hasMounted) {
-      window.localStorage.setItem('theme', JSON.stringify(themeId));
-      document.body.dataset.theme = themeId;
-    }
+    if (!isRootProvider || !hasMounted) return;
+    document.body.classList.add('theme-toggling');
+    window.localStorage.setItem('theme', JSON.stringify(themeId));
+    document.body.dataset.theme = themeId;
+    const timer = setTimeout(() => document.body.classList.remove('theme-toggling'), 500);
+    return () => clearTimeout(timer);
   }, [themeId, isRootProvider, hasMounted]);
 
   return (

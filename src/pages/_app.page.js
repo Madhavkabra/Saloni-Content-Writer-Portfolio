@@ -50,7 +50,7 @@ const App = ({ Component, pageProps }) => {
             </VisuallyHidden>
             <Navbar />
             <main className={styles.app} tabIndex={-1} id="MainContent">
-              <AnimatePresence exitBeforeEnter>
+              <AnimatePresence exitBeforeEnter initial={false}>
                 <m.div
                   key={route}
                   className={styles.page}
@@ -61,7 +61,6 @@ const App = ({ Component, pageProps }) => {
                     type: 'tween',
                     ease: 'linear',
                     duration: msToNum(tokens.base.durationS) / 1000,
-                    delay: 0.1,
                   }}
                 >
                   <ScrollRestore />

@@ -4,7 +4,7 @@
   inset: 0;
   opacity: 0;
   transition-property: opacity;
-  transition-duration: 3s;
+  transition-duration: 0.6s;
   transition-timing-function: var(--bezierFastoutSlowin);
 
   &[data-visible='true'] {

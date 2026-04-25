@@ -27,7 +27,6 @@ body {
   font-family: var(--fontStack);
   font-weight: var(--fontWeightRegular);
   background-color: rgb(var(--rgbBackground));
-  transition: background var(--durationM) ease;
   color: var(--colorTextBody);
   width: 100vw;
   overflow-x: hidden;
@@ -35,6 +34,11 @@ body {
   &:focus {
     outline: none;
   }
+}
+
+/* Animate background only when theme toggles, not on first paint */
+body.theme-toggling {
+  transition: background var(--durationM) ease;
 }
 
 :where(code, pre) {

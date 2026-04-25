@@ -46,7 +46,7 @@
   justify-items: start;
   position: relative;
   z-index: var(--zIndex1);
-  animation: heroEntrance 1.35s var(--bezierFastoutSlowin) both;
+  animation: heroEntrance 0.4s var(--bezierFastoutSlowin) both;
 
   @media (--mediaMobile) {
     gap: var(--spaceM);
@@ -63,11 +63,6 @@
   font-weight: var(--fontWeightMedium);
   letter-spacing: 0.02em;
   font-size: clamp(0.76rem, 2vw, 0.92rem);
-  transition: opacity var(--durationM) ease;
-
-  &[data-status='exited'] {
-    opacity: 0;
-  }
 }
 
 .headline {
@@ -77,10 +72,6 @@
   line-height: 1.02;
   letter-spacing: -0.02em;
   color: var(--colorTextTitle);
-
-  &[data-status='exited'] {
-    opacity: 0;
-  }
 }
 
 .subheadline {
@@ -94,10 +85,6 @@
   flex-wrap: wrap;
   gap: 0.35rem;
   align-items: center;
-
-  &[data-status='exited'] {
-    opacity: 0;
-  }
 }
 
 @keyframes phraseFlipIn {
@@ -116,19 +103,19 @@
   display: inline-flex;
   transform-origin: bottom;
   opacity: 0;
-  animation: phraseFlipIn 1s var(--bezierFastoutSlowin) forwards;
+  animation: phraseFlipIn 0.45s var(--bezierFastoutSlowin) forwards;
 }
 
 .subheadlinePhrase:nth-of-type(1) {
-  animation-delay: 0.2s;
+  animation-delay: 0.4s;
 }
 
 .subheadlinePhrase:nth-of-type(3) {
-  animation-delay: 0.38s;
+  animation-delay: 0.5s;
 }
 
 .subheadlinePhrase:nth-of-type(5) {
-  animation-delay: 0.56s;
+  animation-delay: 0.6s;
 }
 
 .subheadlineDot {
@@ -141,10 +128,6 @@
   line-height: 1.7;
   max-width: 60ch;
   color: var(--colorTextBody);
-
-  &[data-status='exited'] {
-    opacity: 0;
-  }
 }
 
 .accent {
