@@ -68,7 +68,7 @@ export const Contact = () => {
   };
 
   return (
-    <Section className={styles.contact}>
+    <Section className={styles.contact} id="contact">
       <Meta
         title="Contact"
         description="Send me a message if you’re interested in discussing a project or if you just want to say hi"

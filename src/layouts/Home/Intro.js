@@ -1,48 +1,25 @@
 import ArrowDown from 'assets/arrow-down.svg';
+import { Button } from 'components/Button';
 import { DecoderText } from 'components/DecoderText';
-import { Heading } from 'components/Heading';
 import { Section } from 'components/Section';
 import { useTheme } from 'components/ThemeProvider';
-import { tokens } from 'components/ThemeProvider/theme';
 import { Transition } from 'components/Transition';
 import { VisuallyHidden } from 'components/VisuallyHidden';
-import { AnimatePresence } from 'framer-motion';
-import { useInterval, usePrevious, useScrollToHash } from 'hooks';
+import { useScrollToHash } from 'hooks';
 import dynamic from 'next/dynamic';
 import RouterLink from 'next/link';
-import { Fragment, useEffect, useState } from 'react';
-import { cssProps } from 'utils/style';
+import { Fragment } from 'react';
 import styles from './Intro.module.css';
 
 const DisplacementSphere = dynamic(() =>
   import('layouts/Home/DisplacementSphere').then(mod => mod.DisplacementSphere)
 );
 
-export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...rest }) {
+export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const theme = useTheme();
-  const [disciplineIndex, setDisciplineIndex] = useState(0);
-  const prevTheme = usePrevious(theme);
-  const introLabel = [disciplines.slice(0, -1).join(', '), disciplines.slice(-1)[0]].join(
-    ', and '
-  );
-  const currentDiscipline = disciplines.find((item, index) => index === disciplineIndex);
   const titleId = `${id}-title`;
+  const subtitleId = `${id}-subtitle`;
   const scrollToHash = useScrollToHash();
-
-  useInterval(
-    () => {
-      const index = (disciplineIndex + 1) % disciplines.length;
-      setDisciplineIndex(index);
-    },
-    5000,
-    theme.themeId
-  );
-
-  useEffect(() => {
-    if (prevTheme && prevTheme.themeId !== theme.themeId) {
-      setDisciplineIndex(0);
-    }
-  }, [theme.themeId, prevTheme]);
 
   const handleScrollClick = event => {
     event.preventDefault();
@@ -63,68 +40,61 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
         {(visible, status) => (
           <Fragment>
             <DisplacementSphere />
-            <header className={styles.text}>
-              <h1 className={styles.name} data-visible={visible} id={titleId}>
-                <DecoderText text="Dr. Saloni Kabra" delay={300} />
+            <header className={styles.heroContent} aria-labelledby={titleId} aria-describedby={subtitleId}>
+              <p className={styles.badge} data-status={status}>
+                Available for Remote &amp; Freelance Projects
+              </p>
+              <h1 className={styles.headline} data-status={status} id={titleId}>
+                <DecoderText text="Dr. Saloni Kabra" start={status !== 'exited'} delay={220} />
               </h1>
-              <Heading level={0} as="h2" className={styles.title}>
-                <VisuallyHidden className={styles.label}>
-                  {`Writer + ${introLabel}`}
-                </VisuallyHidden>
-                <span aria-hidden className={styles.row}>
-                  <span
-                    className={styles.word}
-                    data-status={status}
-                    style={cssProps({ delay: tokens.base.durationXS })}
-                  >
-                    Writer
-                  </span>
-                  <span className={styles.line} data-status={status} />
+              <p className={styles.subheadline} data-status={status} id={subtitleId}>
+                <span className={styles.subheadlinePhrase}>Senior Clinical Consultant</span>
+                <span className={styles.subheadlineDot} aria-hidden>
+                  &middot;
                 </span>
-                <div className={styles.row} component="span">
-                  <AnimatePresence>
-                    {disciplines.map(item => (
-                      <Transition
-                        unmount
-                        in={item === currentDiscipline}
-                        timeout={{ enter: 3000, exit: 2000 }}
-                        key={item}
-                      >
-                        {(visible, status) => (
-                          <span
-                            aria-hidden
-                            className={styles.word}
-                            data-plus={true}
-                            data-status={status}
-                            style={cssProps({ delay: tokens.base.durationL })}
-                          >
-                            {item}
-                          </span>
-                        )}
-                      </Transition>
-                    ))}
-                  </AnimatePresence>
-                </div>
-              </Heading>
+                <span className={styles.subheadlinePhrase}>Medical Writer</span>
+                <span className={styles.subheadlineDot} aria-hidden>
+                  &middot;
+                </span>
+                <span className={styles.subheadlinePhrase}>SEO Health Content Strategist</span>
+              </p>
+              <p className={styles.tagline} data-status={status}>
+                Doctor by training. Writer by craft. Your content&#39;s{' '}
+                <span className={styles.accent}>competitive edge</span> in healthcare.
+              </p>
+              <nav className={styles.actions} aria-label="Primary actions">
+                <Button className={styles.primaryCta} href="/#services" aria-label="View my work">
+                  View My Work
+                </Button>
+                <Button
+                  className={styles.secondaryCta}
+                  href="/contact#contact"
+                  aria-label="Let's work together"
+                >
+                  Let&#39;s Work Together
+                </Button>
+              </nav>
             </header>
-            <RouterLink href="/#project-1">
+            <RouterLink href="/#services">
               <a
                 className={styles.scrollIndicator}
                 data-status={status}
                 data-hidden={scrollIndicatorHidden}
                 onClick={handleScrollClick}
+                aria-label="Scroll to services section"
               >
-                <VisuallyHidden>Scroll to projects</VisuallyHidden>
+                <VisuallyHidden>Scroll to services</VisuallyHidden>
               </a>
             </RouterLink>
-            <RouterLink href="/#project-1">
+            <RouterLink href="/#services">
               <a
                 className={styles.mobileScrollIndicator}
                 data-status={status}
                 data-hidden={scrollIndicatorHidden}
                 onClick={handleScrollClick}
+                aria-label="Scroll to services section"
               >
-                <VisuallyHidden>Scroll to projects</VisuallyHidden>
+                <VisuallyHidden>Scroll to services</VisuallyHidden>
                 <ArrowDown aria-hidden />
               </a>
             </RouterLink>

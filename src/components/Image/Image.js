@@ -176,6 +176,7 @@ const ImageElements = ({
           data-loaded={loaded}
           onLoad={onLoad}
           decoding="async"
+          loading="lazy"
           src={showFullRes ? src.src : undefined}
           srcSet={showFullRes ? srcSetString : undefined}
           width={src.width}

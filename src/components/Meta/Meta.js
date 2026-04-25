@@ -5,8 +5,23 @@ const name = 'Dr. Saloni Kabra';
 const twitterHandle = '@hamishMW';
 const defaultOgImage = `${siteUrl}/social-image.png`;
 
-export const Meta = ({ title, description, prefix = name, ogImage = defaultOgImage }) => {
+export const Meta = ({
+  title,
+  description,
+  prefix = name,
+  ogTitle,
+  ogDescription,
+  ogImage = defaultOgImage,
+  ogUrl,
+  canonicalUrl,
+  keywords,
+  structuredData,
+}) => {
   const titleText = [prefix, title].filter(Boolean).join(' | ');
+  const resolvedOgTitle = ogTitle || titleText;
+  const resolvedOgDescription = ogDescription || description;
+  const resolvedOgUrl = ogUrl || siteUrl;
+  const resolvedCanonicalUrl = canonicalUrl || resolvedOgUrl || siteUrl;
 
   return (
     <Head>
@@ -16,28 +31,42 @@ export const Meta = ({ title, description, prefix = name, ogImage = defaultOgIma
 
       <meta
         name="keywords"
-        content="portfolio, Dr. Saloni Kabra, Doctor, Academic Writer, Medical Content Writer, Technical Writer, SEO Content Writer, Website Content Writer, Blogger"
+        content={
+          keywords ||
+          'portfolio, Dr. Saloni Kabra, Doctor, Academic Writer, Medical Content Writer, Technical Writer, SEO Content Writer, Website Content Writer, Blogger'
+        }
       />
-      <link rel="canonical" href="https://salonikabra.netlify.app" />
+      <link rel="canonical" href={resolvedCanonicalUrl} />
 
       <meta property="og:image" content={ogImage} />
-      <meta property="og:image:alt" content="Banner for the site" />
+      <meta
+        property="og:image:alt"
+        content="Dr. Saloni Kabra medical content writer and clinical strategist brand banner"
+      />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1280" />
       <meta property="og:image:height" content="675" />
 
-      <meta property="og:title" content={titleText} />
+      <meta property="og:title" content={resolvedOgTitle} />
       <meta property="og:site_name" content={name} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={siteUrl} />
-      <meta property="og:description" content={description} />
+      <meta property="og:url" content={resolvedOgUrl} />
+      <meta property="og:description" content={resolvedOgDescription} />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:title" content={titleText} />
+      <meta name="twitter:description" content={resolvedOgDescription} />
+      <meta name="twitter:title" content={resolvedOgTitle} />
       <meta name="twitter:site" content={twitterHandle} />
       <meta name="twitter:creator" content={twitterHandle} />
       <meta name="twitter:image" content={ogImage} />
+
+      {structuredData ? (
+        <script
+          key="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      ) : null}
     </Head>
   );
 };

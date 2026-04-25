@@ -39,7 +39,6 @@
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
     "cors": "^2.8.5",
-    "fathom-client": "^3.5.0",
     "framer-motion": "^7.1.0",
     "mdx-bundler": "^9.0.1",
     "next": "^12.2.5",

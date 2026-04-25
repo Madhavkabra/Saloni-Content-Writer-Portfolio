@@ -8,4 +8,5 @@ export * from './useLocalStorage';
 export * from './useParallax';
 export * from './usePrevious';
 export * from './useScrollToHash';
+export * from './useScrollTimeline';
 export * from './useWindowSize';
