@@ -638,7 +638,7 @@ export const Home = () => {
       '@type': 'Organization',
       name: 'HealthOK Global',
     },
-    url: 'https://salonikabra.netlify.app/',
+    url: 'https://www.thedoctorpen.com/',
   };
 
   const serviceSchemas = services.map(service => ({
@@ -652,7 +652,7 @@ export const Home = () => {
       name: 'Dr. Saloni Kabra',
     },
     areaServed: 'Global',
-    url: `https://salonikabra.netlify.app${service.link.startsWith('/') ? service.link : `/${service.link}`}`,
+    url: `https://www.thedoctorpen.com${service.link.startsWith('/') ? service.link : `/${service.link}`}`,
   }));
 
   const updateField = event => {
@@ -821,9 +821,9 @@ export const Home = () => {
         description="Licensed MD + Senior Clinical Content Strategist with 6+ years writing SEO-optimized medical content for Cetaphil, Medgenome, Ferty9, Zocdoc & 50+ healthcare brands. Specializing in telehealth, pharma, women's health, thyroid, dermatology. Available for remote/freelance projects."
         ogTitle="Dr. Saloni Kabra | Medical Content Writer & Clinical Strategist"
         ogDescription="MD-turned-content strategist writing SEO-optimized healthcare content for leading US/EU brands. 6+ years. 50+ clients. Available for remote work."
-        ogImage="https://salonikabra.netlify.app/social-image.png"
-        ogUrl="https://salonikabra.netlify.app/"
-        canonicalUrl="https://salonikabra.netlify.app/"
+        ogImage="https://www.thedoctorpen.com/social-image.png"
+        ogUrl="https://www.thedoctorpen.com/"
+        canonicalUrl="https://www.thedoctorpen.com/"
         keywords={seoKeywords}
         structuredData={[personSchema, ...serviceSchemas]}
       />
