@@ -1,2 +1,7 @@
 [[plugins]]
 package = "@netlify/plugin-functions-install-core"
+[[redirects]]
+  from = "/*"
+  to = "https://thedoctorpen.com/:splat"
+  status = 301
+  force = true
