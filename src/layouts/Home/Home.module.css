@@ -38,41 +38,49 @@
   }
 }
 
-.logoGrid {
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.logoMarqueeWrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+
+  &:hover .logoTrack {
+    animation-play-state: paused;
+  }
+}
+
+.logoTrack {
   list-style: none;
   margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: var(--spaceS) var(--spaceM);
+  display: flex;
   gap: var(--spaceM);
+  width: max-content;
+  animation: marqueeScroll 40s linear infinite;
 
-  @media (min-width: 1300px) {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+  @media (--mediaUseMotion) {
+    animation-play-state: running;
   }
 
-  @media (--mediaTablet) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  @media (--mediaMobile) {
-    display: flex;
-    overflow-x: auto;
-    gap: var(--spaceS);
-    padding: 0 var(--spaceL) var(--spaceXS);
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline-start: var(--spaceL);
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
   }
 }
 
 .logoItem,
 .moreClientsItem {
-  min-height: 50px;
+  flex: 0 0 auto;
+  min-width: 148px;
+  min-height: 58px;
   border: 1px solid rgb(var(--rgbText) / 0.12);
   border-radius: 12px;
   background: rgb(var(--rgbBackground));
@@ -83,12 +91,6 @@
   justify-content: center;
   gap: 0.35rem;
   padding: 0.75rem 0.85rem;
-
-  @media (--mediaMobile) {
-    min-width: 160px;
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-  }
 }
 
 .logoImage {
@@ -174,30 +176,41 @@
 .nichesGrid {
   list-style: none;
   margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 0 0 var(--spaceS);
+  display: flex;
+  flex-direction: row;
   gap: var(--spaceM);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--rgbText) / 0.2) transparent;
 
-  @media (--mediaTablet) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  &::-webkit-scrollbar {
+    height: 4px;
   }
 
-  @media (--mediaMobile) {
-    grid-template-columns: 1fr;
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgb(var(--rgbText) / 0.2);
+    border-radius: 4px;
   }
 }
 
 .nicheCard {
-  min-height: 290px;
+  flex: 0 0 220px;
   border-radius: 14px;
   border: 1px solid rgb(var(--rgbText) / 0.1);
   background: rgb(var(--rgbBackground));
   box-shadow: 0 8px 24px rgb(0 0 0 / 0.04);
-  padding: var(--spaceL);
+  padding: var(--spaceM);
   display: flex;
   flex-direction: column;
-  gap: var(--spaceS);
+  gap: 0.55rem;
+  scroll-snap-align: start;
   transition: box-shadow var(--durationM) ease, transform var(--durationM) ease;
 
   @media (--mediaUseMotion) {
@@ -251,6 +264,64 @@
   margin-top: auto;
   font-size: 0.92rem;
   font-weight: var(--fontWeightMedium);
+}
+
+.nichesScrollWrapper {
+  position: relative;
+}
+
+.nicheScrollBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid rgb(var(--rgbText) / 0.14);
+  background: rgb(var(--rgbBackground));
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.1);
+  color: rgb(var(--rgbPrimary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--durationS) ease, box-shadow var(--durationS) ease,
+    transform var(--durationS) ease;
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+  }
+
+  &:hover {
+    background: rgb(var(--rgbPrimary) / 0.1);
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.14);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.93);
+  }
+
+  &[data-dir='prev'] {
+    left: -1.2rem;
+  }
+
+  &[data-dir='next'] {
+    right: -1.2rem;
+  }
+
+  @media (--mediaMobile) {
+    &[data-dir='prev'] {
+      left: 0.4rem;
+    }
+
+    &[data-dir='next'] {
+      right: 0.4rem;
+    }
+  }
 }
 
 .servicesSection {
@@ -1071,6 +1142,10 @@
   margin: 0;
   color: rgb(var(--rgbText) / 0.84);
   line-height: 1.62;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .portfolioMetric {
@@ -1623,13 +1698,16 @@
   font-size: 1rem !important;
 }
 
-.logoGrid,
 .nichesGrid,
 .servicesDesktop,
 .timelineList,
 .segmentGrid,
 .portfolioGrid,
 .statsGrid {
+  gap: var(--cardGapDesktop) !important;
+}
+
+.logoTrack {
   gap: var(--cardGapDesktop) !important;
 }
 
@@ -1695,23 +1773,25 @@
 
 /* Niche cards readability tune */
 .nicheCard {
-  gap: 0.9rem !important;
+  gap: 0.6rem !important;
 }
 
 .nicheTags {
-  gap: 0.56rem !important;
-  margin: 0 0 0.7rem !important;
+  gap: 0.42rem !important;
+  margin: 0 0 0.4rem !important;
 }
 
 .nicheTag {
-  padding: 0.32rem 0.66rem !important;
-  line-height: 1.35 !important;
+  padding: 0.22rem 0.52rem !important;
+  font-size: 0.78rem !important;
+  line-height: 1.3 !important;
 }
 
 .nicheLink {
   margin-top: auto !important;
-  padding-top: 0.5rem;
+  padding-top: 0.4rem;
   display: inline-flex;
+  font-size: 0.85rem !important;
 }
 
 .portfolioCard:hover,
@@ -1742,8 +1822,6 @@
     letter-spacing: -0.01em;
   }
 
-  .logoGrid,
-  .nichesGrid,
   .segmentGrid,
   .portfolioGrid,
   .statsGrid,
@@ -1779,66 +1857,15 @@
     width: 100%;
   }
 
-  .logoGrid {
-    display: grid !important;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-    grid-auto-columns: minmax(160px, 43vw);
-    gap: 0.65rem !important;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 0 8px;
-    scrollbar-width: none;
-  }
-
-  .logoGrid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .logoItem,
-  .moreClientsItem {
-    min-width: 160px !important;
-    min-height: 54px;
-    padding: 0.7rem 0.75rem;
-    scroll-snap-align: start;
-  }image.png
-
   .logoText,
   .moreClientsText {
     font-size: 0.93rem;
     line-height: 1.3;
   }
 
-  .trustBarInner {
-    position: relative;
-  }
-
-  .trustBarInner::before,
-  .trustBarInner::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 18px;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  .trustBarInner::before {
-    left: 0;
-    background: linear-gradient(90deg, rgb(var(--rgbBackground)), rgb(var(--rgbBackground) / 0));
-  }
-
-  .trustBarInner::after {
-    right: 0;
-    background: linear-gradient(270deg, rgb(var(--rgbBackground)), rgb(var(--rgbBackground) / 0));
-  }
-
   .nicheCard {
-    min-height: 260px;
-    padding: 1rem !important;
+    flex: 0 0 200px;
+    padding: 0.9rem !important;
   }
 
   .servicesDesktop {

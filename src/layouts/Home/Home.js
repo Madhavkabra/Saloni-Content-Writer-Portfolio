@@ -591,7 +591,7 @@ const getConciseDescription = (text, maxSentences = 2) => {
 export const Home = () => {
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
   const [activePortfolioFilter, setActivePortfolioFilter] = useState('All Work');
-  const [portfolioVisibleCount, setPortfolioVisibleCount] = useState(12);
+  const [portfolioVisibleCount, setPortfolioVisibleCount] = useState(6);
   const [selectedPortfolioItem, setSelectedPortfolioItem] = useState(null);
   const [formValues, setFormValues] = useState({
     name: '',
@@ -608,6 +608,8 @@ export const Home = () => {
   const [activeServiceIndex, setActiveServiceIndex] = useState(null);
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
+  const [nicheScroll, setNicheScroll] = useState({ prev: false, next: true });
+  const nichesGridRef = useRef();
   const intro = useRef();
   const trustRef = useRef();
   const nichesRef = useRef();
@@ -672,6 +674,21 @@ export const Home = () => {
   const onFilterChange = filter => {
     setActivePortfolioFilter(filter);
     setPortfolioVisibleCount(12);
+  };
+
+  const updateNicheScroll = () => {
+    const el = nichesGridRef.current;
+    if (!el) return;
+    setNicheScroll({
+      prev: el.scrollLeft > 8,
+      next: el.scrollLeft + el.clientWidth < el.scrollWidth - 8,
+    });
+  };
+
+  const scrollNiches = dir => () => {
+    const el = nichesGridRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * 260, behavior: 'smooth' });
   };
 
   const selectedServiceIndex = activeServiceIndex ?? 0;
@@ -842,9 +859,30 @@ export const Home = () => {
           <Heading className={styles.trustBarTitle} level={3} as="h2" id="trusted-brands-title">
             Trusted by Leading Healthcare Brands
           </Heading>
-          <ul className={styles.logoGrid} aria-label="Client logos">
+        </div>
+        <div className={styles.logoMarqueeWrapper}>
+          <ul className={styles.logoTrack} aria-label="Client logos">
             {clientLogos.map(client => (
               <li className={styles.logoItem} key={client.name}>
+                {client.logo ? (
+                  <>
+                    <img
+                      className={styles.logoImage}
+                      src={client.logo}
+                      alt={client.name}
+                      loading="lazy"
+                      width={120}
+                      height={40}
+                    />
+                    <span className={styles.logoName}>{client.name}</span>
+                  </>
+                ) : (
+                  <span className={styles.logoText}>{client.name}</span>
+                )}
+              </li>
+            ))}
+            {clientLogos.map(client => (
+              <li className={styles.logoItem} key={`dup-${client.name}`} aria-hidden="true">
                 {client.logo ? (
                   <>
                     <img
@@ -883,28 +921,57 @@ export const Home = () => {
           <Text as="p" className={styles.nichesSubtitle}>
             Deep clinical knowledge meets strategic content creation in these high-demand niches
           </Text>
-          <ul className={styles.nichesGrid} aria-label="Specialty niches">
-            {specialtyNiches.map(niche => (
-              <li className={styles.nicheCard} key={niche.title}>
-                <span className={styles.nicheIcon} aria-hidden>
-                  {niche.icon}
-                </span>
-                <Heading className={styles.nicheTitle} level={5} as="h3">
-                  {niche.title}
-                </Heading>
-                <ul className={styles.nicheTags} aria-label={`${niche.title} specialties`}>
-                  {niche.specialties.slice(0, 4).map(item => (
-                    <li className={styles.nicheTag} key={item}>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <Link className={styles.nicheLink} href={niche.link}>
-                  View Related Work
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.nichesScrollWrapper}>
+            {nicheScroll.prev && (
+              <button
+                className={styles.nicheScrollBtn}
+                data-dir="prev"
+                onClick={scrollNiches(-1)}
+                aria-label="Scroll left"
+                type="button"
+              >
+                <Icon icon="arrowLeft" />
+              </button>
+            )}
+            <ul
+              className={styles.nichesGrid}
+              aria-label="Specialty niches"
+              ref={nichesGridRef}
+              onScroll={updateNicheScroll}
+            >
+              {specialtyNiches.map(niche => (
+                <li className={styles.nicheCard} key={niche.title}>
+                  <span className={styles.nicheIcon} aria-hidden>
+                    {niche.icon}
+                  </span>
+                  <Heading className={styles.nicheTitle} level={5} as="h3">
+                    {niche.title}
+                  </Heading>
+                  <ul className={styles.nicheTags} aria-label={`${niche.title} specialties`}>
+                    {niche.specialties.slice(0, 4).map(item => (
+                      <li className={styles.nicheTag} key={item}>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link className={styles.nicheLink} href={niche.link}>
+                    View Related Work
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            {nicheScroll.next && (
+              <button
+                className={styles.nicheScrollBtn}
+                data-dir="next"
+                onClick={scrollNiches(1)}
+                aria-label="Scroll right"
+                type="button"
+              >
+                <Icon icon="arrowRight" />
+              </button>
+            )}
+          </div>
         </div>
       </section>
       <section
