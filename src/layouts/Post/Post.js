@@ -51,7 +51,7 @@ export const Post = ({
 
   return (
     <article className={styles.post}>
-      <Meta title={heading} prefix="" description={abstract} ogImage={ogImage} />
+      <Meta title={heading} prefix="" description={abstract} ogImage={ogImage ?? undefined} />
       <Section>
         {banner && (
           <div className={styles.banner} ref={imageRef}>
